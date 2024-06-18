@@ -1,0 +1,44 @@
+Alex Pascal <alex.a.pascal77@gmail.com>
+	
+5:39 PM (0 minutes ago)
+	
+to me
+
+recon-ng 
+
+
+
+## to load a program with workspace 
+
+    recon-ng -w example_name 
+
+
+#setup workspace 
+
+    workspaces create workspace_1
+
+
+
+#using workspaces: 
+
+    workspace list 
+    workspace load
+
+
+##to display available modules (attack vectors) 
+
+    modules search 
+    modules search metacrawler 
+
+
+
+## to run attack 
+
+    modules load metacrawler ##example 1
+    modules load hackertarget  ##example 2
+    options set SOURCE domain.com 
+    run 
+
+
+
+

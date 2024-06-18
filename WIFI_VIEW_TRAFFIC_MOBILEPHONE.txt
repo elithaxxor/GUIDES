@@ -1,0 +1,25 @@
+WIFI_TRAFFIC_MOBILEPHONE
+
+*PSK--> Wi-Fi Protected Access Pre-Shared Key or WPA-PSK is a system of encryption used to authenticate users on wireless local area networks
+* EAPoL (WIRESHARK) -->Extensible Authentication Protocol over LAN is a generic network sign-on method for IEEE 802.1X Port Based Network Access Control.
+
+--> TO VIEW MOBILE TRAFFIC (IE: WHAT THEY ARE DOING ON THE NETWORK), YOU WILL NEED TO BE LOGGED INTO THE NETWORK AND KNOW THE PASSWORD
+
+#1--> GO TO 
+https://www.wireshark.org/tools/wpa-psk.html
+
+(SAMPLE GENERATED PSK)
+PSK 	
+cd39edf9275cc8f58c831b757c4b5681e8f05b7e2e138c6850b72c7d4295a461
+
+#2--> # OPEN WIRESHARK AND SCAN 
+--> SET FILETER TO "eapol" 
+--> SET:DECYPTION KEY {PSK FROM ABOVE}
+--> SET PROTOCOLS (PREFERENCES--> PROTOCOLS--> IEEE 802.11--> (SET: ENABLE DECRYPION) 
+
+
+#3--> DEATH ALL TRAFFIC
+sudo mdk4 wlan0 d -E "living room"
+
+
+

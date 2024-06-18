@@ -1,0 +1,5 @@
+ip link set wlp3s0 down
+iw wlp3s0 set type managed
+ip link set wlp3s0 up
+systemctl restart NetworkManager
+nmcli con up your_networks_SSID

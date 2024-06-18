@@ -1,0 +1,2 @@
+ATTACK MODE b: Beacon Flooding
+sudo mdk4 wlan0 b "living room" 

@@ -1,0 +1,7 @@
+MITM - IMCP
+
+Cd ~/Desktop/Responder 
+sudo su
+python Responder.py —wpad -I wlan0 
+
+start wireshark 

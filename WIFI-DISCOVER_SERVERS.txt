@@ -1,0 +1,9 @@
+** airscan-discover is a command-line tool to find eSCL and WSD scanners on a local network
+
+(it uses DNS DISCOVERY)
+DNS Service Discovery is a way of using standard DNS programming interfaces, servers, and packet formats to browse the network for services.
+
+EX:
+airscan-discover -t
+
+-->it outputs a fragment of sane-airscan configuration file, that can be directly added to /etc/sane.d/airscan.conf

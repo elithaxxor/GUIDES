@@ -1,0 +1,10 @@
+# TO SCAN AREA FOR OPEN NETWORKS
+sudo airodump-ng wlan0 --encrypt
+
+  Filter options:
+      --encrypt   <suite>   : Filter APs by cipher suite
+      --netmask <netmask>   : Filter APs by mask
+      --bssid     <bssid>   : Filter APs by BSSID
+      --essid     <essid>   : Filter APs by ESSID
+      --essid-regex <regex> : Filter APs by ESSID using a regular
+

@@ -1,0 +1,27 @@
+### THIS IS A MAN IN THE MIDDLE ATTACK USING DNS CACHE POISINING AND A ROGUE DHCP SERVER.
+OPTIONS FOR CAUSING THE VICTIMS LAPTOP TO SEND DNS QUERIES TO THE ATTACKER: 
+
+	1. Rogue DHCP server—> if victims laptop learns an IP from a Rogue DHCP, that ip could specificly point to a 
+
+
+	2. DNS Cache poisining —> using ettercap, launch a MITM attack. traffic flowing between victims laptop and the dns server is going to flow through the attacker if the attacker specifies the victims laptop and the dns server as another target. 
+########################################################
+#1. cd /etc/ettercap 
+
+	-->change file etter.dns to reset the direction IP and DNS (USE SELF IP)
+		# [UNDER] vim:ts=8:noexpandtab
+		# [ADD](tab space beteen both)
+		youtube.com	A 192.168.86.21
+		*.youtube.com	A 192.168.86.21
+		www.youtube.com PTR 192.168.86.21
+		
+	-->(change file etter.conf if you are changing OS) 
+#2. Start Apache
+
+#3. Start Ettercap
+	-> go to targets [select targets] (to manually enter targets.
+		--> TARGET 1 = {VICTIM IP}
+		--> TARGET 2 = {DNS SERVER, USUALLY THE ROUTER}
+		
+	-> select arp poisining from MITM menu, and select ok. 
+	--> Then go to plugins, and turn on dns_spoof

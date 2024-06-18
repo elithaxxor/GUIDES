@@ -1,0 +1,23 @@
+# NET CAT CAN CREATE SERVERS AND CONNECT TO THEM 
+
+[NETCAT] 
+#create server
+nc -l -p 9999
+
+# create server and listen for something specific
+nc -l -p 9999 > try.txt
+
+#create remote shell server 
+--> it does not use SSH, so the traffic is open 
+nc -l -p 9999 -e /bin/bash
+
+# connect to server (from another device) 
+nc 192.168.86.23 9999
+
+# connect to another server, and pipe files 
+cat '/root/try.txt | 192.168.86.23 9999
+
+[PYTHON]
+# use python to create HTTPserver
+python -m http.server 5432
+

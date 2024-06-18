@@ -1,0 +1,42 @@
+sudo websploit 
+
+
+
+Commands
+
+========
+
+about  exit  help  show  update  use
+
+
+wsf > show
+
+wsf > use scan_wifi
+
+wsf > scan_wifi > help
+
+wsf > scan_wifi > options
+
+wsf > scan_wifi > set iface wlan0
+
+wsf > scan_wifi > execute
+
+
+
+Modules             	Description         
+
+--------------------	--------------------------
+
+arp_spoof           	ARP Cache poisoning
+
+http_sniffer        	Sniff HTTP traffic
+
+scan_network        	Scan IP range for new devices 
+
+scan_wifi           	Scan Wireless devices 
+
+wifi_deauth         	Force device to disconnect from WIFI - De-authentication attack 
+
+wifi_fap            	Start Fake Access point (AP) 
+
+wifi_fap_spam       	Spamming Fake access points 

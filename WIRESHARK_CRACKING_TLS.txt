@@ -1,0 +1,20 @@
+WIRESHARK: CRACKING TLS PACKETS
+
+#1- FILTER (ip.addr = {ip to sniff}
+#2- LOOK FOR [TCP] and UNDER 'INFO'LOOK FOR [SYN] [ACK] COMMUNICATION 
+#3- YOU SHOULD SEE [TLS] AS THE NEXT PROTOCA--> (IT IS THE CLIENTS HANDSHAKE)
+	--> FIRST TLS PACKET SHOULD SAY 'Client Hello' under 'info' (or some meassage welcoming client to server) 
+	--> expand packets subsection 'transport layer security'
+	--> find 'Cipher Suite' [.. its a list telling the client all of the secuirty ciphers it can use]
+
+#4- FIND THE NEXT [TLS]--> ITS THE SERVERS HANDSHAKE 
+	--> EXPAND PACKETS INFORMATION, AND FIND 'Cipher Suite'
+		*THis is the accepted form of encryption 
+		
+#5- FIND NEXT TLS PACKET, ITS INFO SHOULD SAY 'Certificate'
+	--> This certiicate is sent from server to client 
+	--> Expand packet, and search for 'Certificate'
+		-> The first certificate is owned by the webserver, the second is 
+		certificate of intermediate authority. 
+	--> CONFIRM THE CERTIFICATS ON WIRESHARK, WITH THE WEBBROWSER (CLICK LOCK 			 	PAD BY URL BROWSER AND CONFIRM WITH 'Signed Certificate' subsection, column: rdnSequence. The names of the two should be the same.
+	

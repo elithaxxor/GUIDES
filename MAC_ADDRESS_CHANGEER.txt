@@ -1,0 +1,14 @@
+CHANGING MAC ADDRES
+
+--> First run 
+sudo ifconfig wlan0 down 
+
+--> -r is for random mac address
+sudo macchanger -r wlan0
+
+sudo macchanger -m 86:E3:20:19:18:CA wlan0
+--> Changes to specific mac
+
+--> THen bring networkdevice up 
+sudo ifconfig wlan0 up
+

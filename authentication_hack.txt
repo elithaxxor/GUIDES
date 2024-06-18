@@ -1,0 +1,11 @@
+
+https://portswigger.net/web-security/oauth
+
+IDENTIFYING OATH 
+OAUTH USES SPECIFIC QUERY PARAMTERS IN THE HEADERS,SEARCH HEADINGS, (GET URL) FOR: 
+(HEADER) 
+--> client_id, redirect_uri, and response_type
+ 
+IDENTIFYING BASIC AUTH (HTTP basic authentication):
+(HEADER) 
+--> Authorization: Basic base64(username:password)

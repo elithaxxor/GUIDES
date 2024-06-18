@@ -1,0 +1,3 @@
+FIND AN ACCESS POINT AND PRINT LIST WITH AL USERS ON IT 
+sudo airodump-ng wlan0
+

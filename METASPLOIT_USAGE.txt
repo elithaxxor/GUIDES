@@ -1,0 +1,247 @@
+Alex Pascal <alex.a.pascal77@gmail.com>
+	
+12:34 AM (0 minutes ago)
+	
+to me
+
+
+########################################
+
+METASPLOIT
+
+# to view all the modules / subfolders 
+
+cd /usr/share/metasploit-framework/modules
+
+
+# to initiate a search 
+
+msf6 > search type:exploit platform:windows flash 
+
+
+#############################
+
+(Main functionality of MSF) 
+
+—> Exploits
+
+	-> exploits are sorted by OS/device 
+
+
+—> payloads: 
+
+	singles —> perform a single action 
+Alex Pascal <alex.a.pascal77@gmail.com>
+	
+12:34 AM (0 minutes ago)
+	
+to me
+
+
+########################################
+
+METASPLOIT
+
+# to view all the modules / subfolders 
+
+cd /usr/share/metasploit-framework/modules
+
+
+# to initiate a search 
+
+msf6 > search type:exploit platform:windows flash 
+
+
+#############################
+
+(Main functionality of MSF) 
+
+—> Exploits
+
+	-> exploits are sorted by OS/device 
+
+
+—> payloads: 
+
+	singles —> perform a single action 
+
+	stagers —> Set up a server/client to communicate between parties and deliver further payloads 
+
+	stages —> large payloads (vnc reverse shells meterpreter) 
+
+
+—> Auxiliary: 
+
+	—> Provide unique attacks, such as dos, fuzzing, and scanners 
+
+
+—> Encoders 
+
+	—> Used to get around antivirus 
+
+	—> They are divided by architecture, php cmd, etc 
+
+	—> The subdivisions are meant for the target system 
+
+—> Nop 
+
+	—> Also known as ‘no operation’ , it causes the CPU to do nothing for a full clock cycle; it’s best used after exploiting a buffer overflow. 
+
+	—> allows remote code execution on the target machine 
+
+	—> similar ot encoders, they are subdivided by architectures, etc 
+
+	—> The subdivision are ment for the target system 
+
+ 
+
+—> post
+
+	—> Allows to execute further exploits after access to the system has been gained 
+
+	—> exploits include key loggers, spying on microphone webcam etc 
+
+
+##############################
+
+
+—> METASPLOIT, (INFORMATION GATHERING) 
+
+
+#NMAP SCAN 
+
+	—> nmap -sT 192.168.86.1/24
+
+# Stealth Scan 
+
+	—>nmap -sS 192.168.86.1/24 
+
+
+#  USE auxiliary/scanners TO SCAN FOR DIRECT INFO FROM TARGET FINDINGS ^
+
+ —> search ssh_version 
+
+—> use auxiliary/scanner/ssh/ssh_version 
+
+	—> options #VIEW OPTIONS 
+
+	—> set XXX  #SET PARAMS FROM OPTIONS 
+
+
+
+######################################
+
+
+# Finding exploits: 
+
+from the scan, type 
+
+—> search vsftpd
+
+#  use exploit
+
+use {exploit fouund from search} 
+
+# show options 
+
+set {options found above}
+
+# run exploit 
+
+exploit 
+
+
+—> if reverse shell is found, then you can type commands into the msf console as you would normally in a terminal
+
+
+###################
+	stagers —> Set up a server/client to communicate between parties and deliver further payloads 
+
+	stages —> large payloads (vnc reverse shells meterpreter) 
+
+
+—> Auxiliary: 
+
+	—> Provide unique attacks, such as dos, fuzzing, and scanners 
+
+
+—> Encoders 
+
+	—> Used to get around antivirus 
+
+	—> They are divided by architecture, php cmd, etc 
+
+	—> The subdivisions are meant for the target system 
+
+—> Nop 
+
+	—> Also known as ‘no operation’ , it causes the CPU to do nothing for a full clock cycle; it’s best used after exploiting a buffer overflow. 
+
+	—> allows remote code execution on the target machine 
+
+	—> similar ot encoders, they are subdivided by architectures, etc 
+
+	—> The subdivision are ment for the target system 
+
+ 
+
+—> post
+
+	—> Allows to execute further exploits after access to the system has been gained 
+
+	—> exploits include key loggers, spying on microphone webcam etc 
+
+
+##############################
+
+
+—> METASPLOIT, (INFORMATION GATHERING) 
+
+
+#NMAP SCAN 
+
+	—> nmap -sT 192.168.86.1/24
+
+# Stealth Scan 
+
+	—>nmap -sS 192.168.86.1/24 
+
+
+#  USE auxiliary/scanners TO SCAN FOR DIRECT INFO FROM TARGET FINDINGS ^
+
+ —> search ssh_version 
+
+—> use auxiliary/scanner/ssh/ssh_version 
+
+	—> options #VIEW OPTIONS 
+
+	—> set XXX  #SET PARAMS FROM OPTIONS 
+
+
+
+######################################
+
+
+# Finding exploits: 
+
+from the scan, type 
+
+—> search vsftpd
+
+#  use exploit
+
+use {exploit fouund from search} 
+
+# show options 
+
+set {options found above}
+
+# run exploit 
+
+exploit 
+
+
+—> if reverse shell is found, then you can type commands into the msf console as you would normally in a terminal
+
+
+###################

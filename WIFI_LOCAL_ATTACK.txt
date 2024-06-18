@@ -1,0 +1,11 @@
+### TO LAUNCH ATTACK VECTORS ON LOCAL NETWORK 
+
+## TO GET LOCAL IP ADDRESSES AVAILABLE (FOR ENUMERATION), USE 
+--> ipcalc 192.168.86.1 (USE ROUTER IP) 
+
+## SPARTA FOR ATTACK
+└─$ git clone https://github.com/secforce/sparta.git
+└─$ cd sparta                                       
+└─$ sudo python3 sparta.py                     
+
+

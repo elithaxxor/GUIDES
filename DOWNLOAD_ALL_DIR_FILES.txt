@@ -1,0 +1,1 @@
+wget --recursive --no-parent http://192.168.86.26:4007/passwords/

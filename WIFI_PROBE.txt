@@ -1,0 +1,1 @@
+sudo mdk4 wlan0 p -e "living room"

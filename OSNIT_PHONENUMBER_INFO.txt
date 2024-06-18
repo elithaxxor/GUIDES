@@ -1,0 +1,4 @@
+HOW TO GET PHONE NUMBER INFO 
+└─$ 
+phoneinfoga scan -n 9083922030 --osint
+sudo phonefy -n
