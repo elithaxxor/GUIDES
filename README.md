@@ -360,6 +360,44 @@ nmap -A -sP 192.168.1.0/24
 Sudo nmap -A -sS -O 192.168.86.35
 
 
+-------------------------------------------- DNS OSNT ---------------------------------------------
+## lookoups####                                            2 ⚙
+proxychains firefox
+ike-scan
+dnstracer dedicatedglass.com
+Nslookup dedicatedglass.com
+(to get dns)
+Ping -a dedicatedglass.com
+tlssled 192.168.50.1                                                    2 ⚙
+sslscan -h dedicatedglass.com
+Recon-ng                                      2 ⚙
+To grab SSL certificates
+sslyze --regular website or ip
+nslookup IP >> nslookup.txt
+http://geoiplookup.net/
+
+
+## host, nslookup, dig 
+host domain.com ## returns host IP and mailserver 
+host -t ns domain.com 
+host -t mx domain.com 
+host ip_address # reverse dns 
+
+nslookup domain.com 
+nslookup  # to enter nslookup console 
+# webserver
+set type=ns 
+domain.com 
+# mail server 
+set type=mx
+domain.com 
+
+dig --help 
+dig domain.com 
+dig domain.com -t mx 
+dig domain.com -t ns 
+dig domain.com AAAA # ipv6 addresses 
+
 ------------------------------------------------------ FRAMEWORK - [OTHER]  802.11  ------------------------------------------------------
 
 
