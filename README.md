@@ -3,11 +3,18 @@
 
 ----------------------------------------------------CONNECTING[HEADLESS]-----------------------------------------
 $ nmcli device wifi list 
+
 netdiscover -r 192.168.50.1/24
 dsniff --> slowly sniffs for senstive data (ftp http logins) 
 nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
 ip address show
 apt install network-manager-openvpn
+netstat - [helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
+netcat -all --> [scans for other protocols (udp and tcp)] 
+
+netlookup <host_name> --> reveals ip
+route --> gives access to routing tables 
+netstat -rn [finds gatweay address] 
 
 ### IFRENAME ### 
 ifrename # to rename wireless 
