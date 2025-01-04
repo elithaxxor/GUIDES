@@ -3,9 +3,8 @@
 
 ----------------------------------------------------CONNECTING[HEADLESS]-----------------------------------------
 $ nmcli device wifi list 
-## find mac for router (-a) and client (-c)
 netdiscover -r 192.168.50.1/24
-
+dsniff --> slowly sniffs for senstive data (ftp http logins) 
 nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
 ip address show
 apt install network-manager-openvpn
