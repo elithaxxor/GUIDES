@@ -5,7 +5,7 @@
 nmcli device wifi list 
 
 netdiscover -r 192.168.50.1/24
-
+sparrow wifi 
 
 dsniff --> slowly sniffs for senstive data (ftp http logins) 
 nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
