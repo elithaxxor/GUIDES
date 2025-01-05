@@ -112,7 +112,14 @@ function Main() {
 sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
 airodump-ng wlx0013eff5483f -c 11 ## use to monitor local APS 
 
-
+-------------------------------------------------------QUICK& DIRTY NETWORK SCAN ----------------------------
+function monitorWIFI() {
+	sudo iwevent # display wireless events
+	sudo iwlist # scan savailable aps or essid
+	sudo iwspy # monitors iw nodes and records strenght and quality of signal
+	sudo iwgetid # reports current essid
+}
+monitorWIFI
 ------------------------------------------------------SHRED_LOG_DATA------------------------------------------------
 
 ## NMAP SCRIPT LOCATION 
