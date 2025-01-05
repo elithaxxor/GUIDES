@@ -7,6 +7,8 @@ nmcli device wifi list
 netdiscover -r 192.168.50.1/24
 sparrow wifi 
 
+sudo arp-scan -l | grep "MAC TO FIND"
+
 dsniff --> slowly sniffs for senstive data (ftp http logins) 
 nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
 ip address show
@@ -144,7 +146,7 @@ function _removeAllLogs() {
 function _checkLogs() { cat ./bash_history }
 
 ------------------------------------------------------ STAY ANONYMOUS ------------------------------------------------------
-
+macchanger -r [channges mac to a random number] 
 i2prouter start [#### IP2ROUTER --> File sharing / hosting ]
 tor + proxy 
 vpn (most cant be trusted) 
