@@ -1,5 +1,15 @@
 #!/bin/sh
+---------------------------------------------------MISC - ADDING BINARY KALI-MENU---------------------------------
+mkdir -p ~/bin
 
+cp {binary} to bin
+chmod 755 ${HOME}/bin/binary
+  
+nano  ~/.bashrc #[if folder doesnt exist that create it]
+export PATH="~/bin:${PATH}"
+export PATH="${HOME}/bin:${PATH}"
+ 
+command -v binary
 
 ----------------------------------------------------CONNECTING[HEADLESS]-----------------------------------------
 nmcli device wifi list 
