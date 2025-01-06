@@ -83,6 +83,13 @@ ping [ping with both 'www' and naked domain
 nslookup [[ping with both 'www' and naked domain]
 use censys to find history between server, origin and destination. 
 
+
+
+----------------------------------------------[Windows Defender Payload] -------------------------------------------------]
+dsviper 
+enter info
+create python server to deliver payload 
+
 ---------------------------------------------------PGP-GPG-----------------------------------------------
 
 
