@@ -69,6 +69,12 @@ sudo airmon-ng start wlan0
 
 sudo mdk3 wlan0 b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
 airodump-ng wlan0 -c 11 ## use to monitor local APS 
+
+-----------------------------------------------------NET-DISCOVER (WHOS CONNECTING)---------------------------------------------
+netscanner
+angry ip scanner
+
+
 ---------------------------------------------------PGP-GPG-----------------------------------------------
 
 
