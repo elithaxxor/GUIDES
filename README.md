@@ -70,14 +70,17 @@ sudo airmon-ng start wlan0
 sudo mdk3 wlan0 b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
 airodump-ng wlan0 -c 11 ## use to monitor local APS 
 
------------------------------------------------------NET-DISCOVER (WHOS CONNECTING)---------------------------------------------
+-----------------------------------------------------[WHOS CONNECTINIG TO ME]---------------------------------------------
 netscanner
 angry ip scanner
-
-[tracking domain]
-
 netdiscover 
+
+----------------------------------------------------[tracking domain]---------------------------------------------
+
+
+
 ping [ping with both 'www' and naked domain
+nslookup [[ping with both 'www' and naked domain]
 use censys to find history between server, origin and destination. 
 
 ---------------------------------------------------PGP-GPG-----------------------------------------------
