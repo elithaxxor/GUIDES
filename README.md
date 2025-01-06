@@ -109,8 +109,11 @@ function Main() {
 	
 }
 --------------------------------------------------- FIND IP FROM DOMAIN --------------------------------------
+use ping, to see various hops. [will get firewalle] 
+nslookup the hopped domain, will likely be  a firewall like cloud flair. look for the last hop to cloud flair 
+the difference between IP and domain wiill likely be the real IP your o looking for. 
+tO cONFRIM, RUNN ;THE REAL ADDRESS through the results (DOMAINS) through NSLOOKUP, until an anomoly is found. 
 
-nslookup domaincom
 ------------------------------------------------------AP-SPOOFING------------------------------------------------
 
 sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
