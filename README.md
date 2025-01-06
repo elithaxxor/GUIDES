@@ -77,7 +77,7 @@ angry ip scanner
 [tracking domain]
 
 netdiscover 
-ping
+ping [ping with both 'www' and naked domain
 use censys to find history between server, origin and destination. 
 
 ---------------------------------------------------PGP-GPG-----------------------------------------------
