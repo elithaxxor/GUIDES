@@ -74,6 +74,11 @@ airodump-ng wlan0 -c 11 ## use to monitor local APS
 netscanner
 angry ip scanner
 
+[tracking domain]
+
+netdiscover 
+ping
+use censys to find history between server, origin and destination. 
 
 ---------------------------------------------------PGP-GPG-----------------------------------------------
 
