@@ -108,7 +108,9 @@ function Main() {
 	ngrok http 9999
 	
 }
+--------------------------------------------------- FIND IP FROM DOMAIN --------------------------------------
 
+nslookup domaincom
 ------------------------------------------------------AP-SPOOFING------------------------------------------------
 
 sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
