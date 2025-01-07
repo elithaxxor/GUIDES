@@ -335,6 +335,9 @@ bettercap
 
 ------------------------------------------------------ FRAMEWORK - NMAP SCANNING 802.11  ------------------------------------------------------
 
+[nMap] = CLI [zenmap] = GUI 
+
+[scripts]
 ls -al /usr/share/nmap/scripts/ 
 
 [nmap add ons]
