@@ -265,6 +265,13 @@ ls -al /usr/share/nmap/scripts/
     –script: Enables the use of various scripts from Nmap’s script database for more detailed discovery.
     -v: Increases verbosity, providing more information about the scan in progress.
 
+------------------------------
+[NMAP - TIMING]
+-T0 = paranoid 
+-T1 = Sneaky 
+-T2 = Okay 
+-T3-5 = Fvk this
+--------------------------------
 
 [to find alll open ports]
 nmap -v www.geeksforgeeks.org
@@ -330,6 +337,7 @@ nmap 192.168.1.1-1/24 -PR
 --------------------------------------------------------[Service and Version Detection]--------------------------------------------
 
 ---------[Attempts to determine the version of the service running on port]
+
 nmap 192.168.1.1 -sV
 nmap 192.168.1.1 -sV -version-intensity 8 [high likelyhood of false positive or firewall raised]
 nmap 192.168.1.1 -sV -version-light [better outcome, longer time]
