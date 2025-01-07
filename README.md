@@ -249,14 +249,23 @@ bettercap
 [scripts]
 ls -al /usr/share/nmap/scripts/ 
 
-[nmap add ons]
--A = how aggressive you wannt the scan 
--O = Operating System 
--sS = Initiates a SYN stealth scan, which is less likely to be logged.
-- s Attempts to determine the version of the services running on open ports.
-- -–script = Enables the use of various scripts from Nmap’s script database for more detailed discovery.
---traceourt = target hosting service or identify additional targets according to our needs for quickly tracing the path.
--v =  Increases verbosity, providing more information about the scan in progress.
+------------------------------------------------------[BASICS]---------------------------------------------------
+     -A = how aggressive you wannt the scan 
+     -O = Operating System 
+     -sS = Initiates a SYN stealth scan, which is less likely to be logged.
+    - s Attempts to determine the version of the services running on open ports.
+     - -–script = Enables the use of various scripts from Nmap’s script database for more detailed discovery.
+    --traceourt = target hosting service or identify additional targets according to our needs for quickly tracing the path.
+    -v : Increases verbosity, providing more information about the scan in progress.
+    -p: Specifies which ports you want to scan. You can list individual ports separated by commas or use ranges separated by dashes.
+    -sS: Initiates a SYN stealth scan, which is less likely to be logged.
+    -sV: Attempts to determine the version of the services running on open ports.
+    -O: Enables OS detection.
+    -A: Enables OS detection, version detection, script scanning, and traceroute.
+    –script: Enables the use of various scripts from Nmap’s script database for more detailed discovery.
+    -v: Increases verbosity, providing more information about the scan in progress.
+
+
 [to find alll open ports]
 nmap -v www.geeksforgeeks.org
 
@@ -292,6 +301,9 @@ nmap -PU [target]
 [To scan to detect firewall settings.]
 sudo nmap -sA 103.76.228.244
 
+[To Identify OS]
+nmap -O <Domain Name>
+
 [Identifiy Domain Names] [-oG] stores in a filepath [sS] is stealthy   
 nmap -sS <Domain Name> -oG <file-path>
 
@@ -300,6 +312,7 @@ sudo nmap -sL  103.76.228.244
 
 [To identify Hostnames]
 sudo nmap -sL  103.76.228.244 
+
 [Traceroute Domains - See firewalls?]
 nmap --trace out <Domain Name>
 
