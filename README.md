@@ -269,6 +269,11 @@ ls -al /usr/share/nmap/scripts/
     –script: Enables the use of various scripts from Nmap’s script database for more detailed discovery.
     -v: Increases verbosity, providing more information about the scan in progress.
 
+--------------------
+[Rate of packetes being sent]
+-max-rate <number>
+-host-timeout <tberime>
+-min-rate <number>  [sends the packets no slower than spcefied number]
 ------------------------------
 [NMAP - TIMING]
 -T0 = paranoid 
