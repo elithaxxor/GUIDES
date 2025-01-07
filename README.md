@@ -80,6 +80,9 @@ netscanner
 angry ip scanner
 netdiscover 
 
+-----------------------------------------------------[WIRESHARK - PSK SPY ]------------------------------------------
+First enter psk info into : https://www.wireshark.org/tools/wpa-psk.html
+
 ----------------------------------------------------[tracking domain]---------------------------------------------
 
 
