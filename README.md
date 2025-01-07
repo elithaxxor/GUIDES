@@ -329,6 +329,14 @@ bettercap
 
 ls -al /usr/share/nmap/scripts/ 
 
+[nmap add ons]
+-A = how aggressive you wannt the scan 
+-O = Operating System 
+-sS = Initiates a SYN stealth scan, which is less likely to be logged.
+- s Attempts to determine the version of the services running on open ports.
+- -–script = Enables the use of various scripts from Nmap’s script database for more detailed discovery.
+--traceourt = target hosting service or identify additional targets according to our needs for quickly tracing the path.
+-v =  Increases verbosity, providing more information about the scan in progress.
 [to find alll open ports]
 nmap -v www.geeksforgeeks.org
 
