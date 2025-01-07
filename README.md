@@ -39,7 +39,7 @@ iwspy # monitors iw nodes and records strenght and quality of signal
 
 
 ##### NMCLI #####
-nmcli general status 
+nmcli general status sudo apt install ./discord.deb
 nmcli general hostname # get and change sys hostname 
 nmcli general permissions # show the permssions available to caller 
 nmcli connection show --active 
@@ -133,7 +133,7 @@ create python server to deliver payload
 ---------------------------------------------------QUICK-WEBSERVER-----------------------------------------------
 
 
-python3 -m http.server
+python3 -m http.serversudo apt install ./discord.deb
 function Main() {
 	python -m http.server 9999
 	ngrok http 9999
@@ -202,6 +202,10 @@ use auxiliary/dos/tcp/synflood
 show options 
 set RHOST 192.168.50.111
 
+[DEAUTH USERS WHEN NOT ON ROUTER] 
+git clone https://github.com/v1s1t0r1sh3r3/airgeddon.git
+cd airgeddon
+sudo bash airgeddon.sh
 ------------------------------------------------------ BLUETOOTHNESS ------------------------------------------------------
 
  https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
@@ -209,7 +213,7 @@ set RHOST 192.168.50.111
  btscanner # launches GUI interface 
 
 bettercap 
-ble.recon on  ## returns the range and device name of enabled BT devices 
+ble.recon on  ## returns the range and dsudo apt install ./discord.debevice name of enabled BT devices 
 ble.recon off 
 ble.show 
 ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
@@ -234,7 +238,7 @@ sudo gem install bettercap*.gem
 
 sudo apt-get install build-essential ruby-dev libpcap-dev
 apt install golang
-go get github.com/bettercap/bettercap
+go get github.com/bettercap/bettercapsudo apt install ./discord.deb
 cd $GOPATH/src/github.com/bettercap/bettercap
 make build
 sudo make install
@@ -308,6 +312,9 @@ nmap -PU [target]
 [To scan to detect firewall settings.]
 sudo nmap -sA 103.76.228.244
 
+[To detect who is on the LAN]
+nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
+
 [To Identify OS]
 nmap -O <Domain Name>
 
@@ -345,6 +352,17 @@ nmap 192.168.1.1 -sV -version-light [better outcome, longer time]
 [Enables OS detection, version detection, script scanning, and traceroute]
 nmap 192.168.1.1 -A
 
+------------------------------------[NMAP-OS-DETECTION]--------------------------------------------
+e 
+[Remote OS detection using TCP/IP stack fingerprinting]
+nmap 192.168.1.1 -O
+
+[One open port One closed port = open machine]
+nmap 192.168.1.1 -O -osscan-limit
+
+[Aggrressive Nmap OS Scan]
+nmap 192.168.1.1 -O -osscan-guess
+
 nmap -sV -pN xx # basic nmap scan 
 nmap -p local_ip_doman/24 -oG nmap_out.txt 
 nmap 192.xxx -oX /dir/file.xml ## to output nmap to .xml 
@@ -355,11 +373,11 @@ nmap -sW xxx # window scan
 nmap -sV host,com -scrip dns-brute ## chain script 
 
 
-sudo nmap -sV -Pn -v ns8231.hostgator.com (#port knocking)
+sudo nmap -sV -Pn -v dns.server.name (#port knocking)
 Sudo nmap -A -Pn  -v 76.172.85.231
 nmap -sI -v google.com 192.168.50.1                                        2 ⚙
 nmap -sW -v 192.168.50.1
-nmap -sn -v - A--version-intenstity=9 192.168.0.0/24 ## nmap to find who's on Lan (subnet) #####
+ ## nmap to find who's on Lan (subnet) #####
 
 cd /usr/share/nmap/scripts
 nmap --script nmap-vulners/ -sV -sS -Pn -A -v 192.168.50.1/24 --version-intensity=9
@@ -370,7 +388,7 @@ nmap --script nmap-vulners/,vulscan/ -sV yourwebsite.com
 nmap -Pn --script vuln 192.168.1.105
 echo "scanning for open ports"
 nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
-
+sudo apt install ./discord.deb
 echo "scanning for open ports"
 nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
 
@@ -399,7 +417,7 @@ sudo nmap -sV --scripts=vulscan xxxx
 whois lookup
 (PORT SCAN WITH IplisT)
 sudo nmap -iL iplist.txt
-
+sudo apt install ./discord.deb
 (ScAN, WITH SPEED )
 sudo nmap -O -iL iplist.txt -T5
 
@@ -448,7 +466,7 @@ nmap -A -p 80,8080,8081,81 192.168.64.1
 (SCAN DEVICE NAMES )
 nmap -A -sP 192.168.1.0/24
 
-(SCAN DEVICE SPECIFIC PORTS)
+(SCAN DEVICE SPECIFIC PORTS)sudo apt install ./discord.deb
 Sudo nmap -A -sS -O 192.168.86.35
 
 
@@ -586,7 +604,7 @@ iwgetid - reports curretn essid / ap
 ## NOISY--> diguise packets hidden behind prexisting servers (by generaitng random traffic)#
 ## --> best if used if you think someone is spying on you or the network 
 
-## ADD SITES TO CONFIG FILE 
+## ADD SITES TO CONFIG FILE sudo apt install ./discord.deb
 git clone https://github.com/1tayH/noisy.git
 nano config.json
 python noisy.py --config config.json
@@ -785,10 +803,7 @@ sudo wireshark ## to watch network traffic
 
 ################################################
 
-### AIRGEDDON --> DEAUTH USERS WHEN NOT ON ROUTER 
-git clone https://github.com/v1s1t0r1sh3r3/airgeddon.git
-cd airgeddon
-sudo bash airgeddon.sh
+
 ################################################
 
 
@@ -813,7 +828,7 @@ Recon-ng                                      2 ⚙
 To grab SSL certificates
 sslyze --regular website or ip
 nslookup IP >> nslookup.txt
-http://geoiplookup.net/
+http://geoiplookup.net/sudo apt install ./discord.deb
 
 
 ########## DNS LOOKUPS ############
