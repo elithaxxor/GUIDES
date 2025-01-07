@@ -87,7 +87,7 @@ netdiscover
 ping [ping with both 'www' and naked domain
 nslookup [[ping with both 'www' and naked domain]
 use censys to find history between server, origin and destination. 
-
+https://github.com/censys/censys-python
 
 
 ----------------------------------------------[Windows Defender Payload] -------------------------------------------------]
