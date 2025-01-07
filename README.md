@@ -44,7 +44,7 @@ nmcli general hostname # get and change sys hostname
 nmcli general permissions # show the permssions available to caller 
 nmcli connection show --active 
 nmcli modify 
-
+nmap --trace out <Domain Name>
 nmcli networking on off # disable network control management 
 nmcli networking connectivity 
 
@@ -300,6 +300,8 @@ sudo nmap -sL  103.76.228.244
 
 [To identify Hostnames]
 sudo nmap -sL  103.76.228.244 
+[Traceroute Domains - See firewalls?]
+nmap --trace out <Domain Name>
 
 nmap -sV -pN xx # basic nmap scan 
 nmap -p local_ip_doman/24 -oG nmap_out.txt 
@@ -536,26 +538,42 @@ iwevent -- to get wireless events
 iwgetid - reports curretn essid / ap
 
 
-####################################
-#######  COVERING TRACKS ############
-### PROXYCHAINS (COVERRING TRACKS) ###
+
+
+
+## NOISY--> diguise packets hidden behind prexisting servers (by generaitng random traffic)#
+## --> best if used if you think someone is spying on you or the network 
+
+## ADD SITES TO CONFIG FILE 
+git clone https://github.com/1tayH/noisy.git
+nano config.json
+python noisy.py --config config.json
+
+------------------------------------------------------ [Change MAC Address]  ------------------------------------------------------
+
+
+### MAC ADDRESS RANDOMIZATION ( CELL PHONES )
+## conecting to portals --> swap mac address on whitelist with an already authorized Mac address 
+# 1. put card into wiresless monitor mode 
+# 2. find exisitng users on the whitelist. find the channel of ESSID 
+# 3. copy the mac connected to router. 
+sudo apt-get install macchanger aircrack-ng 
+sudo iwconfig wirelessInterface down 
+sudo macchanger -r wirelessInterface 
+ip a # to find current NICs in use 
+sudo airmon-ng start wirelessInterface # to put in into monitor mode 
+sudo airodump-ng wirelessInterface -c 11 --encrypt OPN # to see only open networks --> displays list of connected devices on network 
+sudo ifconfig nicNonMonitorMode down 
+sudo macchanger -m newMacfromabove nicNonMonitormode 
+sudo ifconfig nicNonMonitorMode up 
+
+------------------------------------------------------ [PROXYCHAINS]  ------------------------------------------------------
+
 # EDIT CONFIG /ETC/PROXYCHAINS.CONF
 sudo apt-get install -y proxychains
 proxychains nmap ip/24 
 proxychains tor 
-
-## NOISY--> diguise packets hidden behind prexisting servers (by generaitng random traffic)#
-## --> best if used if you think someone is spying on you or the network 
-pip install requests
-git clone https://github.com/1tayH/noisy.git
-cd noisy
-
-python noisy.py --help
-nano config.json
-## ADD SITES TO CONFIG FILE 
-python noisy.py --config config.json
-
-------------------------------------------------------SHRED_LOG_DATA------------------------------------------------
+------------------------------------------------------[SHRED_LOG_DATA]------------------------------------------------
 
 ## NMAP SCRIPT LOCATION 
 ls -al /usr/share/nmap/scripts/ 
@@ -826,30 +844,15 @@ aireplay-ng -0 0 mac -c mac_of_radio radio_name
 airemon-ng start external_radio 6 # the number is the channel  (TO START MONITOR MODE) 
 kismet -c radio_name  ## GETS THE MAC ADDRESS 
 
-
 ## send deauth
 #1 find mac for router (-a) and client (-c)
 netdiscover -r 192.168.50.1/24
 aireplay-ng --deauth 90000000 -a F0:2F:74:2C:7E:88 -c 9a:26:55:ed:ef:84 wlo1
 
 
-### MAC ADDRESS RANDOMIZATION ( CELL PHONES )
-## conecting to portals --> swap mac address on whitelist with an already authorized Mac address 
-# 1. put card into wiresless monitor mode 
-# 2. find exisitng users on the whitelist. find the channel of ESSID 
-# 3. copy the mac connected to router. 
-sudo apt-get install macchanger aircrack-ng 
-sudo iwconfig wirelessInterface down 
-sudo macchanger -r wirelessInterface 
-ip a # to find current NICs in use 
-sudo airmon-ng start wirelessInterface # to put in into monitor mode 
-sudo airodump-ng wirelessInterface -c 11 --encrypt OPN # to see only open networks --> displays list of connected devices on network 
-sudo ifconfig nicNonMonitorMode down 
-sudo macchanger -m newMacfromabove nicNonMonitormode 
-sudo ifconfig nicNonMonitorMode up 
 
 
-################################
+
 
 
 ###########################
