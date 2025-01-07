@@ -329,10 +329,13 @@ nmap 192.168.1.1-1/24 -PR
 
 --------------------------------------------------------[Service and Version Detection]--------------------------------------------
 
-[Attempts to determine the version of the service running on port]
+---------[Attempts to determine the version of the service running on port]
 nmap 192.168.1.1 -sV
 nmap 192.168.1.1 -sV -version-intensity 8 [high likelyhood of false positive or firewall raised]
 nmap 192.168.1.1 -sV -version-light [better outcome, longer time]
+
+[Enables OS detection, version detection, script scanning, and traceroute]
+nmap 192.168.1.1 -A
 
 nmap -sV -pN xx # basic nmap scan 
 nmap -p local_ip_doman/24 -oG nmap_out.txt 
