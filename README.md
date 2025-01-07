@@ -49,7 +49,7 @@ nmcli networking on off # disable network control management
 nmcli networking connectivity 
 
 nmcli radio all   ## show status for all devices 
-nmcli radio wwan  ## for tethered devices 
+nmcli radio wwan  #-oG” flag can be used to store the nmap result in to specific file.# for tethered devices 
 nmcli radio wifi  ## show status for wifi devices 
 
 nmcli device status
@@ -251,7 +251,7 @@ hciconfig dev_name up
 sdptool browse MAC_ADDRESS 
 
 
-netstat - [helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
+netstat - [helps d-oG” flag can be used to store the nmap result in to specific file.isplay network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
 netcat -all --> [scans for other protocols (udp and tcp)] 
 
 netlookup <host_name> --> reveals ip
@@ -346,6 +346,13 @@ nmap -iL input.txt
 
 [Tstore the nmap result in to specific file. -oG” flag ]
 nmap -sS <Domain Name> -oG <file-path>
+
+[UDP Port scan 'sU']
+nmap -sU <Domain Name>
+
+[ICMP Port scan 'sN']
+nmap -sn <Domain Name>
+
 
 nmap -sV -pN xx # basic nmap scan 
 nmap -p local_ip_doman/24 -oG nmap_out.txt 
