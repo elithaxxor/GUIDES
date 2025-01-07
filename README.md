@@ -362,12 +362,6 @@ nmap -v www.geeksforgeeks.org
 [to scan multiple hosts]
 nmap 103.76.228.244 157.240.198.35 172.217.27.174
 
-[To scan to detect firewall settings.]
-sudo nmap -sA 103.76.228.244
-
-[To identify Hostnames]
-sudo nmap -sL  103.76.228.244 
-
 [To scan from FIle]
 nmap -iL input.txt
 
@@ -383,13 +377,28 @@ nmap -sn <Domain Name>
 [Perform a ping scan only]
 nmap -sP [target]
 
-[Identify Hostnames]
-sudo nmap -sL  103.76.228.244 
-
 [TCP SYN Ping-->Initial HandShake]
 nmap -PS [target]
 
+[TCP ACK PING---> Handshake back]
+nmap -PA [target]
 
+[UDP PING] --> Streaming etc (no hanndshsake) 
+nmap -PU [target]
+
+--------------------------------[Identifiy]-----------------------------
+
+[To scan to detect firewall settings.]
+sudo nmap -sA 103.76.228.244
+
+[Identifiy Domain Names] [-oG] stores in a filepath [sS] is stealthy   
+nmap -sS <Domain Name> -oG <file-path>
+
+[Identify Hostnames]
+sudo nmap -sL  103.76.228.244 
+
+[To identify Hostnames]
+sudo nmap -sL  103.76.228.244 
 
 nmap -sV -pN xx # basic nmap scan 
 nmap -p local_ip_doman/24 -oG nmap_out.txt 
