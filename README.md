@@ -1,4 +1,4 @@
-#!/bin/sh
+		#!/bin/sh
 ---------------------------------------------------MISC - ADDING BINARY KALI-MENU---------------------------------
 mkdir -p ~/bin
 
@@ -379,6 +379,16 @@ nmap -sU <Domain Name>
 
 [ICMP Port scan 'sN']
 nmap -sn <Domain Name>
+
+[Perform a ping scan only]
+nmap -sP [target]
+
+[Identify Hostnames]
+sudo nmap -sL  103.76.228.244 
+
+[TCP SYN Ping-->Initial HandShake]
+nmap -PS [target]
+
 
 
 nmap -sV -pN xx # basic nmap scan 
