@@ -69,7 +69,7 @@ sudo airmon-ng start wlan0
 
 sudo mdk3 wlan0 b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
 airodump-ng wlan0 -c 11 ## use to monitor local APS 
-
+max
 
 
 -----------------------------------------------------[WHOS CONNECTINIG TO ME]---------------------------------------------
@@ -130,7 +130,7 @@ tempmailer.de --> Use throw away email
 enter info
 create python server to deliver payload 
 
----------------------------------------------------QUICK-WEBSERVER-----------------------------------------------
+---------------------------max------------------------QUICK-WEBSERVER-----------------------------------------------
 
 
 python3 -m http.serversudo apt install ./discord.deb
