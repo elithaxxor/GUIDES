@@ -96,7 +96,11 @@ arp.spoof on
 set net.sniff.local true
 net.sniff on
 -----------------------------------------------------[WIRESHARK - PSK SPY ]------------------------------------------
+
 First enter psk info into : https://www.wireshark.org/tools/wpa-psk.html (Gained from router pass and login) 
+
+-----------------------------------------------------[TCP-DUMP - PACKET ANAALSYS ]----------------------------------------
+[tcpdump] -> captures traffic from all layeres of OSI MOdel. YOu can store and analyze the data, and analayze it later, on wireshark
 
 
 ----------------------------------------------------[tracking domain]---------------------------------------------
