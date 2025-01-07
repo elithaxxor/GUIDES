@@ -108,6 +108,11 @@ First enter psk info into : https://www.wireshark.org/tools/wpa-psk.html (Gained
 -----------------------------------------------------[TCP-DUMP - PACKET ANAALSYS ]----------------------------------------
 [tcpdump] -> captures traffic from all layeres of OSI MOdel. YOu can store and analyze the data, and analayze it later, on wireshark
 
+-----------------------------------------------------[LIMIT-BANDWIDTH]----------------------------------------
+[netcut] -->A simple tool to ban people's Internet connection with ARP spoofing.
+https://github.com/cdes5804/NetCut
+cd and make file
+
 ----------------------------------------------------[tracking domain]---------------------------------------------
 
 ping [ping with both 'www' and naked domain
