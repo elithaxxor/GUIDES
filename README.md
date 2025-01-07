@@ -316,6 +316,18 @@ sudo nmap -sL  103.76.228.244
 [Traceroute Domains - See firewalls?]
 nmap --trace out <Domain Name>
 
+-----------------------------[Example Scans]---------------------------------
+
+[Disable port scanning. Host discovery only.]
+nmap 192.168.1.1/24 -sn
+
+[Never do DNS resolution]
+nmap 192.168.1.1 -n
+
+[ARP discovery on local network]
+nmap 192.168.1.1-1/24 -PR
+
+
 nmap -sV -pN xx # basic nmap scan 
 nmap -p local_ip_doman/24 -oG nmap_out.txt 
 nmap 192.xxx -oX /dir/file.xml ## to output nmap to .xml 
