@@ -308,10 +308,6 @@ hciconfig dev_name up
 sdptool browse MAC_ADDRESS 
 btscanner # launches GUI interface 
 
-#### BETTERCAP (ettercap replacement) ####
-## https://www.bettercap.org/legacy/ 
-# https://null-byte.wonderhowto.com/how-to/target-bluetooth-devices-with-bettercap-0194421/
-
 git clone https://github.com/evilsocket/bettercap
 cd bettercap
 bundle install
@@ -328,21 +324,28 @@ sudo make install
 sudo bettercap
 bettercap 
 
-ble.recon on  ## returns the range and device name of enabled BT devices 
-ble.recon off 
-ble.show 
-ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
-##ss
-192.168.0.0/24 > 192.168.0.37  » net.show
-192.168.0.0/24 > 192.168.0.37  » ble.recon on ### BLUETOOTH SNIFFING MODULE 
-192.168.0.0/24 > 192.168.0.37  » ble.show  ### IDENTIFY HOSTS TO PROBE 
-192.168.0.0/24 > 192.168.0.37  » ble.enum 56:73:e6:ea:ce:c5 ### SCAN AND INTERACT W/ DEVICES 
-192.168.0.0/24 > 192.168.0.37  » ble.write 7e:dc:48:7c:77:ea 69d1d8f345e149a898219bbdfdaad9d9 ffffffffffffffff ### writting fffff to the writeable field found 
-
 
 ------------------------------------------------------ FRAMEWORK - NMAP SCANNING 802.11  ------------------------------------------------------
 
 ls -al /usr/share/nmap/scripts/ 
+
+[to find alll open ports]
+nmap -v www.geeksforgeeks.org
+
+[to scan multiple hosts]
+nmap 103.76.228.244 157.240.198.35 172.217.27.174
+
+[To scan to detect firewall settings.]
+sudo nmap -sA 103.76.228.244
+
+[To identify Hostnames]
+sudo nmap -sL  103.76.228.244 
+
+[To scan from FIle]
+nmap -iL input.txt
+
+[Tstore the nmap result in to specific file. -oG” flag ]
+nmap -sS <Domain Name> -oG <file-path>
 
 nmap -sV -pN xx # basic nmap scan 
 nmap -p local_ip_doman/24 -oG nmap_out.txt 
