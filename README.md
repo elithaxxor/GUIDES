@@ -285,6 +285,12 @@ ls -al /usr/share/nmap/scripts/
 [to find alll open ports]
 nmap -v www.geeksforgeeks.org
 
+[to scan all open prts]
+nmap 192.168.1.1 -p-
+
+[to scan based on services (HTTP, FTP)]
+nmap 192.168.1.1 -p http,https
+
 [to scan multiple hosts]
 nmap 103.76.228.244 157.240.198.35 172.217.27.174
 
