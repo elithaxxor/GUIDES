@@ -120,6 +120,10 @@ nslookup [[ping with both 'www' and naked domain]
 use censys to find history between server, origin and destination. 
 [https://github.com/censys/censys-python]
 
+------------------------------------------[DNS and reverse DNS lookup]----------------------------------------------------------------------
+$ dig compass-security.com
+$ dig -x 10.5.23.42
+
 ----------------------------------------------[COPY WEBPAGE ] -------------------------------------------------]
 sudo apt install httrack webhttrack
 httprack -w domain.com
@@ -351,6 +355,10 @@ nmap 192.168.1.1 -n
 
 [ARP discovery on local network]
 nmap 192.168.1.1-1/24 -PR
+
+[Reverse DNS lookup of IP address range:]
+# nmap -sL 10.5.23.0/24
+
 
 --------------------------------------------------------[Service and Version Detection]--------------------------------------------
 
