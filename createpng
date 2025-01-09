@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+#
+# Note: You have to add the following line in /etc/ImageMagick-6/policy.xml:
+#
+# <policy domain="coder" rights="read|write" pattern="PDF,PS" />
+#
+
+PDF="$(ls hacking_tools_cheat_sheet_v*.pdf)"
+PNG="$(sed 's/\.pdf$/.png/' <<< $PDF)"
+
+convert -background white -alpha remove -alpha off -density 300 "$PDF" "$PNG"
+convert -append "$PDF" "$PNG"
