@@ -76,6 +76,7 @@ max
 [netscanner]
 [angry ip scanner]
 [netdiscover]
+ sudo netdiscover -i wlan0 -r 192.168.1.1
 
 [bettercap] - CLI [ettercap] - GUI
 bettercap  -iface wlan0
