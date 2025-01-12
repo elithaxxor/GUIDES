@@ -153,6 +153,8 @@ function Main() {
 ssh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and not host localhost\" -w - " > tcp_dump1.pcap
 [specifies not to use 'local host' or port 22'. time out is at 60 seconds
 
+------------------------------------------------------[MITM-MAN-IN-THE-MIDDLE-------------------------------------------
+mitweb [HAS NICE GUI]
 
 --------------------------------------------------- FIND IP FROM DOMAIN --------------------------------------
 use ping, to see various hops. [will get firewalle] 
