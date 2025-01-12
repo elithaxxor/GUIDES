@@ -147,6 +147,13 @@ function Main() {
 	ngrok http 9999
 	
 }
+
+---------------------------max------------------------[PCAP-TCP-DUMP]-----------------------------------------------
+
+ssh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and not host localhost\" -w - " > tcp_dump1.pcap
+[specifies not to use 'local host' or port 22'. time out is at 60 seconds
+
+
 --------------------------------------------------- FIND IP FROM DOMAIN --------------------------------------
 use ping, to see various hops. [will get firewalle] 
 nslookup the hopped domain, will likely be  a firewall like cloud flair. look for the last hop to cloud flair 
@@ -288,7 +295,8 @@ ls -al /usr/share/nmap/scripts/
 -T1 = Sneaky 
 -T2 = Okay 
 -T3-5 = Fvk this
---------------------------------
+----------ssh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and not host localhost\" -w - " > tcp_dump1.pcap
+----------------------
 
 [to find alll open ports]
 nmap -v www.geeksforgeeks.org
@@ -581,7 +589,8 @@ canarytokens.com/generate
 
 ### LOGS ##### 
 kill -9 $$ ## exits the terminal without saving history 
-wget https://raw.githubusercontent.com/sundowndev/covermyass/master/covermyass
+wget https://raw.githussh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and not host localhost\" -w - " > tcp_dump1.pcap
+busercontent.com/sundowndev/covermyass/master/covermyass
 chmod +x covermyass
 ./covermyass
 # BASH HISTORY 
