@@ -8,9 +8,10 @@ chmod 755 ${HOME}/bin/binary
 nano  ~/.bashrc #[if folder doesnt exist that create it]
 export PATH="~/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
- 
 command -v binary
 
+[Activly Used DRiversr]
+lsmod 
 ----------------------------------------------------CONNECTING[HEADLESS]-----------------------------------------
 nmcli device wifi list 
 
