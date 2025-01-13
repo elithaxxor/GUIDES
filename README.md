@@ -82,8 +82,11 @@ sudo netdiscover -i wlan0 -r 192.168.1.1
 sudo kismet -c wlan1mon 
 
 [bettercap] - CLI [ettercap] - GUI
-bettercap  -iface wlan0
 sudo bettercap -caplet http-ui [UI MODE]
+bettercap  -iface wlan0
+
+[EtterCap - GUI]
+sudo ettercap -G
 [mitmproxy] 
 
 
