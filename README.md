@@ -78,7 +78,7 @@ max
 [angry ip scanner]
 [netdiscover]
 sudo netdiscover -i wlan0 -r 192.168.1.1
-[KISMET]
+[KISMET] sudo bettercap -caplet http-ui 
 sudo kismet -c wlan1mon 
 
 [bettercap] - CLI [ettercap] - GUI
@@ -159,8 +159,9 @@ ssh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and n
 
 mitweb [HAS NICE GUI]
 
-bettercap :
-
+[bettercap - GUI ]:
+sudo bettercap -caplet http-ui 
+ 
 net.probe on [shows whos on the network]
 net.show [gives list of MAC and IP in graph]
 set arp.spoof.targets [192.xxx]
