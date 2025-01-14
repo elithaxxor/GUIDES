@@ -1,7 +1,11 @@
 		#!/bin/sh
 ---------------------------------------------------MISC - ADDING BINARY KALI-MENU---------------------------------
-mkdir -p ~/bin
 
+dmesg [shows all device/driver activity]
+lsmod [shows active kernals etc]
+
+
+mkdir -p ~/bin
 cp {binary} to bin
 chmod 755 ${HOME}/bin/binary
   
@@ -103,6 +107,7 @@ set net.sniff.local true
 net.sniff on
 
 -----------------------------------------------------[DISCOVER / DEAUTH USERS]---------------------------------------------
+
 [WASH: networks using the monitor mode interface-- such as printers]
 sudo wash -i wlan2 -c 6 
 [REAVER: the monitor mode interface (-i mon0) to attack the access point (-b E0:3F:49:6A:57:78), displaying verbose output (-v)]
@@ -185,6 +190,7 @@ net.sniff on
 
 
 --------------------------------------------------- FIND IP FROM DOMAIN --------------------------------------
+
 use ping, to see various hops. [will get firewalle] 
 nslookup the hopped domain, will likely be  a firewall like cloud flair. look for the last hop to cloud flair 
 the difference between IP and domain wiill likely be the real IP your o looking for. 
@@ -251,13 +257,16 @@ set RHOST 192.168.50.111
 git clone https://github.com/v1s1t0r1sh3r3/airgeddon.git
 cd airgeddon
 sudo bash airgeddon.sh
------------------------------------------------------- BLUETOOTHNESS ------------------------------------------------------
+------------------------------------------------------ [BLUETOOTHNESS ------------------------------------------------------
 
  https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
 
- btscanner # launches GUI interface 
+---------------[BLUETOOTH MANAGER]---------------
+[bluetoothctl] -h
+[bluetoothctl] scan on
+[btscanner] # launches GUI interface 
+[bettercap] 
 
-bettercap 
 ble.recon on  ## returns the range and dsudo apt install ./discord.debevice name of enabled BT devices 
 ble.recon off 
 ble.show 
