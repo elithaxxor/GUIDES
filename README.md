@@ -1,5 +1,12 @@
 		#!/bin/sh
----------------------------------------------------MISC - ADDING BINARY KALI-MENU---------------------------------
+--------------------------------------------------- [REFERENCES] --------------------------------------------------
+
+![hacking_tools_cheat_sheet_v2 0-2](https://github.com/user-attachments/assets/13b4612d-1fe6-416e-bd33-f0373f034008)
+![hacking_tools_cheat_sheet_v2 0-1](https://github.com/user-attachments/assets/f0f435fc-7f7f-48db-9392-ef9c7277210d)
+![hacking_tools_cheat_sheet_v2 0-0](https://github.com/user-attachments/assets/aa65e069-a508-4790-ac39-f7b3c03f9dfc)
+![hacking_tools_cheat_sheet_v2 0](https://github.com/user-attachments/assets/ca63a2fe-c746-4ec9-9050-db72b7a57f04)
+[hacking_tools_cheat_sheet_v2.0.pdf](https://github.com/user-attachments/files/18425940/hacking_tools_cheat_sheet_v2.0.pdf)
+ BINARY KALI-MENU---------------------------------
 
 dmesg [shows all device/driver activity]
 lsmod [shows active kernals etc]
