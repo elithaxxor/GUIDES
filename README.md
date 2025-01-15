@@ -247,10 +247,22 @@ Table of Contents
 
 ---------------------------------------------------MISC - ADDING BINARY KALI-MENU---------------------------------
 
-dmesg [shows all device/driver activity]
-lsmod [shows active kernals etc]
+Table of Contents
+=================
 
+   * [Config](#config) 
+   * [Documentation](#documentation)
+   * [Tools](#tools)
+   * [Cheat Sheets](#cheat-sheets)
+   * [Docker](#docker-images-for-penetration-testing)
+   * [Vulnerabilities](#vulnerabilities)
+   * [Courses](#courses)
+   * [Online Hacking Demonstration Sites](#online-hacking-demonstration-sites)
+   * [Labs](#labs)
+   * [SSL](#ssl)
+   * [Security Ruby on Rails](#security-ruby-on-rails)
 
+## Config 
 mkdir -p ~/bin
 cp {binary} to bin
 chmod 755 ${HOME}/bin/binary
@@ -260,8 +272,13 @@ export PATH="~/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
 command -v binary
 
-[Activly Used DRiversr]
-lsmod 
+systemctl list-units --all [Lists Running Modules]
+systemctl status --all [Lists Running Modules]
+lsmod [Activly Used DRiversr]
+dmesg [shows all device/driver activity]
+lsmod [shows active kernals etc]
+
+
 ----------------------------------------------------CONNECTING[HEADLESS]-----------------------------------------
 nmcli device wifi list 
 
