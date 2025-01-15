@@ -1617,9 +1617,18 @@ block 3
 hosts
 free all
 
+	
+			
+					
+					
+
+		
+![hacking_tools_cheat_sheet_v2 0-2](https://github.com/user-attachments/assets/73027b21-455d-4a17-b455-fe5e3285d939)
+![hacking_tools_cheat_sheet_v2 0-1](https://github.com/user-attachments/assets/28c4d719-57b6-4ca7-b1cd-9358c716d260)
+![hacking_tools_cheat_sheet_v2 0-0](https://github.com/user-attachments/assets/38187eaa-4180-4e3e-be82-c859fbb304df)
+![hacking_tools_cheat_sheet_v2 0](https://github.com/user-attachments/assets/3e59fe35-6882-4afa-80f6-ce55c5a0d9d8)
+[hacking_tools_cheat_sheet_v2.0.pdf](https://github.com/user-attachments/files/18427174/hacking_tools_cheat_sheet_v2.0.pdf)
 
 
 
-
-
-
+									
