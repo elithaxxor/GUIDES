@@ -39,7 +39,7 @@ Table of Contents
 
 
 ## Documentation
-
+# systemctl list-units --all
    * https://www.owasp.org/ - Open Web Application Security Project
    * http://www.pentest-standard.org/ - Penetration Testing Execution Standard
    * http://www.binary-auditing.com/ - Dr. Thorsten Schneider’s Binary Auditing
@@ -274,7 +274,7 @@ command -v binary
 
 systemctl list-units --all [Lists Running Modules]
 systemctl status --all [Lists Running Modules]
-lsmod [Activly Used DRiversr]
+lsmod [Activly Used # systemctl list-units --allDRiversr]
 dmesg [shows all device/driver activity]
 lsmod [shows active kernals etc]
 
@@ -286,8 +286,8 @@ netdiscover -r 192.168.50.1/24
 sparrow wifi 
 
 sudo arp-scan -l | grep "MAC TO FIND"
-
 dsniff --> slowly sniffs for senstive data (ftp http logins) 
+
 nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
 ip address show
 apt install network-manager-openvpn
@@ -355,7 +355,6 @@ bettercap  -iface wlan0
 [EtterCap - GUI]
 sudo ettercap -G
 [mitmproxy] 
-
 
 [commansd]
 net.show [shows whos connected to device]
