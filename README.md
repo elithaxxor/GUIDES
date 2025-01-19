@@ -44,7 +44,7 @@ Table of Contents
    * https://appsecwiki.com/ - Application Security Wiki is an initiative to provide all Application security related resources to Security Researchers and developers at one place.
 
 ## Tools
-
+$ sudo tcpdump -i eth0 host 192.168.1.10 -w host_traffic.pcap
    * https://www.deepinfo.com/ - Deepinfo Attack Surface Platform discovers all your digital assets, monitors them 24/7, detects any issues, and notifies you quickly so you can take immediate action.
    * https://spyse.com/ - OSINT search engine that provides fresh data about the entire web, storing all data in its own DB, interconnect finding data and has some cool features.
    * http://www.metasploit.com/ - World's most used penetration testing software
@@ -343,15 +343,16 @@ sparrow wifi
 sudo arp-scan -l | grep "MAC TO FIND"
 dsniff --> slowly sniffs for senstive data (ftp http logins) 
 
-nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
-ip address show
-apt install network-manager-openvpn
-netstat - [helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
-netcat -all --> [scans for other protocols (udp and tcp)] 
+* nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
 
-netlookup <host_name> --> reveals ip
-route --> gives access to routing tables 
-netstat -rn [finds gatweay address] 
+* ip address show
+* apt install network-manager-openvpn
+* netstat - [helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
+* netcat -all --> [scans for other protocols (udp and tcp)] 
+
+* netlookup <host_name> --> reveals ip
+* route --> gives access to routing tables 
+* netstat -rn [finds gatweay address] 
 
 ### IFRENAME ### 
 ifrename # to rename wireless 
@@ -362,36 +363,36 @@ iwspy # monitors iw nodes and records strenght and quality of signal
 
 
 ##### NMCLI #####
-nmcli general status sudo apt install ./discord.deb
-nmcli general hostname # get and change sys hostname 
-nmcli general permissions # show the permssions available to caller 
-nmcli connection show --active 
-nmcli modify 
-nmap --trace out <Domain Name>
-nmcli networking on off # disable network control management 
-nmcli networking connectivity 
+* nmcli general status sudo apt install ./discord.deb
+* nmcli general hostname # get and change sys hostname 
+* nmcli general permissions # show the permssions available to caller 
+* nmcli connection show --active 
+* nmcli modify 
+* nmap --trace out <Domain Name>
+* nmcli networking on off # disable network control management 
+* nmcli networking connectivity 
 
-nmcli radio all   ## show status for all devices 
-nmcli radio wwan  #-oG” flag can be used to store the nmap result in to specific file.# for tethered devices 
-nmcli radio wifi  ## show status for wifi devices 
+* nmcli radio all   ## show status for all devices 
+* nmcli radio wwan  #-oG” flag can be used to store the nmap result in to specific file.# for tethered devices 
+* nmcli radio wifi  ## show status for wifi devices 
 
-nmcli device status
-nmcli device showstatus
-nmcli device showstatus wlan0 
-nmcli device wifi connect # connect to near hotspot
-nmcli device wifi hotspot # create a wifi hotspot 
+* nmcli device status
+* nmcli device showstatus
+* nmcli device showstatus wlan0 
+* nmcli device wifi connect # connect to near hotspot
+* nmcli device wifi hotspot # create a wifi hotspot 
 
-wifi-show-password
+* wifi-show-password
 
 -----------------------------------------------------BROADCAST-MODE---------------------------------------------
 
-sudo ifconfig wlan0 down
-sudo airmon-ng check
-sudo airmon-ng check kill
-sudo airmon-ng start wlan0
+* sudo ifconfig wlan0 down
+* sudo airmon-ng check
+* sudo airmon-ng check kill
+* sudo airmon-ng start wlan0
 
-sudo mdk3 wlan0 b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
-airodump-ng wlan0 -c 11 ## use to monitor local APS 
+* sudo mdk3 wlan0 b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
+* airodump-ng wlan0 -c 11 ## use to monitor local APS 
 max
 
 
