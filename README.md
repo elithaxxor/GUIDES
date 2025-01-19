@@ -520,12 +520,21 @@ deauth using  mdk4
 
 * First enter psk info into : https://www.wireshark.org/tools/wpa-psk.html (Gained from router pass and login) 
 
------------------------------------------------------[ PACKET-DUMP+ANALASYS  ]------------------
-[tcpdump] -> captures traffic from all layeres of OSI MOdel. YOu can store and analyze the data, and analayze it later, on wireshark
+-----------------------------------------------------[ PACKET-DUMP+ANALASYS  ]------------------[tcpdump] -> captures traffic from all layeres of OSI MOdel. YOu can store and analyze the data, and analayze it later, on wireshark
 
+-r = reverborse; places the captures in std_out
+--[persistant capture] -- 
+$ sudo tcpdump -i eth0 -w capture_output.pcap 
+
+--[Limited  Capture]--
+$ sudo tcpdump -i eth0 -C 100 -w limited_capture.pcap
+
+--[Traffic from specific Victim]
+$  sudo tcpdump -i eth0 host 192.victims_ip -w host_traffic.pcap
 -----------------------------------------------------[LIMIT-BANDWIDTH]----------------------------------------
 [netcut] -->A simple tool to ban people's Internet connection with ARP spoofing.
 * https://github.com/cdes5804/NetCut
+Optionally, set a limit on the size of the capture file.
 
 -----------------------------------------------------[REAL-TIME-LAN-ACTIVITY]----------------------------------------
 net.prob on
