@@ -520,7 +520,7 @@ deauth using  mdk4
 
 * First enter psk info into : https://www.wireshark.org/tools/wpa-psk.html (Gained from router pass and login) 
 
------------------------------------------------------[TCP-DUMP - PACKET ANAALSYS 
+-----------------------------------------------------[ PACKET-DUMP+ANALASYS  ]------------------
 [tcpdump] -> captures traffic from all layeres of OSI MOdel. YOu can store and analyze the data, and analayze it later, on wireshark
 
 -----------------------------------------------------[LIMIT-BANDWIDTH]----------------------------------------
