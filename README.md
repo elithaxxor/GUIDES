@@ -102,7 +102,7 @@ Table of Contents
     By default, Nmap version detection skips TCP port 9100 because some printers simply print anything sent to that port, leading to dozens of pages of HTTP GET requests, binary SSL session requests, etc. This behavior can be changed by modifying or removing the Exclude directive in nmap-service-probes, or you can specify --allports to scan all ports regardless of any Exclude directive. 
 --version-intensity <intensity> (Set version scan intensity)
 
-    When performing a version scan (-sV), Nmap sends a series of probes, each of which is assigned a rarity value between one and nine. The lower-numbered probes are effective against a wide variety of common services, while the higher-numbered ones are rarely useful. The intensity level specifies which probes should be applied. The higher the number, the more likely it is the service will be correctly identified. However, high intensity scans take longer. The intensity must be between 0 and 9. The default is 7. When a probe is registered to the target port via the nmap-service-probes ports directive, that probe is tried regardless of intensity level. This ensures that the DNS probes will always be attempted against any open port 53, the SSL probe will be done against 443, etc.
+    When performing a version scan (-sV), Nmap sends a series of probes, each of which is assigned a rarity value between one and nine. The lower-numbered probes are effective against a wide variety of common services, while the higher-numbered ones are rarely useful. The intensity level specifies which probes should be applied. The higher the number, the more likely it is the service will be correctly identified. However, high intensity scans take longer. The intensity must be between 0 and 9. The default is 7. When a probe is registered to the target port via the nmap-service-probes ports directive, that probe is tried regardless of intensity level. This ensures that the DNS probes will always be attempted against any open portcpdump -s 0 port ftp or ssh -i eth0 -w mycap.pcapt 53, the SSL probe will be done against 443, etc.
 --version-light (Enable light mode)
 
     This is a convenience alias for --version-intensity 2. This light mode makes version scanning much faster, but it is slightly less likely to identify services.
@@ -565,6 +565,10 @@ m
 [RUN PROXY] 
 *  mitmdump -s sslstrip.py -m transparent
 
+----------------------------------------------------[DUMPING PKSID (WPA2) ]---------------------------------------------
+
+[TCP DUMP]
+tcpdump -s 0 port ftp or ssh -i eth0 -w mycap.pcap
 ----------------------------------------------------[tracking domain]---------------------------------------------
 
 * ping [ping with both 'www' and naked domain
