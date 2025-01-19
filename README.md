@@ -148,10 +148,48 @@ Table of Contents
    * `docker pull metasploitframework/metasploit-framework` - [docker-metasploit](https://hub.docker.com/r/metasploitframework/metasploit-framework/)
    * `docker pull citizenstig/dvwa` - [Damn Vulnerable Web Application (DVWA)](https://hub.docker.com/r/citizenstig/dvwa/)
    * `docker pull bkimminich/juice-shop` [OWASP Juice Shop](https://hub.docker.com/r/bkimminich/juice-shop)
-   * `docker pull wpscanteam/vulnerablewordpress` - [Vulnerable WordPress Installation](https://hub.docker.com/r/wpscanteam/vulnerablewordpress/)
+   * `docker pull wpscanteam/vulnerablewordpress` - [Vulnerable WordPress Installation](https://hub.docker.com/r/wpscanteam/vulnerabl -sV (Version detection)
+
+    Enables version detection, as discussed above. Alternatively, you can use -A, which enables version detection among other things.
+
+    -sR is an alias for -sV. Prior to March 2011, it was used to active the RPC grinder separately from version detection, but now these options are always combined.
+--allports (Don't exclude any ports from version detection)
+
+    By default, Nmap version detection skips TCP port 9100 because some printers simply print anything sent to that port, leading to dozens of pages of HTTP GET requests, binary SSL session requests, etc. This behavior can be changed by modifying or removing the Exclude directive in nmap-service-probes, or you can specify --allports to scan all ports regardless of any Exclude directive. 
+--version-intensity <intensity> (Set version scan intensity)
+
+    When performing a version scan (-sV), Nmap sends a series of probes, each of which is assigned a rarity value between one and nine. The lower-numbered probes are effective against a wide variety of common services, while the higher-numbered ones are rarely useful. The intensity level specifies which probes should be applied. The higher the number, the more likely it is the service will be correctly identified. However, high intensity scans take longer. The intensity must be between 0 and 9. The default is 7. When a probe is registered to the target port via the nmap-service-probes ports directive, that probe is tried regardless of intensity level. This ensures that the DNS probes will always be attempted against any open port 53, the SSL probe will be done against 443, etc.
+--version-light (Enable light mode)
+
+    This is a convenience alias for --version-intensity 2. This light mode makes version scanning much faster, but it is slightly less likely to identify services.
+--version-all (Try every single probe)
+
+    An alias for --version-intensity 9, ensuring that every single probe is attempted against each port.
+--version-trace (Trace version scan activity)
+
+ewordpress/)
    * `docker pull hmlio/vaas-cve-2014-6271` - [Vulnerability as a service: Shellshock](https://hub.docker.com/r/hmlio/vaas-cve-2014-6271/)
    * `docker pull hmlio/vaas-cve-2014-0160` - [Vulnerability as a service: Heartbleed](https://hub.docker.com/r/hmlio/vaas-cve-2014-0160/)
-   * `docker pull opendns/security-ninjas` - [Security Ninjas](https://hub.docker.com/r/opendns/security-ninjas/)
+   * `doc -sV (Version detection)
+
+    Enables version detection, as discussed above. Alternatively, you can use -A, which enables version detection among other things.
+
+    -sR is an alias for -sV. Prior to March 2011, it was used to active the RPC grinder separately from version detection, but now these options are always combined.
+--allports (Don't exclude any ports from version detection)
+
+    By default, Nmap version detection skips TCP port 9100 because some printers simply print anything sent to that port, leading to dozens of pages of HTTP GET requests, binary SSL session requests, etc. This behavior can be changed by modifying or removing the Exclude directive in nmap-service-probes, or you can specify --allports to scan all ports regardless of any Exclude directive. 
+--version-intensity <intensity> (Set version scan intensity)
+
+    When performing a version scan (-sV), Nmap sends a series of probes, each of which is assigned a rarity value between one and nine. The lower-numbered probes are effective against a wide variety of common services, while the higher-numbered ones are rarely useful. The intensity level specifies which probes should be applied. The higher the number, the more likely it is the service will be correctly identified. However, high intensity scans take longer. The intensity must be between 0 and 9. The default is 7. When a probe is registered to the target port via the nmap-service-probes ports directive, that probe is tried regardless of intensity level. This ensures that the DNS probes will always be attempted against any open port 53, the SSL probe will be done against 443, etc.
+--version-light (Enable light mode)
+
+    This is a convenience alias for --version-intensity 2. This light mode makes version scanning much faster, but it is slightly less likely to identify services.
+--version-all (Try every single probe)
+
+    An alias for --version-intensity 9, ensuring that every single probe is attempted against each port.
+--version-trace (Trace version scan activity)
+
+ker pull opendns/security-ninjas` - [Security Ninjas](https://hub.docker.com/r/opendns/security-ninjas/)
    * `docker pull noncetonic/archlinux-pentest-lxde:1.0` - [Arch Linux Penetration Tester](https://hub.docker.com/r/noncetonic/archlinux-pentest-lxde/)
    * `docker pull diogomonica/docker-bench-security` - [Docker Bench for Security](https://hub.docker.com/r/diogomonica/docker-bench-security/)
    * `docker pull ismisepaul/securityshepherd` - [OWASP Security Shepherd](https://hub.docker.com/r/ismisepaul/securityshepherd/)
@@ -696,23 +734,29 @@ bettercap
 ls -al /usr/share/nmap/scripts/ 
 
 ------------------------------------------------------[BASICS]---------------------------------------------------
-     -A = how aggressive you wannt the scan 
-     -O = Operating System 
-     -sS = Initiates a SYN stealth scan, which is less likely to be logged.
-    - s Attempts to determine the version of the services running on open ports.
-     - -–script = Enables the use of various scripts from Nmap’s script database for more detailed discovery.
-    --traceourt = target hosting service or identify additional targets according to our needs for quickly tracing the path.
-    -v : Increases verbosity, providing more information about the scan in progress.
-    -p: Specifies which ports you want to scan. You can list individual ports separated by commas or use ranges separated by dashes.
-    -sS: Initiates a SYN stealth scan, which is less likely to be logged.
-    -sV: Attempts to determine the version of the services running on open ports.
-    -O: Enables OS detection.
-    -A: Enables OS detection, version detection, script scanning, and traceroute.
-    –script: Enables the use of various scripts from Nmap’s script database for more detailed discovery.
-    -v: Increases verbosity, providing more information about the scan in progress.
+****
+    * By default, Nmap version detection skips TCP port 9100 because some printers simply print anything sent to that port, leading to dozens of pages of HTTP GET requests, binary SSL session requests, etc. This behavior can be changed by modifying or removing the Exclude directive in nmap-service-probes, or you can specify --allports to scan all ports regardless of any Exclude directive. 
+*****
+ -A = how aggressive you wannt the scan 
+ --allports (Don't exclude any ports from version detection)
+-p: Specifies which ports you want to scan. You can list individual ports separated by commas or use ranges separated by dashes.
+-sS [SYN-Stealth Scan] = Initiates a SYN stealth scan, which is less likely to be logged.
+-sV: [version detection] =  Attempts to determine the version of the services running on open ports. -
+-v: Increases verbosity, providing more information about the scan in progress.
+ -O = Operating System 
+- s Attempts to determine the version of the services running on open ports.
+--traceourt = target hosting service or identify additional targets according to our needs for quickly tracing the path.
+-v : Increases verbosity, providing more information about the scan in progress.
+-–script = Enables the use of various scripts from Nmap’s script database for more detailed discovery.
+–script: Enables the use of various scripts from Nmap’s script database for more detailed discovery.
+	--version-intensity <intensity> (Set version scan intensity)
 
+[NMAP - Probing Intensty ]
+--version-light (Enable light mode)
+--version-all (Try every single probe)
+--version-trace (Trace version scan activity)
 --------------------
-[Rate of packetes being sent]
+[NMAP- Rate of packetes being sent]
 -max-rate <number>
 -host-timeout <tberime>
 -min-rate <number>  [sends the packets no slower than spcefied number]
@@ -722,81 +766,82 @@ ls -al /usr/share/nmap/scripts/
 -T1 = Sneaky 
 -T2 = Okay 
 -T3-5 = Fvk this
-----------ssh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and not host localhost\" -w - " > tcp_dump1.pcap
+
+[+] ssh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and not host localhost\" -w - " > tcp_dump1.pcap
 ----------------------
 
 [to find alll open ports]
-nmap -v www.geeksforgeeks.org
+* nmap -v www.geeksforgeeks.org
 
 [to scan all open prts]
-nmap 192.168.1.1 -p-
+* nmap 192.168.1.1 -p-
 
 [to scan based on services (HTTP, FTP)]
-nmap 192.168.1.1 -p http,https
+* nmap 192.168.1.1 -p http,https
 
 [to scan multiple hosts]
-nmap 103.76.228.244 157.240.198.35 172.217.27.174
+* nmap 103.76.228.244 157.240.198.35 172.217.27.174
 
 [To scan from FIle]
-nmap -iL input.txt
+* nmap -iL input.txt
 
 [Tstore the nmap result in to specific file. -oG” flag ]
-nmap -sS <Domain Name> -oG <file-path>
+* nmap -sS <Domain Name> -oG <file-path>
 
 [UDP Port scan 'sU']
-nmap -sU <Domain Name>
+* nmap -sU <Domain Name>
 
 [ICMP Port scan 'sN']
-nmap -sn <Domain Name>
+* nmap -sn <Domain Name>
 
 [Perform a ping scan only]
-nmap -sP [target]
+* nmap -sP [target]
 
 [TCP SYN Ping-->Initial HandShake]
-nmap -PS [target]
+* nmap -PS [target]
 
 [TCP ACK PING---> Handshake back]
-nmap -PA [target]
+* nmap -PA [target]
 
 [UDP PING] --> Streaming etc (no hanndshsake) 
-nmap -PU [target]
+* nmap -PU [target]
 
---------------------------------[Identifiy]-----------------------------
+--------------------------------[NMAP- Identifiy]-----------------------------
 
 [To scan to detect firewall settings.]
-sudo nmap -sA 103.76.228.244
+* sudo nmap -sA 103.76.228.244
 
 [To detect who is on the LAN]
-nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
+* nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
 
 [To Identify OS]
-nmap -O <Domain Name>
+* nmap -O <Domain Name>
 
 [Identifiy Domain Names] [-oG] stores in a filepath [sS] is stealthy   
-nmap -sS <Domain Name> -oG <file-path>
+* nmap -sS <Domain Name> -oG <file-path>
 
 [Identify Hostnames]
-sudo nmap -sL  103.76.228.244 
+* sudo nmap -sL  103.76.228.244 
 
 [To identify Hostnames]
 sudo nmap -sL  103.76.228.244 
 
 [Traceroute Domains - See firewalls?]
-nmap --trace out <Domain Name>
+* nmap --trace out <Domain Name>
 
 -----------------------------[Example Scans]---------------------------------
 
 [Disable port scanning. Host discovery only.]
-nmap 192.168.1.1/24 -sn
+* nmap 192.168.1.1/24 -sn
 
 [Never do DNS resolution]
-nmap 192.168.1.1 -n
+* nmap 192.168.1.1 -n
 
 [ARP discovery on local network]
-nmap 192.168.1.1-1/24 -PR
+* nmap 192.168.1.1-1/24 -PR
 
 [Reverse DNS lookup of IP address range:]
-# nmap -sL 10.5.23.0/24
+* nmap -sL 10.5.23.0/24
 
 
 --------------------------------------------------------[Service and Version Detection]--------------------------------------------
