@@ -534,7 +534,7 @@ $ sudo tcpdump -i eth0 -C 100 -w limited_capture.pcap
 $  sudo tcpdump -i eth0 host 192.victims_ip -w host_traffic.pcap
 
 --[airodump pcap] -- 
-sudo airodump-ng wlan0mon -c 11 --bssid 61:32:victim_mac -w saved_pcap.pcap
+sudo airodump-ng wlan0mon -c 11 --bssid 61:32:victim_mac -w saved_pcap.pcap -o pcap
 -c = channel of station 
 -----------------------------------------------------[LIMIT-BANDWIDTH]----------------------------------------
 [netcut] -->A simple tool to ban people's Internet connection with ARP spoofing.
