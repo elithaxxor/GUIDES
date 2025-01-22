@@ -58,7 +58,8 @@ $ sudo tcpdump -i eth0 host 192.168.1.10 -w host_traffic.pcap
    * https://github.com/iSECPartners/Scout2 - Security auditing tool for AWS environments
    * https://www.owasp.org/index.php/Category:OWASP_DirBuster_Project - Is a multi threaded java application designed to brute force directories and files names on web/application servers.
    * https://www.owasp.org/index.php/ZAP - The Zed Attack Proxy is an easy to use integrated penetration testing tool for finding vulnerabilities in web applications.
-   * https://github.com/tecknicaltom/dsniff - dsniff is a collection of tools for network auditing and penetration testing.
+   * https://github.com/tecknicaltom/dsniff - dsniff is a collection of tools for network auditing and penetration t└─$ sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+esting.
    * https://github.com/WangYihang/Webshell-Sniper - Manage your webshell via terminal.
    * https://github.com/DanMcInerney/dnsspoof - DNS spoofer. Drops DNS responses from the router and replaces it with the spoofed DNS response
    * https://github.com/trustedsec/social-engineer-toolkit - The Social-Engineer Toolkit (SET) repository from TrustedSec
@@ -111,6 +112,7 @@ $ sudo tcpdump -i eth0 host 192.168.1.10 -w host_traffic.pcap
 
     An alias for --version-intensity 9, ensuring that every single probe is attempted against each port.
 --version-trace (Trace version scan activity)
+└─$ sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
 
 alker X
    * https://www.rapid7.com/products/nexpose/index.jsp Nexpose
@@ -145,7 +147,8 @@ y, fingerprinting, and vulnerability detection
    * https://github.com/HightechSec/git-scanner git-scanner - A tool for bug hunting or pentesting for targeting websites that have open `.git` repositories available in public
    * [Web Application Exploitation @ Rawsec Inventory](https://inventory.raw.pm/tools.html#title-tools-web-application-exploitation) - Complete list of Web pentesting tools  
    * [Cyclops is a novel browser that can detect vulnerability automatically](https://github.com/v8blink/Chromium-based-XSS-Taint-Tracking/) - Cyclops is a web browser with XSS detection feature  
-   * https://caido.io/ - Web proxy
+   * https://caido.io/ - Web proxy└─$ sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+
    * https://github.com/assetnote/kiterunner - API discovery
    * https://github.com/owasp-amass/amass - domain recon
    * [https://columbus.elmasy.com/](https://columbus.elmasy.com/) - Columbus Project is an advanced subdomain discovery service with fast, powerful and easy to use API.
@@ -284,6 +287,7 @@ ker pull opendns/security-ninjas` - [Security Ninjas](https://hub.docker.com/r/o
    * https://pythoncyber.go.ro - CyberPython helps you to make your own research in order to solve challenges, exploit CVEs and make good scripts.
 
 ## SSL
+└─$ sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
 
    * https://www.ssllabs.com/ssltest/index.html - This service performs a deep analysis of the configuration of any SSL web server on the public Internet.
    * http://certdb.com/ - SSL/TLS data provider service. Collect the data about digital certificates - issuers, organisation, whois, expiration dates, etc... Plus, has handy filters for convenience.
@@ -545,13 +549,13 @@ sudo airodump-ng wlan0mon -c 11 --bssid 61:32:victim_mac -w saved_pcap.pcap -o p
 Optionally, set a limit on the size of the capture file.
 
 -----------------------------------------------------[REAL-TIME-LAN-ACTIVITY]----------------------------------------
-net.prob on
-set arp.spoof.internal --> all computers will bespooofed 
-set arp.spoof.targets ip_add, ip_add 
-arp.spoof on 
-set net.sniff.output ./pencap.pcap
-set net.sniff.verbose true
-net.sniff on 
+* net.prob on
+* set arp.spoof.internal --> all computers will bespooofed 
+* set arp.spoof.targets ip_add, ip_add 
+* arp.spoof on 
+* set net.sniff.output ./pencap.pcap
+* set net.sniff.verbose true
+* net.sniff on 
 
 -----------------------------------------------------[BEEF-BETTERCAP-PROXY]----------------------------------------
 --> SETS UP A ARP PROXY ON A TARGET BETWEEN HOST AND GATEWAY.
@@ -748,7 +752,7 @@ sudo bash airgeddon.sh
 * sudo ifconfig at0 0.0.0.0 up
   
 [-----CREATE BRIDGE IP -----]
-* sudo ifconfig free_wifi_bridge 192.168.1.2 [configure so its within the subnet] 
+* sudo ifconfig free_wifi_bridge 192.168.1.2 up [configure so its within the subnet] 
 * sudo ifconfig free_wifi_bridge up         
 * sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
 ------------------------------------------------------ [BLUETOOTHNESS ------------------------------------------------------
