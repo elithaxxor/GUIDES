@@ -695,6 +695,10 @@ netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant foll
 
 ------------------------------------------------------ WIFI-PESTER ------------------------------------------------------
 
+[-- CREATE FAKE AP --]
+* sudo airbase-ng --essid free_wifi -c 11 wlan1mon
+
+
 [DEAUTH]
 * netdiscover -r 192.168.50.1/24
 * aireplay-ng --deauth 90000000 -a F0:2F:74:2C:7E:88 -c 9a:26:55:ed:ef:84 wlo1
