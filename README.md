@@ -537,11 +537,26 @@ deauth using  mdk4
 -----------------------------------------------------[ PACKET-DUMP+ANALASYS  ]------------------[tcpdump] -> captures traffic from all layeres of OSI MOdel. YOu can store and analyze the data, and analayze it later, on wireshark
 
 -r = reverborse; places the captures in std_out
---[persistant capture] -- 
+--[TCP DUMP - persistant capture] -- 
 $ sudo tcpdump -i eth0 -w capture_output.pcap 
-
+-> Sniff traffic:
+# tcpdump [options] [filters]
+Useful tcpdump options:
+▪ -i interface: Interface or any for all
+▪ -n: Disable name and port resolution
+▪ -A: Print in ASCII
+▪ -XX: Print in hex and ASCII
+▪ -w file: Write output PCA
+* -r file: read PCAP
 --[Limited  Capture]--
+
 $ sudo tcpdump -i eth0 -C 100 -w limited_capture.pcap
+
+[--NETCAT TCP LISTEN / CONNECT --]
+[Listen on TCP port]
+* ncat -vnlp 2305
+[Connect to TCP port]
+* ncat -v 10.5.23.42 2305
 
 --[Traffic from specific Victim]
 $  sudo tcpdump -i eth0 host 192.victims_ip -w host_traffic.pcap
