@@ -84,7 +84,8 @@ esting.
    * http://www.websecurify.com Websecurify
    * http://sourceforge.net/projects/grendel/ Grendel-scan
    * https://tools.kali.org/web-applications/gobuster Directory/file and DNS busting tool written in Go
-   * http://www.edge-security.com/wfuzz.php Wfuzz sudo airbase-ng --essid free_wifi -c 11 wlan1mon
+   * http://www.edge-securisudo sniper -t https://dedicatedglass.com -m credentials
+ty.com/wfuzz.php Wfuzz sudo airbase-ng --essid free_wifi -c 11 wlan1mon
 
    * http://wapiti.sourceforge.net wapiti
    * https://github.com/neuroo/grabber Grabber
@@ -373,7 +374,8 @@ iwspy # monitors iw nodes and records strenght and quality of signal
 * nmcli general status sudo apt install ./discord.deb
 * nmcli general hostname # get and change sys hostname 
 * nmcli general permissions # show the permssions available to caller 
-* nmcli connection show --active 
+* nmcli connection show --active sudo sniper -t https://dedicatedglass.com -m credentials
+
 * nmcli modify 
 * nmap --trace out <Domain Name>
 * nmcli networking on off # disable network control management 
@@ -807,11 +809,105 @@ hciconfig -h ## bluetooth context manager, similar to wifi manager (help menu)
 * sdptool browse MAC_ADDRESS 
 * btscanner # launches GUI interface 
 
+------------------------------------------------------ FRONT-END ASSESSMENT / SCANNING 802.11  ------------------------------------------------------
+
+[wig -- great preliminary scanner, returns good detials]
+* wig url.html 
+
+[sniper] 
+sudo sniper -u 
+sudo sniper -t https://dedicatedglass.com -m credentials
 
 
------------------------------------------------------- FRAMEWORK - WIG SCANNING 802.11  ------------------------------------------------------
-[wig -- great preliminary scanner, returns good detials)
-wig url.html 
+-------------------------------------------- DNS OSNT ---------------------------------------------
+
+[To FUZZ URL's for username]
+* sherlock --nsfw -l username_target
+
+[To quickly pull userfull server info]
+* dig --help 
+* dig domain.com 
+* dig domain.com -t mx 
+* dig domain.com -t ns 
+(dig domain.com AAAA # ipv6 addresses 
+
+
+## lookoups####                                            2 ⚙
+proxychains firefox
+ike-scan
+dnstracer dedicatedglass.com
+Nslookup dedicatedglass.com
+(to get dns)
+Ping -a dedicatedglass.com
+tlssled 192.168.50.1                                                    2 ⚙
+sslscan -h dedicatedglass.com
+Recon-ng                                      2 ⚙
+To grab SSL certificates
+sslyze --regular website or ip
+nslookup IP >> nslookup.txt
+http://geoiplookup.net/
+ 
+	
+
+## host, nslookup, dig 
+host domain.com ## returns host IP and mailserver 
+host -t ns domain.com 
+host -t mx domain.com 
+host ip_address # reverse dns 
+
+nslookup domain.com 
+nslookup  # to enter nslookup console 
+# webserver
+set type=ns 
+domain.com 
+# mail server 
+set type=mx
+domain.com 
+
+
+------------------------------------------------------ FRAMEWORK - [OTHER]  802.11  ------------------------------------------------------
+
+(AUTOPWN - SCAN ROUTER FOR VULN)
+rsf (AutoPwn) > use scanners/autopwn
+rsf (AutoPwn) > show options
+rsf (AutoPwn) > set target 192.168.64.1
+rsf (AutoPwn) > run
+
+
+(start armitage)
+sudo msfconsole 
+sudo msfrpcd -P pass
+sudo msfrpcd -U msf -P pass --ssl
+sudo msfrpcd -U msf -P pass -a 127.0.0.1 --ssl
+sudo armitage 
+
+------------------------------------------------------ [WEB-APP VULNS]  ------------------------------------------------------
+1. Burp Suite
+2. Nikto
+3. Maltego
+4. SQLMap ---> [Automates manual SQL Injectiionns]
+5. Whatweb
+6. whoislookup
+
+
+#### FOR BROWSER PLUGINS (OSNIT, SELF SECURITY)
+# https://inteltechniques.com/ 
+# ## throw-away email ## 
+
+# tempmailer.de 
+#https://api.wigle.net/
+#https://null-byte.wonderhowto.com/how-to/wardrive-android-phone-map-vulnerable-networks-0176136/
+# grabify.link  ## --> track usersr 
+# shodan.io ## --> device info 
+# https://nvd.nist.gov/developers/vulnerabilities
+# https://www.exploit-db.com/
+# securityfocus.com
+# https://sur.ly/i/breachforums.com/
+# namecheckup.com ## --> osnit 
+# https://neatnik.net/steganographr/ --> stenography (*to hide tracks) 
+
+## NMAP SCRIPT LOCATION 
+ls -al /usr/share/nmap/scripts/ 
 
 ------------------------------------------------------ FRAMEWORK - NMAP SCANNING 802.11  ------------------------------------------------------
 
@@ -1059,89 +1155,6 @@ nmap -A -sP 192.168.1.0/24
 (SCAN DEVICE SPECIFIC PORTS)sudo apt install ./discord.deb
 Sudo nmap -A -sS -O 192.168.86.35
 
-
--------------------------------------------- DNS OSNT ---------------------------------------------
-## lookoups####                                            2 ⚙
-proxychains firefox
-ike-scan
-dnstracer dedicatedglass.com
-Nslookup dedicatedglass.com
-(to get dns)
-Ping -a dedicatedglass.com
-tlssled 192.168.50.1                                                    2 ⚙
-sslscan -h dedicatedglass.com
-Recon-ng                                      2 ⚙
-To grab SSL certificates
-sslyze --regular website or ip
-nslookup IP >> nslookup.txt
-http://geoiplookup.net/
-
-
-## host, nslookup, dig 
-host domain.com ## returns host IP and mailserver 
-host -t ns domain.com 
-host -t mx domain.com 
-host ip_address # reverse dns 
-
-nslookup domain.com 
-nslookup  # to enter nslookup console 
-# webserver
-set type=ns 
-domain.com 
-# mail server 
-set type=mx
-domain.com 
-
-dig --help 
-dig domain.com 
-dig domain.com -t mx 
-dig domain.com -t ns 
-dig domain.com AAAA # ipv6 addresses 
-
------------------------------------------------------- FRAMEWORK - [OTHER]  802.11  ------------------------------------------------------
-
-
-(AUTOPWN - SCAN ROUTER FOR VULN)
-rsf (AutoPwn) > use scanners/autopwn
-rsf (AutoPwn) > show options
-rsf (AutoPwn) > set target 192.168.64.1
-rsf (AutoPwn) > run
-
-
-(start armitage)
-sudo msfconsole 
-sudo msfrpcd -P pass
-sudo msfrpcd -U msf -P pass --ssl
-sudo msfrpcd -U msf -P pass -a 127.0.0.1 --ssl
-sudo armitage 
-
------------------------------------------------------- [WEB-APP VULNS]  ------------------------------------------------------
-1. Burp Suite
-2. Nikto
-3. Maltego
-4. SQLMap ---> [Automates manual SQL Injectiionns]
-5. Whatweb
-6. whoislookup
-
-
-#### FOR BROWSER PLUGINS (OSNIT, SELF SECURITY)
-# https://inteltechniques.com/ 
-# ## throw-away email ## 
-
-# tempmailer.de 
-#https://api.wigle.net/
-#https://null-byte.wonderhowto.com/how-to/wardrive-android-phone-map-vulnerable-networks-0176136/
-# grabify.link  ## --> track usersr 
-# shodan.io ## --> device info 
-# https://nvd.nist.gov/developers/vulnerabilities
-# https://www.exploit-db.com/
-# securityfocus.com
-# https://sur.ly/i/breachforums.com/
-# namecheckup.com ## --> osnit 
-# https://neatnik.net/steganographr/ --> stenography (*to hide tracks) 
-
-## NMAP SCRIPT LOCATION 
-ls -al /usr/share/nmap/scripts/ 
 
 ## CANARY TOKENS
 canarytokens.com/generate 
