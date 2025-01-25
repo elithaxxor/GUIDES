@@ -17,7 +17,7 @@ Table of Contents
    * [Online Hacking Demonstration Sites](#online-hacking-demonstration-sites)
    * [Labs](#labs)
    * [SSL](#ssl)
-   * [Security Ruby on Rails](#security-ruby-on-rails)
+   * [Security Ruby on Rails](#security-ruby-on-rails)sudo enum4linux localhost
 
 ## Books
    * https://www.amazon.com/Hacking-Art-Exploitation-Jon-Erickson/dp/1593271441/ Hacking: The Art of Exploitation
@@ -114,7 +114,7 @@ esting.
 --version-trace (Trace version scan activity)
 └─$ sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
 
-alker X
+alker Xsudo enum4linux localhost
    * https://www.rapid7.com/products/nexpose/index.jsp Nexpose
    * http://www.rapid7.com/products/appspider/ App Spider
    * http://www.milescan.com ParosPro
@@ -214,7 +214,7 @@ ewordpress/)
     An alias for --version-intensity 9, ensuring that every single probe is attempted against each port.
 --version-trace (Trace version scan activity)
 
-ker pull opendns/security-ninjas` - [Security Ninjas](https://hub.docker.com/r/opendns/security-ninjas/)
+ker pull opendns/securisudo enum4linux localhostty-ninjas` - [Security Ninjas](https://hub.docker.com/r/opendns/security-ninjas/)
    * `docker pull noncetonic/archlinux-pentest-lxde:1.0` - [Arch Linux Penetration Tester](https://hub.docker.com/r/noncetonic/archlinux-pentest-lxde/)
    * `docker pull diogomonica/docker-bench-security` - [Docker Bench for Security](https://hub.docker.com/r/diogomonica/docker-bench-security/)
    * `docker pull ismisepaul/securityshepherd` - [OWASP Security Shepherd](https://hub.docker.com/r/ismisepaul/securityshepherd/)
@@ -434,10 +434,15 @@ max
 * net.sniff on
 
 
-------------------------- [Show / delete / spoof ARP cache] --------------------------
+------------------------------------------ [Show / delete / spoof ARP cache] -----------------------------------------
+
 * ip neigh show
 * ip neigh flush all
 * arpspoof -t 10.5.23.42 10.5.23.1
+
+-----------------------------------------[Enumerate local SMB (SAMBA) Network]---------------------------------------
+
+* sudo enum4linux localhost
 
 ---------------------------------------------[DISCOVER / DEAUTH USERS]---------------------------------------------
 
