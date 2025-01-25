@@ -61,7 +61,7 @@ $ sudo tcpdump -i eth0 host 192.168.1.10 -w host_traffic.pcap
    * https://github.com/tecknicaltom/dsniff - dsniff is a collection of tools for network auditing and penetration t└─$ sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
 esting.
    * https://github.com/WangYihang/Webshell-Sniper - Manage your webshell via terminal.
-   * https://github.com/DanMcInerney/dnsspoof - DNS spoofer. Drops DNS responses from the router and replaces it with the spoofed DNS response
+   * https://github.com/DanMcInerney/dnsspoof - DNS spoofer. Drops DNS resp690339onses from the router and replaces it with the spoofed DNS response
    * https://github.com/trustedsec/social-engineer-toolkit - The Social-Engineer Toolkit (SET) repository from TrustedSec
    * https://github.com/sqlmapproject/sqlmap - Automatic SQL injection and database takeover tool
    * https://github.com/beefproject/beef - The Browser Exploitation Framework Project
@@ -88,7 +88,7 @@ esting.
 
    * http://wapiti.sourceforge.net wapiti
    * https://github.com/neuroo/grabber Grabber
-   * https://subgraph.com/vega/ Vega
+   * https://subgraph.com/vega/ Vega690339
    * http://websecuritytool.codeplex.com Watcher passive web scanner
    * http://xss.codeplex.com x5s XSS and Unicode transformations security testing assistant
    * http://www.beyondsecurity.com/avds AVDS Vulnerability Assessment and Management
@@ -242,7 +242,7 @@ ker pull opendns/securisudo enum4linux localhostty-ninjas` - [Security Ninjas](h
    * https://www.offensive-security.com/information-security-training/advanced-web-attack-and-exploitation/ Offensive Security Advanced Web Attacks and Exploitation (live)
    * https://www.sans.org/course/web-app-penetration-testing-ethical-hacking Sans SEC542: Web App Penetration Testing and Ethical Hacking
    * https://www.sans.org/course/advanced-web-app-penetration-testing-ethical-hacking Sans SEC642: Advanced Web App Penetration Testing and Ethical Hacking   
-   * http://opensecuritytraining.info/ - Open Security Training
+   * http://opensecuritytraining.info/ - Open Security Training690339
    * http://securitytrainings.net/security-trainings/ - Security Exploded Training
    * http://www.securitytube.net/ - World’s largest Infosec and Hacking Portal.
    * https://www.hacker101.com/ - Free class for web security by [Hackerone](https://www.hackerone.com)
@@ -614,7 +614,7 @@ m
 
 ----------------------------------------------------[DUMPING PKSID (WPA2) ]---------------------------------------------
 
-[TCP DUMP]
+[TCP DUMP]690339
 tcpdump -s 0 port ftp or ssh -i eth0 -w mycap.pcap
 ----------------------------------------------------[tracking domain]---------------------------------------------
 
@@ -807,6 +807,11 @@ hciconfig -h ## bluetooth context manager, similar to wifi manager (help menu)
 * sdptool browse MAC_ADDRESS 
 * btscanner # launches GUI interface 
 
+
+
+------------------------------------------------------ FRAMEWORK - WIG SCANNING 802.11  ------------------------------------------------------
+[wig -- great preliminary scanner, returns good detials)
+wig url.html 
 
 ------------------------------------------------------ FRAMEWORK - NMAP SCANNING 802.11  ------------------------------------------------------
 
