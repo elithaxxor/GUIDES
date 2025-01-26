@@ -1,8 +1,16 @@
 # GUIDES
-[Binary to Path]
- mkdir -p ${HOME}/bin
- 
+
+
+------------------[Binary to Path]--------------------------
+mkdir -p ${HOME}/bin
 ~/.bashrc
+
+
+------------------- [Sort Filesystem by size] ---------------
+sudo du -ah | sort -rh | head -n 30 
+du -m / | sort -rn | head -25
+
+
 
 Table of Contents
 =================
