@@ -118,7 +118,9 @@ ytool.codeplex.com Watcher passive web scanner
 
     When performing a version scan (-sV), Nmap sends a series of probes, each of which is assigned a rarity value between one and nine. The lower-numbered probes are effective against a wide variety of common services, while the higher-numbered ones are rarely useful. The intensity level specifies which probes should be applied. The higher the number, the more likely it is the service will be correctly identified. However, high intensity scans take longer. The intensity must be between 0 and 9. The default is 7. When a probe is registered to the target port via the nmap-service-probes ports directive, that probe is tried regardless of intensity level. This ensures that the DNS probes will always be attempted against any open portcpdump -s 0 port ftp or ssh -i eth0 -w mycap.pcapt 53, the SSL probe will be done against 443, etc.
 --version-light (Enable light mode)
+[NMAP BASIC -- HOST DISCOVERY ] -------------------------
 
+    -sL [NMAP- List subnet witho
     This is a convenience alias for --version-intensity 2. This light mode makes version scanning much faster, but it is slightly less likely to identify services.
 --version-all (Try every single probe)
 
@@ -222,7 +224,9 @@ ewordpress/)
 
     This is a convenience alias for --version-intensity 2. This light mode makes version scanning much faster, but it is slightly less likely to identify services.
 --version-all (Try every single probe)
+[NMAP BASIC -- HOST DISCOVERY ] -------------------------
 
+    -sL [NMAP- List subnet witho
     An alias for --version-intensity 9, ensuring that every single probe is attempted against each port.
 --version-trace (Trace version scan activity)
 
@@ -245,7 +249,9 @@ ker pull opendns/securisudo enum4linux localhostty-ninjas` - [Security Ninjas](h
    * http://packetstormsecurity.com/ - Global Security Resource
    * https://wpvulndb.com/ - WPScan Vulnerability Database
    * https://snyk.io/vuln/ - Vulnerability DB, Detailed information and remediation guidance for known vulnerabilities.
-   * https://stellastra.com/cipher-suite - Database of hundreds of TLS cipher suites and their security status.
+   * https://stellastra.com/cipher-suite - Data[NMAP BASIC -- HOST DISCOVERY ] -------------------------
+
+    -sL [NMAP- List subnet withobase of hundreds of TLS cipher suites and their security status.
    * https://vulncheck.com/xdb/ - An index of exploit proof-of-concept code in Git repositories.
 
 ## Courses
@@ -1100,32 +1106,36 @@ NNAP Functions / Modality]
     	6. Firewall / IDS SPoofing 
 
 2.] ------------------ [NMAP BASIC -- TYPES OF SCANS ] -------------------------
-	
- 1. [-sS = TCP Syn port scan]
+
+
+ 0. -iL [scan from  file]
+    	* nmap -iL scan.txt
+    
+ 2. [-sS = TCP Syn port scan]
     	* nmap 192.168.target -sS 
  	
-  2. [-sT = TCP connect port scan]
+  3. [-sT = TCP connect port scan]
   	* nmap <victim_ip> -sT 
 
-3. [-sA = TCP ACK Port WITH PORT]
+4. [-sA = TCP ACK Port WITH PORT]
 	* nmap <victim_ip> -sA
 
-4. [-sU = UDP Scan]
+5. [-sU = UDP Scan]
 	* nmap <victim_ip> -sU 
 
-5. [-Sf -- TCP FIN Scan]
+6. [-Sf -- TCP FIN Scan]
 	* nmap -sF <victim_ip> 
 
-6. [-sX - XMAS Scan]
+7. [-sX - XMAS Scan]
 	* nmap -sX <target_ip>
 
-7. [-sP - Ping Scan] 
+8. [-sP - Ping Scan] 
 	* nmap -sP <victim_ip>  
 
-8. [-sU - UDP SCan]  
+9. [-sU - UDP SCan]  
 	* nmap -sU <victim_ip> 
 
-9. [-sA = TCP ACK scan(no port) ]
+10. [-sA = TCP ACK scan(no port) ]
 	* nmap -Sa <victim_ip> 
 
 [3]------------------ [NMAP BASIC -- PORT SPECIFIC SCANS ] -------------------------
@@ -1161,7 +1171,27 @@ NNAP Functions / Modality]
 6. -PU [UDP Discovery on a  secfic port
    * nmap <victim_ip> -PU53
 
-7. 
+7. -PR [ARP discovery within network]
+   * nmap <victim_ip>/8 -PR
+     
+8. -n [no dns resolution 
+   * nmap <victim_ip> -n 
+
+[5] -------------------- [NMAP VERSION DETECTION] --------------------
+
+-sV [find the version of the port the service is running on [VERSION-INTENSITY = 1-9)  
+   * nmap <vctim_ip> -sV --version-intensity 9
+
+-sV --version-all [Sets intensity to 9] 
+   * nmap <victim_ip> -sV --version-all
+     
+-sV --version-light [Sets intensity to light] 
+   * nmap <victim_ip> -sV --version-all
+
+-O [Remote OS Detection]
+   * nmap <victim_ip> -O 
+
+
 
 
 
