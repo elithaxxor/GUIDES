@@ -1135,7 +1135,7 @@ NNAP Functions / Modality]
    * nmap -p 23 <victim_ip>
    * nmap -p 23-100 <victim_ip>
 
-2. [different port scans / protocol: ie: Tcp 20-23 ; Udp 110
+2. [NMAP- different port scans / protocol: ie: Tcp 20-23 ; Udp 110
    * nmap -pU:110, T:23-25,443, <victim_ip>
 
 3.-p- = POrt scan for all ports
@@ -1143,10 +1143,25 @@ NNAP Functions / Modality]
 
 [4]------------------ [NMAP BASIC -- HOST DISCOVERY ] -------------------------
 
-1. -sL [List subnet without scanning]
+1. -sL [NMAP- List subnet without scanning]
    *nmap <victim_ip> -sL
 
+2. -sn [NMAP - Disble port scanning]
+   * nmap <victim_ip> -sn
 
+3. -Pn [Port Scan Only-- NO HOST DISCOVERY]
+   * nmap <victim_ip> -Pn
+
+4. -PS [ TCP-SYN Discovery oon Specific port]
+   * nmap <victim_ip> -PS22-25, 80
+
+5. -PA [ TCP-ACK Discovery on specific port ]
+   * nmap <victim_ip> -PA20-25,80
+
+6. -PU [UDP Discovery on a  secfic port
+   * nmap <victim_ip> -PU53
+
+7. 
 
 
 
@@ -1323,6 +1338,7 @@ nmap 192.168.1.1 -A
 
 
 ------------------------[ NMAP INTRUSION DETECTION ] --------------------------------- 
+
 T0 nmap 192.168.1.1 -T0 Paranoid (0) Intrusion Detection System evasion
 -T1 nmap 192.168.1.1 -T1 Sneaky (1) Intrusion Detection System evasion
 -T2 nmap 192.168.1.1 -T2 Polite (2) slows down the scan to
