@@ -56,7 +56,7 @@ $ sudo tcpdump -i eth0 host 192.168.1.10 -w host_traffic.pcap
    * https://www.deepinfo.com/ - Deepinfo Attack Surface Platform discovers all your digital assets, monitors them 24/7, detects any issues, and notifies you quickly so you can take immediate action.
    * https://spyse.com/ - OSINT search engine that provides fresh data about the entire web, storing all data in its own DB, interconnect finding data and has some cool features.
    * http://www.metasploit.com/ - World's most used penetration testing software
-   * https://findsubdomains.com - Online subdomains scanner service with lots of additional data. works using OSINT.
+   * https://findsubdomains.com - Online subdomains pyscanner service with lots of additional data. works using OSINT.
    * https://github.com/bjeborn/basic-auth-pot HTTP Basic Authentication honeyPot.
    * http://www.arachni-scanner.com/ - Web Application Security Scanner Framework
    * https://github.com/sullo/nikto - Nikto web server scanner
@@ -74,7 +74,7 @@ esting.
    * https://github.com/sqlmapproject/sqlmap - Automatic SQL injection and database takeover tool
    * https://github.com/beefproject/beef - The Browser Exploitation Framework Project
    * http://w3af.org/ - w3af is a Web Application Attack and Audit Framework
-   * https://github.com/espreto/wpsploit - WPSploit, Exploiting Wordpress With Metasploit
+   * https://github.com/espreto/wpsploit - WPSploit, pyExploiting Wordpress With Metasploit
    * https://github.com/WangYihang/Reverse-Shell-Manager - Reverse shell manager via terminal.
    * https://github.com/RUB-NDS/WS-Attacker - WS-Attacker is a modular framework for web services penetration testing
    * https://github.com/wpscanteam/wpscan - WPScan is a black box WordPress vulnerability scanner
@@ -129,7 +129,7 @@ alker Xsudo enum4linux localhost
    * http://www.milescan.com ParosPro
    * https://www.qualys.com/enterprises/qualysguard/web-application-scanning/ Qualys Web Application Scanning
    * http://www.beyondtrust.com/Products/RetinaNetworkSecurityScanner/ Retina
-   * https://www.owasp.org/index.php/OWASP_Xenotix_XSS_Exploit_Framework Xenotix XSS Exploit Framework
+   * https://www.owasp.org/indpyex.php/OWASP_Xenotix_XSS_Exploit_Framework Xenotix XSS Exploit Framework
    * https://github.com/future-architect/vuls Vulnerability scanner for Linux, agentless, written in golang.
    * https://github.com/rastating/wordpress-exploit-framework A Ruby framework for developing and using modules which aid in the penetration testing of WordPress powered websites and systems.
    * http://www.xss-payloads.com/ XSS Payloads to leverage XSS vulnerabilities, build custom payloads, practice penetration testing skills.
@@ -356,9 +356,6 @@ nmcli device wifi list
 netdiscover -r 192.168.50.1/24
 sparrow wifi 
 
-sudo arp-scan -l | grep "MAC TO FIND"
-dsniff --> slowly sniffs for senstive data (ftp http logins) 
-
 * nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
 
 * ip address show
@@ -416,16 +413,44 @@ max
 --------------------------------------------------[WHOS CONNECTINIG TO ME]------------------------------------------
 
 
+[Get devices and proximity to host]
+sudo iw dev wlx0013eff5483f scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
+
 [arp-scanner -- returns IP AND MAC]
 * sudo arp-scan --interface wlan0 -l
 
-[netscanner]
-[angry ip scanner]
+[angry ip scanner --- App, do not forget to configure settihngs ]
 [netdiscover]
 * sudo netdiscover -i wlan0 -r 192.168.1.1
-[KISMET] 
-* sudo kismet -c wlan1mon 
+* sudo netdiscover -r 192.168.50.1/24
 
+[KISMET] (browser based)
+* sudo kismet -c wlan1mon
+
+[netscanner]
+
+
+
+------------ [nmap to return mac address]------------
+sudo nmap -sP -n 192.168.0.0/24
+airodump-ng wlx0013eff5483f -c 11
+airodump-ng wlx0013eff5483f --encrypt wep
+sudo iwlist wlx0013eff5483f scanning | egrep 'Cell |Encryption|Quality|Last beacon|ESSID'
+
+
+-------------------------------------[MITM- SNIFF SPECIFIC TARGET] -------------------------------------
+
+[commansd]
+* net.show [shows whos connected to device]
+* net.probe on [probes packetsfor recon]
+
+* set arp.spoof.targets 19[2.168.1.10 [sets  spoof to victim]
+* set arp.spoof.fullduplex true [sets attack to victim and  host]
+* set arp.spoof.targets 192.168.43.157(IP address of the target Device)
+* arp.spoof on
+
+* set net.sniff.local true
+* net.sniff on
 [bettercap] - CLI [ettercap] - GUI
 * sudo bettercap -caplet http-ui [UI MODE]
 * bettercap  -iface wlan0
@@ -435,17 +460,6 @@ max
   
 [mitmproxy] 
 
-[commansd]
-* net.show [shows whos connected to device]
-* net.probe on [probes packetsfor recon]
-
-* set arp.spoof.targets 192.168.1.10 [sets  spoof to victim]
-* set arp.spoof.fullduplex true [sets attack to victim and  host]
-* set arp.spoof.targets 192.168.43.157(IP address of the target Device)
-* arp.spoof on
-
-* set net.sniff.local true
-* net.sniff on
 
 
 ------------------------------------------ [Show / delete / spoof ARP cache] -----------------------------------------
@@ -494,7 +508,7 @@ max
 
 * sudo wifite -all
 
------------------------------------------ [BEACON FLOOD - DDOS]
+----------------------------------------- [BEACON FLOOD - DDOS] ---------------------------------
 
 [mdk4]
 
@@ -737,8 +751,14 @@ route --> gives access to routing tables
 netstat -rn [finds gatweay address] 
 
 sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8 [ [DISCOVER WHOS ON NETWORK]
+
 dsniff - [practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE.] 
 netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant follwig you with a fwe commands. it can watch you upload/download or do anything on the networkthat hpersists) 
+
+
+##### TO FIND WEP PROTECTION ####
+airodump-ng wlx0013eff5483f --encrypt wep
+
 
 ------------------------------------------------------ WIFI-PESTER ------------------------------------------------------
 
@@ -1136,7 +1156,81 @@ nmap 192.168.1.1 -sV -version-light [better outcome, longer time]
 nmap 192.168.1.1 -A
 
 ------------------------------------[NMAP-OS-DETECTION]--------------------------------------------
-e 
+Target Specication
+
+Switch Example Description
+nmap 192.168.1.1 [Scan a single IP]
+nmap 192.168.1.1 192.168.2.1 [Scan specic IPs]
+nmap 192.168.1.1-254 [Scan a range]
+nmap scanme.nmap.org [Scan a domain]
+nmap 192.168.1.0/24 [Scan using CIDR notation]
+-iL nmap -iL targets.txt Scan targets from a llist]
+-iR nmap -iR 100 Scan 100 random hosts
+
+
+---------------------- [NMAP Scan Techniques] ----------------
+
+[TCP SYN port scan (Default)]
+-sS nmap 192.168.1.1 -sS 
+[TCP connect port scan]
+-sT nmap 192.168.1.1 -sT 
+
+(Default without root privilege)
+[UDP port scan]
+-sU nmap 192.168.1.1 -sU 
+[TCP ACK port scan]
+-sA nmap 192.168.1.1 -sA 
+[TCP Window port scan]
+-sW nmap 192.168.1.1 -sW 
+[TCP Maimon port scan]
+-sM nmap 192.168.1.1 -sM 
+
+
+---------------[NMAP OST DISCOVERY]----------------
+-sL nmap 192.168.1.1-3 -sL [No Scan. List targets only]
+-sn nmap 192.168.1.1/24 -sn [Disable port scanning. Host discovery only.]
+-Pn nmap 192.168.1.1-5 -Pn [Disable host discovery. Port scan ONLY]
+-PS nmap 192.168.1.1-5 -PS22-
+25,80 TCP SYN discovery on port x.
+Port 80 by default
+-PA nmap 192.168.1.1-5 -PA22-
+25,80
+TCP ACK discovery on port x.
+Port 80 by default
+-PU nmap 192.168.1.1-5 -PU53 UDP discovery on port x.
+Port 40125 by default
+[ARP discovery on local network]
+-PR nmap 192.168.1.1-1/24 -PR 
+-n nmap 192.168.1.1 -n Never do DNS resolution
+
+OS Detection
+
+[Remote OS detection using TCP/IP stack ngerprinting]
+-O nmap 192.168.1.1 -O 
+[osscan-limit]
+-O --osscan-limit nmap 192.168.1.1 -O --
+
+[If at least one open and one closed TCP port are not found it will not try OS detection against host]
+-O --osscan-guess nmap 192.168.1.1 -O --osscan-guess Makes Nmap guess more aggressively
+-O --max-os-
+tries nmap 192.168.1.1 -O --max-
+os-tries 1 Set the maximum number x of OS
+detection tries against a target
+[Enables OS detection, version detection, script scanning, and traceroute]
+nmap 192.168.1.1 -A 
+
+
+------------------------[ NMAP INTRUSION DETECTION ] --------------------------------- 
+T0 nmap 192.168.1.1 -T0 Paranoid (0) Intrusion Detection System evasion
+-T1 nmap 192.168.1.1 -T1 Sneaky (1) Intrusion Detection System evasion
+-T2 nmap 192.168.1.1 -T2 Polite (2) slows down the scan to
+use less bandwidth and use less target machine resources
+-T3 nmap 192.168.1.1 -T3 Normal (3) which is default speed
+-T4 nmap 192.168.1.1 -T4 Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network
+-T5 nmap 192.168.1.1 -T5 Insane (5) speeds scan; assumes you are on an extra
+
+
+[------------ NMAP HOST DETECTION ---------------------]
 [Remote OS detection using TCP/IP stack fingerprinting]
 nmap 192.168.1.1 -O
 
@@ -1145,6 +1239,7 @@ nmap 192.168.1.1 -O -osscan-limit
 
 [Aggrressive Nmap OS Scan]
 nmap 192.168.1.1 -O -osscan-guess
+
 
 nmap -sV -pN xx # basic nmap scan 
 nmap -p local_ip_doman/24 -oG nmap_out.txt 
@@ -1162,7 +1257,32 @@ nmap -sI -v google.com 192.168.50.1                                        2 ⚙
 nmap -sW -v 192.168.50.1
  ## nmap to find who's on Lan (subnet) #####
 
-cd /usr/share/nmap/scripts
+
+[---------------- NMAPP - SCRIPTING ---------------------]-
+
+**************NSE script with arguments ******************
+----> cd /usr/share/nmap/scripts
+
+[Scan with default NSE] -scripts. Considered useful for discovery and safe
+nmap 192.168.1.1 -sC 
+
+[Scan with default NSE]- scripts. Considered useful for discovery and safe
+nmap 192.168.1.1 --script default 
+
+[Scan with a single script. Example banner]
+nmap 192.168.1.1 --script=banner 
+
+[Scan with a wildcard] -- Example http
+nmap 192.168.1.1 --script=http* 
+
+[SCAN with two scripts]
+--script nmap 192.168.1.1 --script=http,banner 
+
+["not intrusive" Scan default, but remove intrusive scripts]
+--script nmap 192.168.1.1 --script 
+
+--script-args nmap --script snmp-sysdescr --script-args snmpcommunity=admin 192.168.1.1
+
 nmap --script nmap-vulners/ -sV -sS -Pn -A -v 192.168.50.1/24 --version-intensity=9
 nmap -sV --script=vulscan/vulscan.nse 192.168.50.111
 nmap --script nmap-vulners/ -sV www.securitytrails.com
@@ -1184,19 +1304,7 @@ nmap -sW -v 192.168.50.1
 ## nmap to find who's on Lan (subnet) #####
 nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
   
-## nmap to return mac address
-sudo nmap -sP -n 192.168.0.0/24
-airodump-ng wlx0013eff5483f -c 11
-netdiscover -r 192.168.50.1/24
-airodump-ng wlx0013eff5483f --encrypt wep
-sudo iwlist wlx0013eff5483f scanning | egrep 'Cell |Encryption|Quality|Last beacon|ESSID'
 
-#### TO GET DEVICES AND DISTANCE
-sudo iw dev wlx0013eff5483f scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
-
-
-##### TO FIND WEP PROTECTION ####
-airodump-ng wlx0013eff5483f --encrypt wep
 
 
 cd /usr/share/nmap/scripts
@@ -1457,7 +1565,7 @@ iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
 
 ---------------------------------------------------PGP-GPG-----------------------------------------------
 
-
+py
 ######## OPEN SSL #######
 # use private key to sign secret.enc. 
 openssl genrsa -aes-256-cbc -out newkey.key 4096 # generate pvt key 
