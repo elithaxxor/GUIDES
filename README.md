@@ -768,10 +768,13 @@ sV --version-light (Enable light mode)
 sV --version-all (Try every single probe)
 sV --version-trace (Trace version scan activity)
 --------------------
+
 [NMAP- Rate of packetes being sent]
+
 -max-rate <number>
 -host-timeout <tberime>
 -min-rate <number>  [sends the packets no slower than spcefied number]
+
 ------------------------------
 [NMAP - TIMING]
 -T0 = paranoid 
@@ -1067,6 +1070,7 @@ Port 40125 by default
 tries nmap 192.168.1.1 -O --max-
 os-tries 1 Set the maximum number x of OS
 detection tries against a target
+
 [Enables OS detection, version detection, script scanning, and traceroute]
 nmap 192.168.1.1 -A 
 
@@ -1140,10 +1144,10 @@ nmap 192.168.1.1 --script default
 
 
 ["not intrusive" Scan default, but remove intrusive scripts]
-nmap 192.168.1.1 --script "not intrusive"
+   *nmap 192.168.1.1 --script "not intrusive"
 
 [Scan with a single script. Example banner]
-nmap 192.168.1.1 --script=banner 
+   *nmap 192.168.1.1 --script=banner 
 
 [Scan with a wildcard] -- Example http
 nmap 192.168.1.1 --script=http* 
@@ -1155,6 +1159,33 @@ nmap 192.168.1.1 --script=http*
 nmap --script snmp-sysdescr --script-args snmpcommunity=admin 192.168.1.1
 
 [---------------- NMAPP - VULN SCRIPTING (ADVANCED) ---------------------]-
+
+--script [running two scripts against target]
+nmap 192.168.1.1 --script=http,banner
+
+[HTTP Site generator] --script=http-sitemap-generator = 
+   * nmap -Pn --script=http-sitemap-generator scanme.nmap.org
+
+[Fast search for random web servers]
+   * nmap -n -Pn -p 80 --open -sV -vvv --script=banner,http-title -iR 1000
+
+[Brute forces DNS hostnames guessing subdomains]
+   * nmap -Pn --script=dns-brute domain.com
+
+[Safe SMB]
+     
+     * nmap -n -Pn -vv -O -sV --script smb-enum*,smb-ls,smb-mbenum,smb-os-discovery,smb-s*,smb-vuln*,smbv2* -vv 192.168.1.1
+
+[whois query]
+    * nmap --script whois* domain.com
+
+[Detect cross site scripting vulnerabilities]
+	
+ 	* nmap -p80 --script http-unsafe-output-escaping scanme.nmap.org
+
+ [Check for SQL injections]
+ 	
+  	* nmap -p80 --script http-sql-injection scanme.nmap.org
 
 [NMAP - VULN SCRIPT-- INTENSE] 
 nmap --script nmap-vulners/ -sV -sS -Pn -A -v 192.168.50.1/24 --version-intensity=9
