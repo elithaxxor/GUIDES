@@ -793,7 +793,9 @@ NNAP Functions / Modality]
 
 2.] ------------------ [NMAP BASIC -- TYPES OF SCANS ] -------------------------
 
-
+-1 -proxy [Run in targets with proxies]
+	* nmap -proxies proxy 1 URL, proxy 2 URL 
+ 
  0. -iL [scan from  file]
     	* nmap -iL scan.txt
     
@@ -877,9 +879,23 @@ NNAP Functions / Modality]
 -O [Remote OS Detection]
    * nmap <victim_ip> -O 
 
+[6] ----------------------------[NMAP FIREWALL EVASION] -------------------------------------------
 
+-f [scan frament packets]\
+   * nmap -f <victim_ip>
 
+-mtu [the  largest packets scan will accept]
+    * nmap -mtu [specify_mtu] <victim_ip> 
 
+-sI [scan idle zombie] - (This is accomplished by using packet spoofing to impersonate another computer so that the target believes it's being accessed by the zombie. The target will respond in different ways depending on whether the port is open, which can in turn be detected by querying the zombie)
+	* nmap -sI [another_network_dev_ip] <victim_ip> 
+
+ -data-length [size] - randomly append data 
+	*nmap -data-length [size] <victim_ip> 
+
+ -nmap randomize-hosts [victim_ip] 
+
+--------------------------------------------------- [NMAP - PRACTICALITY] -----------------------------
 
 [to find alll open ports]
 * nmap -v www.geeksforgeeks.org
@@ -939,7 +955,7 @@ nmap -sW -v 192.168.50.1
 nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
 
 
---------------------------------[NMAP- Identifiy]-----------------------------
+--------------------------------[NMAP- Identifiy FIREWALL]-----------------------------
 
 [To scan to detect firewall settings.]
 * sudo nmap -sA 103.76.228.244
@@ -989,6 +1005,7 @@ nmap 192.168.1.1 -sV -version-light [better outcome, longer time]
 nmap 192.168.1.1 -A
 
 ------------------------------------[NMAP-OS-DETECTION]--------------------------------------------
+
 Target Specication
 
 Switch Example Description
@@ -1019,7 +1036,7 @@ nmap 192.168.1.0/24 [Scan using CIDR notation]
 -sM nmap 192.168.1.1 -sM 
 
 
----------------[NMAP OST DISCOVERY]----------------
+---------------[NMAP hOST DISCOVERY]----------------
 -sL nmap 192.168.1.1-3 -sL [No Scan. List targets only]
 -sn nmap 192.168.1.1/24 -sn [Disable port scanning. Host discovery only.]
 -Pn nmap 192.168.1.1-5 -Pn [Disable host discovery. Port scan ONLY]
@@ -1032,6 +1049,7 @@ TCP ACK discovery on port x.
 Port 80 by default
 -PU nmap 192.168.1.1-5 -PU53 UDP discovery on port x.
 Port 40125 by default
+
 [ARP discovery on local network]
 -PR nmap 192.168.1.1-1/24 -PR 
 -n nmap 192.168.1.1 -n Never do DNS resolution
@@ -1055,13 +1073,23 @@ nmap 192.168.1.1 -A
 
 ------------------------[ NMAP INTRUSION DETECTION ] --------------------------------- 
 
-T0 nmap 192.168.1.1 -T0 Paranoid (0) Intrusion Detection System evasion
--T1 nmap 192.168.1.1 -T1 Sneaky (1) Intrusion Detection System evasion
--T2 nmap 192.168.1.1 -T2 Polite (2) slows down the scan to
-use less bandwidth and use less target machine resources
--T3 nmap 192.168.1.1 -T3 Normal (3) which is default speed
--T4 nmap 192.168.1.1 -T4 Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network
--T5 nmap 192.168.1.1 -T5 Insane (5) speeds scan; assumes you are on an extra
+ -T0 [Paranoid (0) Intrusion Detection System evasion]
+	* nmap -T0 <victim_ip> 
+ 
+ -T1  [-T1 Sneaky (1) Intrusion Detection System evasion]
+	*-T1 nmap 192.168.1.1
+ 
+-T2 [(tricky scan to avoid IDS)  slows down the scan to use less bandwidth and use less target machine resources]
+	* T2 nmap 192.168.1.1 
+ 
+-T3 [Normal (3) which is default speed]
+	*T3 nmap 192.168.1.1 
+
+-T4 [Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network]
+ 	* nmap 192.168.1.1 -T4 
+
+-T5 [very aggressive (5) speeds scan; assumes you are on an extra]
+	* nmap 192.168.1.1 -T5 
 
 
 [------------------------ NMAP HOST DETECTION -------------------------]
@@ -1097,6 +1125,12 @@ nmap -sW -v 192.168.50.1
 
 **************NSE script with arguments ******************
 ----> cd /usr/share/nmap/scripts
+
+--script [exectute the listd scripts agsint victim ip]
+	* nmap --script= test script victim_ip
+
+-sV -sC = [use only safe default scripts for scan]
+	* nmap -sV -sC 
 
 [Scan with default NSE] -scripts. Considered useful for discovery and safe
 nmap 192.168.1.1 -sC 
@@ -1135,6 +1169,7 @@ echo "scanning for open ports"
 nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
 
 [NMAP scriptlocation] 
+
 cd /usr/share/nmap/scripts
 nmap --script nmap-vulners/ -sV -sS -Pn -A -v 192.168.50.1/24 --version-intensity=9
 nmap -sV --script=vulscan/vulscan.nse 192.168.50.111
