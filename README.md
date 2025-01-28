@@ -747,10 +747,26 @@ python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --loca
 –script: Enables the use of various scripts from Nmap’s script database for more detailed discovery.
 	--version-intensity <intensity> (Set version scan intensity)
 
-[NMAP - Probing Intensty ]
---version-light (Enable light mode)
---version-all (Try every single probe)
---version-trace (Trace version scan activity)
+
+---------------------- [NMAP - Write to Output] ---------------------------
+
+-oN [saves to a text file]
+  * scanOutput.txt <victim_ip>
+  
+-oX [saves to a XML file]
+   * nmap -oX scanOutputXML.xml <victim_ip>
+
+-oG [saves in Greppable format] 
+   * nmap -oG grep.txt <victim_ip>
+   
+-oA [Saves to all files]
+   * nmap -oA <victim_ip>
+
+
+--------------- [NMAP - Probing Intensty ]
+sV --version-light (Enable light mode)
+sV --version-all (Try every single probe)
+sV --version-trace (Trace version scan activity)
 --------------------
 [NMAP- Rate of packetes being sent]
 -max-rate <number>
