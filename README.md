@@ -2,11 +2,12 @@
 
 
 ------------------[Binary to Path]--------------------------
+
 mkdir -p ${HOME}/bin
 ~/.bashrc
 
-
 ------------------- [Sort Filesystem by size] ---------------
+
 sudo du -ah | sort -rh | head -n 30 
 du -m / | sort -rn | head -25
 
@@ -646,6 +647,7 @@ m
 
 [TCP DUMP]690339
 tcpdump -s 0 port ftp or ssh -i eth0 -w mycap.pcap
+
 ----------------------------------------------------[tracking domain]---------------------------------------------
 
 * ping [ping with both 'www' and naked domain
@@ -654,15 +656,18 @@ tcpdump -s 0 port ftp or ssh -i eth0 -w mycap.pcap
 * [https://github.com/censys/censys-python]
 
 ---------------------------------------[DNS and reverse DNS lookup]-----------------------------------------
+
 * dig compass-security.com
 * dig -x 10.5.23.42
 
 ----------------------------------------------[COPY WEBPAGE ] -------------------------------------------------]
+
 * sudo apt install httrack webhttrack
 * httprack -w domain.com
 * tempmailer.de --> Use throw away email 
 
 ----------------------------------------------[Windows Defender Payload] -----------------------------------]
+
 [dsviper] 
 enter info
 create python server to deliver payload 
@@ -1042,16 +1047,27 @@ python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --loca
     * By default, Nmap version detection skips TCP port 9100 because some printers simply print anything sent to that port, leading to dozens of pages of HTTP GET requests, binary SSL session requests, etc. This behavior can be changed by modifying or removing the Exclude directive in nmap-service-probes, or you can specify --allports to scan all ports regardless of any Exclude directive. 
 *****
  -A = how aggressive you wannt the scan 
+
  --allports (Don't exclude any ports from version detection)
+
 -p: Specifies which ports you want to scan. You can list individual ports separated by commas or use ranges separated by dashes.
+
 -sS [SYN-Stealth Scan] = Initiates a SYN stealth scan, which is less likely to be logged.
+
 -sV: [version detection] =  Attempts to determine the version of the services running on open ports. -
+
 -v: Increases verbosity, providing more information about the scan in progress.
- -O = Operating System 
-- s Attempts to determine the version of the services running on open ports.
+
+-O = Operating System 
+
+- sS Attempts to determine the version of the services running on open ports.
+
 --traceourt = target hosting service or identify additional targets according to our needs for quickly tracing the path.
+
 -v : Increases verbosity, providing more information about the scan in progress.
+
 -–script = Enables the use of various scripts from Nmap’s script database for more detailed discovery.
+
 –script: Enables the use of various scripts from Nmap’s script database for more detailed discovery.
 	--version-intensity <intensity> (Set version scan intensity)
 
@@ -1073,8 +1089,7 @@ python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --loca
 
 [+] ssh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and not host localhost\" -w - " > tcp_dump1.pcap
 
--------------------------- [NMAP BASIC SCANS]------------------------------
-[
+1.]-------------------------- [NMAP BASIC SCANS]------------------------------
 
 NNAP Functions / Modality] 
 	1. Port Discovery and Specificiation 
@@ -1084,27 +1099,57 @@ NNAP Functions / Modality]
    	5. Software Verson Detection 
     	6. Firewall / IDS SPoofing 
 
-[NMAP Type of Scans: ]
-	1. [-sS = TCP Syn port scan]
- 		* nmap 192.168.target -sS 
- 	2. [-sT = TCP connect port scan]
-  		* nmap <victim_ip> -sT 
-    	3. [-sA = TCP ACK Port WITH PORT]
-     		* nmap <victim_ip> -sA
-       	4. [-sU = UDP Scan]
-		* nmap <victim_ip> -sU 
-     	5. [-Sf -- TCP FIN Scan]
-      		* nmap -sF <victim_ip> 
-	6. [-sX - XMAS Scan]
- 		* nmap -sX <target_ip>
-   	7. [-sP - Ping Scan] 
-    		* nmap -sP <victim_ip>  
-      	8. [-sU - UDP SCan]  
-       		* nmap -sU <victim_ip> 
-	9. [-sA = TCP ACK scan(no port) ]
-		* nmap -Sa <victim_ip> 
+2.] ------------------ [NMAP BASIC -- TYPES OF SCANS ] -------------------------
+	
+ 1. [-sS = TCP Syn port scan]
+    	* nmap 192.168.target -sS 
+ 	
+  2. [-sT = TCP connect port scan]
+  	* nmap <victim_ip> -sT 
 
-  
+3. [-sA = TCP ACK Port WITH PORT]
+	* nmap <victim_ip> -sA
+
+4. [-sU = UDP Scan]
+	* nmap <victim_ip> -sU 
+
+5. [-Sf -- TCP FIN Scan]
+	* nmap -sF <victim_ip> 
+
+6. [-sX - XMAS Scan]
+	* nmap -sX <target_ip>
+
+7. [-sP - Ping Scan] 
+	* nmap -sP <victim_ip>  
+
+8. [-sU - UDP SCan]  
+	* nmap -sU <victim_ip> 
+
+9. [-sA = TCP ACK scan(no port) ]
+	* nmap -Sa <victim_ip> 
+
+[3]------------------ [NMAP BASIC -- PORT SPECIFIC SCANS ] -------------------------
+
+
+1. -P = Scan specefic ports (a. single or b. range) 
+   * nmap -p 23 <victim_ip>
+   * nmap -p 23-100 <victim_ip>
+
+2. [different port scans / protocol: ie: Tcp 20-23 ; Udp 110
+   * nmap -pU:110, T:23-25,443, <victim_ip>
+
+3.-p- = POrt scan for all ports
+   * nmap -p- <victim_ip>
+
+[4]------------------ [NMAP BASIC -- HOST DISCOVERY ] -------------------------
+
+1. -sL [List subnet without scanning]
+   *nmap <victim_ip> -sL
+
+
+
+
+
 [to find alll open ports]
 * nmap -v www.geeksforgeeks.org
 
