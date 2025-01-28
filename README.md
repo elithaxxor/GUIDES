@@ -1074,27 +1074,37 @@ python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --loca
 [+] ssh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and not host localhost\" -w - " > tcp_dump1.pcap
 
 -------------------------- [NMAP BASIC SCANS]------------------------------
-NNAP Functions: 
+[
+
+NNAP Functions / Modality] 
 	1. Port Discovery and Specificiation 
 	2. Host  Discovery and specifciatino 
  	3. Vuln Scanning 
   	4. Application and Service Detection 
    	5. Software Verson Detection 
     	6. Firewall / IDS SPoofing 
-     
-[Fast NMAP scan]
-* Sudo nmap -F <victim_ip>
 
-[nmap to return open ports and services -SV (specific device)-- PORT KNOCKING ]
-sudo nmap -sV -Pn -v ns8231.hostgator.com 
+[NMAP Type of Scans: ]
+	1. [-sS = TCP Syn port scan]
+ 		* nmap 192.168.target -sS 
+ 	2. [-sT = TCP connect port scan]
+  		* nmap <victim_ip> -sT 
+    	3. [-sA = TCP ACK Port WITH PORT]
+     		* nmap <victim_ip> -sA
+       	4. [-sU = UDP Scan]
+		* nmap <victim_ip> -sU 
+     	5. [-Sf -- TCP FIN Scan]
+      		* nmap -sF <victim_ip> 
+	6. [-sX - XMAS Scan]
+ 		* nmap -sX <target_ip>
+   	7. [-sP - Ping Scan] 
+    		* nmap -sP <victim_ip>  
+      	8. [-sU - UDP SCan]  
+       		* nmap -sU <victim_ip> 
+	9. [-sA = TCP ACK scan(no port) ]
+		* nmap -Sa <victim_ip> 
 
-Sudo nmap -A -Pn  -v 76.172.85.231
-nmap -sI -v google.com 192.168.50.1                                        2 ⚙
-nmap -sW -v 192.168.50.1
-## nmap to find who's on Lan (subnet) #####
-nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
-
-
+  
 [to find alll open ports]
 * nmap -v www.geeksforgeeks.org
 
@@ -1141,6 +1151,17 @@ nmap -sW -v 192.168.50.1
 
 [nmap to find who's on Lan]
 nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
+
+
+[nmap to return open ports and services -SV (specific device)-- PORT KNOCKING ]
+sudo nmap -sV -Pn -v ns8231.hostgator.com 
+
+Sudo nmap -A -Pn  -v 76.172.85.231
+nmap -sI -v google.com 192.168.50.1                                        2 ⚙
+nmap -sW -v 192.168.50.1
+## nmap to find who's on Lan (subnet) #####
+nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
+
 
 --------------------------------[NMAP- Identifiy]-----------------------------
 
