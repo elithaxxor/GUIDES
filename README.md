@@ -1072,7 +1072,28 @@ python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --loca
 -T3-5 = Fvk this
 
 [+] ssh -T frank@192.168.1.131 "sudo timeout 60 tcpdump -i wlan0 \"not port 22 and not host localhost\" -w - " > tcp_dump1.pcap
-----------------------
+
+-------------------------- [NMAP BASIC SCANS]------------------------------
+NNAP Functions: 
+	1. Port Discovery and Specificiation 
+	2. Host  Discovery and specifciatino 
+ 	3. Vuln Scanning 
+  	4. Application and Service Detection 
+   	5. Software Verson Detection 
+    	6. Firewall / IDS SPoofing 
+     
+[Fast NMAP scan]
+* Sudo nmap -F <victim_ip>
+
+[nmap to return open ports and services -SV (specific device)-- PORT KNOCKING ]
+sudo nmap -sV -Pn -v ns8231.hostgator.com 
+
+Sudo nmap -A -Pn  -v 76.172.85.231
+nmap -sI -v google.com 192.168.50.1                                        2 ⚙
+nmap -sW -v 192.168.50.1
+## nmap to find who's on Lan (subnet) #####
+nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
+
 
 [to find alll open ports]
 * nmap -v www.geeksforgeeks.org
@@ -1109,6 +1130,17 @@ python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --loca
 
 [UDP PING] --> Streaming etc (no hanndshsake) 
 * nmap -PU [target]
+
+[NMAP- Port Knocking] 
+sudo nmap -sV -Pn -v ns8231.hostgator.com (#port knocking)
+Sudo nmap -A -Pn  -v 76.172.85.231
+
+
+nmap -sI -v google.com 192.168.50.1                                        2 ⚙
+nmap -sW -v 192.168.50.1
+
+[nmap to find who's on Lan]
+nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
 
 --------------------------------[NMAP- Identifiy]-----------------------------
 
@@ -1207,7 +1239,7 @@ Port 40125 by default
 -PR nmap 192.168.1.1-1/24 -PR 
 -n nmap 192.168.1.1 -n Never do DNS resolution
 
------------------[NMAP OS Detection] ----------------
+------------------------[NMAP OS Detection] -----------------------
 
 [Remote OS detection using TCP/IP stack ngerprinting]
 -O nmap 192.168.1.1 -O 
@@ -1290,33 +1322,21 @@ nmap 192.168.1.1 --script=http*
 [NMAP Scan with arguments]
 nmap --script snmp-sysdescr --script-args snmpcommunity=admin 192.168.1.1
 
-[---------------- NMAPP - SCRIPTING (ADVANCED) ---------------------]-
+[---------------- NMAPP - VULN SCRIPTING (ADVANCED) ---------------------]-
 
-
+[NMAP - VULN SCRIPT-- INTENSE] 
 nmap --script nmap-vulners/ -sV -sS -Pn -A -v 192.168.50.1/24 --version-intensity=9
 nmap -sV --script=vulscan/vulscan.nse 192.168.50.111
 nmap --script nmap-vulners/ -sV www.securitytrails.com
 nmap --script nmap-vulners/ -sV 11.22.33.44
 nmap --script nmap-vulners/,vulscan/ -sV yourwebsite.com
 nmap -Pn --script vuln 192.168.1.105
-echo "scanning for open ports"
 nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
 sudo apt install ./discord.deb
 echo "scanning for open ports"
 nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
 
-############ NMAP #############
-## nmap to return open ports and services -SV (specific device)
-sudo nmap -sV -Pn -v ns8231.hostgator.com (#port knocking)
-Sudo nmap -A -Pn  -v 76.172.85.231
-nmap -sI -v google.com 192.168.50.1                                        2 ⚙
-nmap -sW -v 192.168.50.1
-## nmap to find who's on Lan (subnet) #####
-nmap -sn -v - A--version-intenstity=9 192.168.0.0/24
-  
-
-
-
+[NMAP scriptlocation] 
 cd /usr/share/nmap/scripts
 nmap --script nmap-vulners/ -sV -sS -Pn -A -v 192.168.50.1/24 --version-intensity=9
 nmap -sV --script=vulscan/vulscan.nse 192.168.50.111
