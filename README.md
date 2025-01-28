@@ -415,6 +415,10 @@ max
 
 --------------------------------------------------[WHOS CONNECTINIG TO ME]------------------------------------------
 
+
+[arp-scanner -- returns IP AND MAC]
+* sudo arp-scan --interface wlan0 -l
+
 [netscanner]
 [angry ip scanner]
 [netdiscover]
@@ -428,7 +432,7 @@ max
 
 [EtterCap - GUI]
 * sudo ettercap -G
-* 
+  
 [mitmproxy] 
 
 [commansd]
