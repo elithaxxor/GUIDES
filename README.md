@@ -53,7 +53,8 @@ Table of Contents
 
 ## Tools
 $ sudo tcpdump -i eth0 host 192.168.1.10 -w host_traffic.pcap
-   * https://www.deepinfo.com/ - Deepinfo Attack Surface Platform discovers all your digital assets, monitors them 24/7, detects any issues, and notifies you quickly so you can take immediate action.
+   * https://www.deepinfo.com/ - Deepinfo Attack Surface Platsudo iw dev wlan0 scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
+form discovers all your digital assets, monitors them 24/7, detects any issues, and notifies you quickly so you can take immediate action.
    * https://spyse.com/ - OSINT search engine that provides fresh data about the entire web, storing all data in its own DB, interconnect finding data and has some cool features.
    * http://www.metasploit.com/ - World's most used penetration testing software
    * https://findsubdomains.com - Online subdomains pyscanner service with lots of additional data. works using OSINT.
@@ -98,7 +99,8 @@ ty.com/wfuzz.php Wfuzz sudo airbase-ng --essid free_wifi -c 11 wlan1mon
    * http://wapiti.sourceforge.net wapiti
    * https://github.com/neuroo/grabber Grabber
    * https://subgraph.com/vega/ Vega690339
-   * http://websecuritytool.codeplex.com Watcher passive web scanner
+   * http://websecuritsudo iw dev wlan0 scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
+ytool.codeplex.com Watcher passive web scanner
    * http://xss.codeplex.com x5s XSS and Unicode transformations security testing assistant
    * http://www.beyondsecurity.com/avds AVDS Vulnerability Assessment and Management
    * http://www.golismero.com Golismero
@@ -892,7 +894,8 @@ host ip_address # reverse dns
 
 nslookup domain.com 
 nslookup  # to enter nslookup console 
-# webserver
+# webserversudo iw dev wlan0 scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
+
 set type=ns 
 domain.com 
 # mail server 
@@ -922,7 +925,8 @@ sudo armitage
 3. Maltego
 4. SQLMap ---> [Automates manual SQL Injectiionns]
 5. Whatweb
-6. whoislookup
+6. whoislookupsudo iw dev wlan0 scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
+
 
 
 #### FOR BROWSER PLUGINS (OSNIT, SELF SECURITY)
@@ -1203,7 +1207,7 @@ Port 40125 by default
 -PR nmap 192.168.1.1-1/24 -PR 
 -n nmap 192.168.1.1 -n Never do DNS resolution
 
-OS Detection
+-----------------[NMAP OS Detection] ----------------
 
 [Remote OS detection using TCP/IP stack ngerprinting]
 -O nmap 192.168.1.1 -O 
@@ -1230,7 +1234,8 @@ use less bandwidth and use less target machine resources
 -T5 nmap 192.168.1.1 -T5 Insane (5) speeds scan; assumes you are on an extra
 
 
-[------------ NMAP HOST DETECTION ---------------------]
+[------------------------ NMAP HOST DETECTION -------------------------]
+
 [Remote OS detection using TCP/IP stack fingerprinting]
 nmap 192.168.1.1 -O
 
@@ -1258,7 +1263,7 @@ nmap -sW -v 192.168.50.1
  ## nmap to find who's on Lan (subnet) #####
 
 
-[---------------- NMAPP - SCRIPTING ---------------------]-
+[---------------- NMAPP - SCRIPTING (BASIC) ---------------------]-
 
 **************NSE script with arguments ******************
 ----> cd /usr/share/nmap/scripts
@@ -1269,6 +1274,10 @@ nmap 192.168.1.1 -sC
 [Scan with default NSE]- scripts. Considered useful for discovery and safe
 nmap 192.168.1.1 --script default 
 
+
+["not intrusive" Scan default, but remove intrusive scripts]
+nmap 192.168.1.1 --script "not intrusive"
+
 [Scan with a single script. Example banner]
 nmap 192.168.1.1 --script=banner 
 
@@ -1278,10 +1287,11 @@ nmap 192.168.1.1 --script=http*
 [SCAN with two scripts]
 --script nmap 192.168.1.1 --script=http,banner 
 
-["not intrusive" Scan default, but remove intrusive scripts]
---script nmap 192.168.1.1 --script 
+[NMAP Scan with arguments]
+nmap --script snmp-sysdescr --script-args snmpcommunity=admin 192.168.1.1
 
---script-args nmap --script snmp-sysdescr --script-args snmpcommunity=admin 192.168.1.1
+[---------------- NMAPP - SCRIPTING (ADVANCED) ---------------------]-
+
 
 nmap --script nmap-vulners/ -sV -sS -Pn -A -v 192.168.50.1/24 --version-intensity=9
 nmap -sV --script=vulscan/vulscan.nse 192.168.50.111
