@@ -1224,6 +1224,8 @@ brutespray --file nmapfuad.xml -U names.txt -P milw0rm-dictionary.txt --threads 
 brutespray --file nmapfuad.xml -U /home/frank/names.txt -P /home/frank/milw0rm-dictionary.txt --threads 5
 
 
+└─# nmap -sS -T5 -PP -PE -PM -PI localhost
+
 nmap -Sn xxx.xxx # ping scan 
 nmap -sL # list scan, returns device name 
 nmap -Pn # returns oepn ports . devname and mac address
