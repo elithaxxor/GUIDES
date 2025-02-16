@@ -14,12 +14,8 @@ export PATH="~/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
 command -v binary
 
--------------------- [Clearing everything older than say 30 days]----------------------------
 
-sudo journalctl --disk-usage
-sudo journalctl --vacuum-time=30d
-This example will keep 2GB worth of logs, clearing everything that exceeds this:
-sudo journalctl --vacuum-size=2G 
+
 
 ----------------------------------- [Sort Filesystem by size] ----------------------------------------
 
@@ -32,7 +28,18 @@ sudo du -hsx /home/* | sort -rh | head -n 35
 sudo du -ah | sort -rh | head -n 30 
 du -m / | sort -rn | head -25
 
+[remove unused packages]
+apt-get autoremove --purge 
 
+[check free disk space]
+sudo ncdu -x /
+
+-------------------- [Clearing everything older than say 30 days]----------------------------
+
+sudo journalctl --disk-usage
+sudo journalctl --vacuum-time=30d
+This example will keep 2GB worth of logs, clearing everything that exceeds this:
+sudo journalctl --vacuum-size=2G 
 
 ----------------------------------- [Running Files] ----------------------------------------
 
