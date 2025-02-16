@@ -23,8 +23,16 @@ sudo journalctl --vacuum-size=2G
 
 ----------------------------------- [Sort Filesystem by size] ----------------------------------------
 
+[where most size is stored] 
+sudo du -hsx /* | sort -rh | head -n 40
+sudo du -hsx /home/* | sort -rh | head -n 35
+
+
+[enumerate storage on directory] 
 sudo du -ah | sort -rh | head -n 30 
 du -m / | sort -rn | head -25
+
+
 
 ----------------------------------- [Running Files] ----------------------------------------
 
