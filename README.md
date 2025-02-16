@@ -6,7 +6,12 @@
 mkdir -p ${HOME}/bin
 ~/.bashrc
 
-------------------- [Sort Filesystem by size] ---------------
+-------------------- [Clearing everything older than say 30 days]----------------------------
+sudo journalctl --disk-usage
+sudo journalctl --vacuum-time=30d
+This example will keep 2GB worth of logs, clearing everything that exceeds this:
+sudo journalctl --vacuum-size=2G 
+----------------------------------- [Sort Filesystem by size] ----------------------------------------
 
 sudo du -ah | sort -rh | head -n 30 
 du -m / | sort -rn | head -25
