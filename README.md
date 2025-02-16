@@ -5,19 +5,6 @@
 
 mkdir -p ${HOME}/bin
 ~/.bashrc
-
--------------------- [Clearing everything older than say 30 days]----------------------------
-sudo journalctl --disk-usage
-sudo journalctl --vacuum-time=30d
-This example will keep 2GB worth of logs, clearing everything that exceeds this:
-sudo journalctl --vacuum-size=2G 
------------------------------------ [Sort Filesystem by size] ----------------------------------------
-
-sudo du -ah | sort -rh | head -n 30 
-du -m / | sort -rn | head -25
-
-
-## Config 
 mkdir -p ~/bin
 cp {binary} to bin
 chmod 755 ${HOME}/bin/binary
@@ -26,6 +13,21 @@ nano  ~/.bashrc #[if folder doesnt exist that create it]
 export PATH="~/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
 command -v binary
+
+-------------------- [Clearing everything older than say 30 days]----------------------------
+
+sudo journalctl --disk-usage
+sudo journalctl --vacuum-time=30d
+This example will keep 2GB worth of logs, clearing everything that exceeds this:
+sudo journalctl --vacuum-size=2G 
+
+----------------------------------- [Sort Filesystem by size] ----------------------------------------
+
+sudo du -ah | sort -rh | head -n 30 
+du -m / | sort -rn | head -25
+
+----------------------------------- [Running Files] ----------------------------------------
+
 
 systemctl list-units --all [Lists Running Modules]
 systemctl status --all [Lists Running Modules]
